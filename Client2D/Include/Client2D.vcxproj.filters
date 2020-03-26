@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01. GameMode">
+      <UniqueIdentifier>{d70aacae-a0d1-4cb3-9307-2c209b299925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object">
+      <UniqueIdentifier>{ed210996-4686-43cf-b406-142cc2143d94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\01. UI">
+      <UniqueIdentifier>{3dfc4d31-31c3-4d85-b83f-9063219c72f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\02. Map">
+      <UniqueIdentifier>{f885cfd1-fe23-4974-bab5-c3cf9a152f1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HK">
+      <UniqueIdentifier>{cc10c63c-a4e4-4045-967a-859c5d7c5607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HK\01. Mode">
+      <UniqueIdentifier>{dedbe2a0-7fd8-4cc0-8a10-475aa96f5af3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HK\02. UI">
+      <UniqueIdentifier>{51b2ab3e-5cbd-4a0e-9b36-5857d023e3c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HK\03. Effect">
+      <UniqueIdentifier>{dc87dbd7-ea7b-4612-b327-8ddbe52c8e33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HK\04. Object">
+      <UniqueIdentifier>{b6fdacc4-f44c-432a-88a4-5f11a10b76b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HK\03. Effect\01. FireBall">
+      <UniqueIdentifier>{5ecd8385-90e9-4717-b741-836de2f5c228}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HK\03. Effect\02. Heal">
+      <UniqueIdentifier>{c8a46881-cc7d-452c-b713-eefb43fb4bcd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMode\MainGameMode.cpp">
+      <Filter>01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\TestObject.cpp">
+      <Filter>02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Bullet.cpp">
+      <Filter>02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Minion.cpp">
+      <Filter>02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\ChildObj.cpp">
+      <Filter>02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\TestPixelCollision.cpp">
+      <Filter>02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\TestButton.cpp">
+      <Filter>02. Object\01. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\TestBar.cpp">
+      <Filter>02. Object\01. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMode\StartGameMode.cpp">
+      <Filter>01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\StartButton.cpp">
+      <Filter>02. Object\01. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\MainMap.cpp">
+      <Filter>02. Object\02. Map</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomNumber.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\Bug.cpp">
+      <Filter>HK\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\BlackSoftEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\BurstEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\CrackEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\DustEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\FireBall.cpp">
+      <Filter>HK\03. Effect\01. FireBall</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\FireBallHit.cpp">
+      <Filter>HK\03. Effect\01. FireBall</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\FireBallStart.cpp">
+      <Filter>HK\03. Effect\01. FireBall</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\Healing.cpp">
+      <Filter>HK\03. Effect\02. Heal</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\HealOver.cpp">
+      <Filter>HK\03. Effect\02. Heal</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\HealStart.cpp">
+      <Filter>HK\03. Effect\02. Heal</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\GetHit.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\HitEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\HKAttackEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\HKButton.cpp">
+      <Filter>HK\02. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\HKMode.cpp">
+      <Filter>HK\01. Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\HollowKnight.cpp">
+      <Filter>HK\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\HKMouse.cpp">
+      <Filter>HK\02. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\HPEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\MonsterHitEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\Sencer.cpp">
+      <Filter>HK\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\SideEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\SoftEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\TestStage.cpp">
+      <Filter>HK\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\UIHP.cpp">
+      <Filter>HK\02. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\SetAnimation.cpp">
+      <Filter>HK\01. Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\NewHK.cpp">
+      <Filter>HK\04. Object</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Client.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMode\MainGameMode.h">
+      <Filter>01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\TestObject.h">
+      <Filter>02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Bullet.h">
+      <Filter>02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Minion.h">
+      <Filter>02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\ChildObj.h">
+      <Filter>02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\TestPixelCollision.h">
+      <Filter>02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\TestButton.h">
+      <Filter>02. Object\01. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\TestBar.h">
+      <Filter>02. Object\01. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMode\StartGameMode.h">
+      <Filter>01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\StartButton.h">
+      <Filter>02. Object\01. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\MainMap.h">
+      <Filter>02. Object\02. Map</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomNumber.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\Bug.h">
+      <Filter>HK\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\BlackSoftEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\BurstEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\CrackEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\DustEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\FireBall.h">
+      <Filter>HK\03. Effect\01. FireBall</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\FireBallHit.h">
+      <Filter>HK\03. Effect\01. FireBall</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\FireBallStart.h">
+      <Filter>HK\03. Effect\01. FireBall</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\Healing.h">
+      <Filter>HK\03. Effect\02. Heal</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HealOver.h">
+      <Filter>HK\03. Effect\02. Heal</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HealStart.h">
+      <Filter>HK\03. Effect\02. Heal</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\GetHit.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HKAttackEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HitEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HKButton.h">
+      <Filter>HK\02. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HKMode.h">
+      <Filter>HK\01. Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HollowKnight.h">
+      <Filter>HK\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HKMouse.h">
+      <Filter>HK\02. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HPEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\MonsterHitEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\Sencer.h">
+      <Filter>HK\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\SideEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\SoftEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\TestStage.h">
+      <Filter>HK\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\UIHP.h">
+      <Filter>HK\02. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\NewHK.h">
+      <Filter>HK\04. Object</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Client2D.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

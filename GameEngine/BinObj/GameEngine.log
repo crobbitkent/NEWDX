@@ -1,0 +1,95 @@
+﻿  Collision.cpp
+d:\git\new2d\gameengine\include\matrix.h(7): warning C4251: '_tagMatrix::m': struct 'DirectX::XMMATRIX' needs to have dll-interface to be used by clients of union '_tagMatrix'
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\directxmath.h(432): note: see declaration of 'DirectX::XMMATRIX'
+d:\git\new2d\gameengine\include\ref.h(13): warning C4251: 'CRef::m_strName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'CRef'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+d:\git\new2d\gameengine\include\component\scenecomponent.h(15): warning C4251: 'CSceneComponent::m_vecChild': class 'std::vector<CSceneComponent *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CSceneComponent'
+          with
+          [
+              _Ty=CSceneComponent *
+          ]
+  d:\git\new2d\gameengine\include\component\scenecomponent.h(15): note: see declaration of 'std::vector<CSceneComponent *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=CSceneComponent *
+          ]
+d:\git\new2d\gameengine\include\component\colliderbase.h(23): warning C4251: 'CColliderBase::m_vecBlockCallback': class 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+          with
+          [
+              _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
+          ]
+  d:\git\new2d\gameengine\include\component\colliderbase.h(23): note: see declaration of 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
+          ]
+d:\git\new2d\gameengine\include\component\colliderbase.h(24): warning C4251: 'CColliderBase::m_vecBeginOverlapCallback': class 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+          with
+          [
+              _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
+          ]
+  d:\git\new2d\gameengine\include\component\colliderbase.h(23): note: see declaration of 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
+          ]
+d:\git\new2d\gameengine\include\component\colliderbase.h(25): warning C4251: 'CColliderBase::m_vecEndOverlapCallback': class 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+          with
+          [
+              _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
+          ]
+  d:\git\new2d\gameengine\include\component\colliderbase.h(23): note: see declaration of 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
+          ]
+d:\git\new2d\gameengine\include\component\colliderbase.h(28): warning C4251: 'CColliderBase::m_CurrentFrameCollision': class 'std::list<CColliderBase *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+          with
+          [
+              _Ty=CColliderBase *
+          ]
+  d:\git\new2d\gameengine\include\component\colliderbase.h(28): note: see declaration of 'std::list<CColliderBase *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=CColliderBase *
+          ]
+d:\git\new2d\gameengine\include\component\colliderbase.h(29): warning C4251: 'CColliderBase::m_CollisionList': class 'std::list<CColliderBase *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+          with
+          [
+              _Ty=CColliderBase *
+          ]
+  d:\git\new2d\gameengine\include\component\colliderbase.h(28): note: see declaration of 'std::list<CColliderBase *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=CColliderBase *
+          ]
+d:\git\new2d\gameengine\include\component\colliderbase.h(30): warning C4251: 'CColliderBase::m_vecSectionIndex': class 'std::vector<unsigned int,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+          with
+          [
+              _Ty=unsigned int
+          ]
+  d:\git\new2d\gameengine\include\component\colliderbase.h(30): note: see declaration of 'std::vector<unsigned int,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=unsigned int
+          ]
+d:\git\new2d\gameengine\include\component\collision.cpp(346): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\git\new2d\gameengine\include\component\collision.cpp(348): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\git\new2d\gameengine\include\component\collision.cpp(353): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\git\new2d\gameengine\include\component\collision.cpp(355): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\git\new2d\gameengine\include\component\collision.cpp(366): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\git\new2d\gameengine\include\component\collision.cpp(367): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  GameEngine.vcxproj -> D:\Git\NEW2D\GameEngine\Include\../Bin/GameEngine_Debug.dll
+  0개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  .\GameEngine\Bin\GameEngine_Debug.dll
+  1개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  .\GameEngine\Bin\GameEngine_Debug.dll
+  1개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  .\GameEngine\Bin\GameEngine_Debug.dll
+  1개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
