@@ -23,6 +23,7 @@ Bug::Bug()
 	, m_fMoveBackTimeMax(0.1f)
 	, m_iHP(3)
 {
+	m_eState = (BUG_STATE)4;
 }
 
 Bug::~Bug()
@@ -60,7 +61,8 @@ bool Bug::Init()
 
 
 
-	m_pAnimation->AddAnimation2DSequence("BUG_WALK");
+
+
 
 	m_pMesh->SetAnimation2D(m_pAnimation);
 
@@ -84,7 +86,7 @@ bool Bug::Init()
 	m_pMesh->SetRelativeScale(400.f, 400.f, 1.f);
 	m_pMesh->SetPivot(0.5f, 0.585f, 0.f);
 
-	m_pAnimation->ChangeAnimation("BUG_WALK");
+
 
 	m_pBody->SetExtent(150.f, 150.f);
 	m_pBody->SetPivot(0.5f, 0.5f, 0.f);
@@ -113,6 +115,12 @@ bool Bug::Init()
 
 	m_pBody->SetMonster(true);
 
+
+
+
+	SetAnimation();
+	SetCurrentState(BS_WALK);
+
 	return true;
 }
 
@@ -125,14 +133,39 @@ void Bug::Update(float fTime)
 {
 	CGameObject::Update(fTime);
 
+
+
 	if (true == m_bOnLand)
 	{
 		ClearGravity();
 	}
 
-	CheckFront();
+	bool anim = m_pAnimation->IsSequenceEnd();
 
-	MoveBack(fTime);
+	if (true == m_bDead)
+	{
+		return;
+	}
+
+
+	if(BS_DIE == m_eState && true == anim)
+	{
+		m_bDead = true;
+
+		return;
+	}
+	else
+	{
+		CheckFront();
+
+		MoveBack(fTime);
+	}
+
+	if (true == m_bJump)
+	{
+		JumpBack(fTime);
+	}
+
 
 	// m_pMovement->AddRotationZ(180.f * fTime * rotationNumber);
 }
@@ -220,9 +253,67 @@ void Bug::MoveBack(float fTime)
 	}
 }
 
+void Bug::JumpBack(float fTime)
+{
+	if (false == m_bJumping)
+	{
+		m_pMovement->SetMoveSpeed(500.f);
+
+		m_fForce = m_fOriginForce * 400;
+		SetCurrentState(BS_DIE);
+
+		// 큰 먼지 생성
+		// DustEffect* dust = m_pScene->SpawnObject<DustEffect>(
+		//	GetWorldPos() - Vector3(0.f, 400.f * 0.2f, 0.f));
+		// dust->SetStaticSize(200.f);
+		// SAFE_RELEASE(dust);
+		m_bJumping = true;
+
+		m_bOnLand = false;
+	}
+
+	// m_pMovement->AddMovement(GetWorldAxis(AXIS_X) * m_eMoveBackDir);
+	m_fForce -= m_fOriginForce * m_fOriginForce;
+}
+
 void Bug::JumpEnd(float fTime)
 {
 	m_fForce = 0.f;
+}
+
+
+
+
+
+
+
+void Bug::SetCurrentState(BUG_STATE eState)
+{
+	if (eState == m_eState)
+	{
+		return;
+	}
+
+	m_eState = eState;
+
+	
+
+	std::string stateName = "BUG_";
+	stateName.append(m_vecStateName[eState]);
+
+	m_pAnimation->ChangeAnimation(stateName);
+}
+
+void Bug::SetAnimation()
+{
+	m_pAnimation->AddAnimation2DSequence("BUG_WALK");
+	m_pAnimation->AddAnimation2DSequence("BUG_TURN");
+	m_pAnimation->AddAnimation2DSequence("BUG_DIE");
+
+	m_vecStateName.push_back("WALK");
+	m_vecStateName.push_back("TURN");
+	m_vecStateName.push_back("DIE");
+
 }
 
 
@@ -248,6 +339,15 @@ void Bug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 		HollowKnight* player = (HollowKnight*)(m_pScene->GetGameMode()->GetPlayer());
 
 		m_eMoveBackDir = player->GetDirection();
+
+
+		m_iHP -= 1;
+
+		if (0 >= m_iHP)
+		{	
+			m_bJump = true;
+			// m_fMoveBackTimeMax = 0.5f;
+		}
 	}
 
 
@@ -261,7 +361,7 @@ void Bug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 		m_pMovement->AddMovement(Vector3(0.f, pSrc->GetIntersect().y * 2.f, 0.f));
 		return;
 	}
-
-
-
 }
+
+
+

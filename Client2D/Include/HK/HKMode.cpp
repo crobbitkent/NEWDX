@@ -53,14 +53,17 @@ bool HKMode::Init()
 	 SAFE_RELEASE(hk);*/
 
 
-	// Bug* bug = m_pScene->SpawnObject<Bug>(Vector3(500.f, 500.f, 0.f));
-	// SAFE_RELEASE(bug);
+	Bug* bug = m_pScene->SpawnObject<Bug>(Vector3(500.f, 500.f, 0.f));
+	SAFE_RELEASE(bug);
 
 	
+
+
+
 	TestStage* stage1 = m_pScene->SpawnObject<TestStage>(Vector3(0.f, 0.f, 0.f));
 	SAFE_RELEASE(stage1);
 	
-	TestStage* stage2 = m_pScene->SpawnObject<TestStage>(Vector3(1500.f, 101.f, 0.f));
+	/*TestStage* stage2 = m_pScene->SpawnObject<TestStage>(Vector3(1500.f, 101.f, 0.f));
 	stage2->SetScale(Vector3(2000.f, 200.f, 0.f));
 	SAFE_RELEASE(stage2);
 	
@@ -70,6 +73,11 @@ bool HKMode::Init()
 	TestStage* stage4 = m_pScene->SpawnObject<TestStage>(Vector3(2000.f, 501.f, 0.f));
 	stage4->SetScale(Vector3(300.f, 100.f, 0.f));
 	SAFE_RELEASE(stage4);
+*/
+
+
+
+
 
 	//HKButton*	pTestButton = m_pScene->SpawnObject<HKButton>();
 	//SAFE_RELEASE(pTestButton);

@@ -195,7 +195,7 @@ void HKMode::SetHK()
 
 	// TURN
 	frameCount = 2;
-	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("TURN_HK", true, 0.15f, frameCount);
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("TURN_HK", true, 0.1f, frameCount);
 
 	for (int i = 0; i < frameCount; ++i)
 	{
@@ -598,29 +598,6 @@ void HKMode::SetHK()
 	
 
 }
-
-void HKMode::SetBug()
-{
-	// Bug
-	int frameCount = 4;
-	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("BUG_WALK", true, 0.5f, frameCount);
-
-	for (int i = 0; i < frameCount; ++i)
-	{
-		TCHAR	strFileName[MAX_PATH] = {};
-
-		wsprintf(strFileName, TEXT("HOLLOW/Monster/BUG/BUG%d.png"), i);
-
-		char strKey[256] = {};
-		sprintf_s(strKey, "BUG_WALK%d", i);
-
-		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("BUG_WALK", strKey, strFileName);
-	}
-
-	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("BUG_WALK", Vector2(0.f, 0.f),
-		Vector2(400.f, 400.f));
-}
-
 
 
 void HKMode::SetCollision()

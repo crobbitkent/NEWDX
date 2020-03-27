@@ -1,425 +1,1162 @@
-﻿  HollowKnight.cpp
-d:\git\new2d\engine\include\matrix.h(7): warning C4251: '_tagMatrix::m': struct 'DirectX::XMMATRIX' needs to have dll-interface to be used by clients of union '_tagMatrix'
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\directxmath.h(432): note: see declaration of 'DirectX::XMMATRIX'
-d:\git\new2d\engine\include\ref.h(13): warning C4251: 'CRef::m_strName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'CRef'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-d:\git\new2d\engine\include\component\scenecomponent.h(15): warning C4251: 'CSceneComponent::m_vecChild': class 'std::vector<CSceneComponent *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CSceneComponent'
+﻿  Bug.cpp
+d:\mingyu\newdx\engine\include\matrix.h(7): warning C4251: '_tagMatrix::m': struct 'DirectX::XMMATRIX'에서는 union '_tagMatrix'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\directxmath.h(432): note: 'DirectX::XMMATRIX' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\ref.h(13): warning C4251: 'CRef::m_strName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'CRef'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\component\scenecomponent.h(15): warning C4251: 'CSceneComponent::m_vecChild': class 'std::vector<CSceneComponent *,std::allocator<_Ty>>'에서는 class 'CSceneComponent'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=CSceneComponent *
           ]
-  d:\git\new2d\engine\include\component\scenecomponent.h(15): note: see declaration of 'std::vector<CSceneComponent *,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\component\scenecomponent.h(15): note: 'std::vector<CSceneComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=CSceneComponent *
           ]
-d:\git\new2d\engine\include\object\gameobject.h(19): warning C4251: 'CGameObject::m_vecObjComponent': class 'std::vector<CObjectComponent *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CGameObject'
+d:\mingyu\newdx\engine\include\object\gameobject.h(19): warning C4251: 'CGameObject::m_vecObjComponent': class 'std::vector<CObjectComponent *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=CObjectComponent *
           ]
-  d:\git\new2d\engine\include\object\gameobject.h(19): note: see declaration of 'std::vector<CObjectComponent *,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\object\gameobject.h(19): note: 'std::vector<CObjectComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=CObjectComponent *
           ]
-d:\git\new2d\engine\include\object\gameobject.h(20): warning C4251: 'CGameObject::m_vecChild': class 'std::vector<CGameObject *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CGameObject'
+d:\mingyu\newdx\engine\include\object\gameobject.h(20): warning C4251: 'CGameObject::m_vecChild': class 'std::vector<CGameObject *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=CGameObject *
           ]
-  d:\git\new2d\engine\include\object\gameobject.h(20): note: see declaration of 'std::vector<CGameObject *,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\object\gameobject.h(20): note: 'std::vector<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=CGameObject *
           ]
-d:\git\new2d\engine\include\object\gameobject.h(22): warning C4251: 'CGameObject::m_BeginList': class 'std::list<CComponent *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CGameObject'
+d:\mingyu\newdx\engine\include\object\gameobject.h(22): warning C4251: 'CGameObject::m_BeginList': class 'std::list<CComponent *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=CComponent *
           ]
-  d:\git\new2d\engine\include\object\gameobject.h(22): note: see declaration of 'std::list<CComponent *,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\object\gameobject.h(22): note: 'std::list<CComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=CComponent *
           ]
-d:\git\new2d\engine\include\component\transform.h(16): warning C4251: 'CTransform::m_vecChild': class 'std::vector<CTransform *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CTransform'
+d:\mingyu\newdx\engine\include\component\transform.h(16): warning C4251: 'CTransform::m_vecChild': class 'std::vector<CTransform *,std::allocator<_Ty>>'에서는 class 'CTransform'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=CTransform *
           ]
-  d:\git\new2d\engine\include\component\transform.h(16): note: see declaration of 'std::vector<CTransform *,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\component\transform.h(16): note: 'std::vector<CTransform *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=CTransform *
           ]
-d:\git\new2d\engine\include\scene\scene.h(24): warning C4251: 'CScene::m_ObjList': class 'std::list<CGameObject *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CScene'
+d:\mingyu\newdx\engine\include\scene\scene.h(24): warning C4251: 'CScene::m_ObjList': class 'std::list<CGameObject *,std::allocator<_Ty>>'에서는 class 'CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=CGameObject *
           ]
-  d:\git\new2d\engine\include\scene\scene.h(24): note: see declaration of 'std::list<CGameObject *,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\scene\scene.h(24): note: 'std::list<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=CGameObject *
           ]
-d:\git\new2d\engine\include\scene\scene.h(25): warning C4251: 'CScene::m_BeginList': class 'std::list<CGameObject *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CScene'
+d:\mingyu\newdx\engine\include\scene\scene.h(25): warning C4251: 'CScene::m_BeginList': class 'std::list<CGameObject *,std::allocator<_Ty>>'에서는 class 'CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=CGameObject *
           ]
-  d:\git\new2d\engine\include\scene\scene.h(24): note: see declaration of 'std::list<CGameObject *,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\scene\scene.h(24): note: 'std::list<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=CGameObject *
           ]
-d:\git\new2d\engine\include\resource\resourcemanager.h(8): warning C4251: 'CResourceManager::m_mapMesh': class 'std::unordered_map<size_t,CMesh *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CResourceManager'
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(8): warning C4251: 'CResourceManager::m_mapMesh': class 'std::unordered_map<size_t,CMesh *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=CMesh *
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(8): note: see declaration of 'std::unordered_map<size_t,CMesh *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(8): note: 'std::unordered_map<size_t,CMesh *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=CMesh *
           ]
-d:\git\new2d\engine\include\resource\resourcemanager.h(9): warning C4251: 'CResourceManager::m_mapTexture': class 'std::unordered_map<size_t,CTexture *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CResourceManager'
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(9): warning C4251: 'CResourceManager::m_mapTexture': class 'std::unordered_map<size_t,CTexture *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=CTexture *
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(9): note: see declaration of 'std::unordered_map<size_t,CTexture *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(9): note: 'std::unordered_map<size_t,CTexture *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=CTexture *
           ]
-d:\git\new2d\engine\include\resource\resourcemanager.h(10): warning C4251: 'CResourceManager::m_mapMaterial': class 'std::unordered_map<size_t,CMaterial *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CResourceManager'
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(10): warning C4251: 'CResourceManager::m_mapMaterial': class 'std::unordered_map<size_t,CMaterial *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=CMaterial *
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(10): note: see declaration of 'std::unordered_map<size_t,CMaterial *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(10): note: 'std::unordered_map<size_t,CMaterial *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=CMaterial *
           ]
-d:\git\new2d\engine\include\resource\resourcemanager.h(11): warning C4251: 'CResourceManager::m_mapSampler': class 'std::unordered_map<size_t,ID3D11SamplerState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CResourceManager'
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(11): warning C4251: 'CResourceManager::m_mapSampler': class 'std::unordered_map<size_t,ID3D11SamplerState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=ID3D11SamplerState *
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(11): note: see declaration of 'std::unordered_map<size_t,ID3D11SamplerState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(11): note: 'std::unordered_map<size_t,ID3D11SamplerState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=ID3D11SamplerState *
           ]
-d:\git\new2d\engine\include\resource\resourcemanager.h(12): warning C4251: 'CResourceManager::m_mapRenderState': class 'std::unordered_map<size_t,CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CResourceManager'
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(12): warning C4251: 'CResourceManager::m_mapRenderState': class 'std::unordered_map<size_t,CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=CRenderState *
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(12): note: see declaration of 'std::unordered_map<size_t,CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(12): note: 'std::unordered_map<size_t,CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=CRenderState *
           ]
-d:\git\new2d\engine\include\resource\resourcemanager.h(13): warning C4251: 'CResourceManager::m_mapAnim2DSequence': class 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CResourceManager'
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(13): warning C4251: 'CResourceManager::m_mapAnim2DSequence': class 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=CAnimation2DSequence *
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(13): note: see declaration of 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(13): note: 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=CAnimation2DSequence *
           ]
-d:\git\new2d\engine\include\resource\resourcemanager.h(14): warning C4251: 'CResourceManager::m_DefaultMeshList': class 'std::list<std::string,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CResourceManager'
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): warning C4251: 'CResourceManager::m_DefaultMeshList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=std::string
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(14): note: see declaration of 'std::list<std::string,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=std::string
           ]
-d:\git\new2d\engine\include\resource\resourcemanager.h(15): warning C4251: 'CResourceManager::m_DefaultTextureList': class 'std::list<std::string,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CResourceManager'
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(15): warning C4251: 'CResourceManager::m_DefaultTextureList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=std::string
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(14): note: see declaration of 'std::list<std::string,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=std::string
           ]
-d:\git\new2d\engine\include\resource\resourcemanager.h(16): warning C4251: 'CResourceManager::m_DefaultRenderStateList': class 'std::list<std::string,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CResourceManager'
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(16): warning C4251: 'CResourceManager::m_DefaultRenderStateList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=std::string
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(14): note: see declaration of 'std::list<std::string,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=std::string
           ]
-d:\git\new2d\engine\include\resource\resourcemanager.h(17): warning C4251: 'CResourceManager::m_DefaultMaterialList': class 'std::list<std::string,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CResourceManager'
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(17): warning C4251: 'CResourceManager::m_DefaultMaterialList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=std::string
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(14): note: see declaration of 'std::list<std::string,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=std::string
           ]
-d:\git\new2d\engine\include\resource\mesh.h(22): warning C4251: 'CMesh::m_vecMeshContainer': class 'std::vector<PMeshContainer,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CMesh'
+d:\mingyu\newdx\engine\include\resource\mesh.h(22): warning C4251: 'CMesh::m_vecMeshContainer': class 'std::vector<PMeshContainer,std::allocator<_Ty>>'에서는 class 'CMesh'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=PMeshContainer
           ]
-  d:\git\new2d\engine\include\resource\mesh.h(22): note: see declaration of 'std::vector<PMeshContainer,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\resource\mesh.h(22): note: 'std::vector<PMeshContainer,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=PMeshContainer
           ]
-d:\git\new2d\engine\include\resource\shadermanager.h(8): warning C4251: 'CShaderManager::m_mapShader': class 'std::unordered_map<size_t,CShader *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CShaderManager'
+d:\mingyu\newdx\engine\include\resource\shadermanager.h(8): warning C4251: 'CShaderManager::m_mapShader': class 'std::unordered_map<size_t,CShader *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CShaderManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=CShader *
           ]
-  d:\git\new2d\engine\include\resource\shadermanager.h(8): note: see declaration of 'std::unordered_map<size_t,CShader *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\shadermanager.h(8): note: 'std::unordered_map<size_t,CShader *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=CShader *
           ]
-d:\git\new2d\engine\include\resource\shadermanager.h(9): warning C4251: 'CShaderManager::m_mapInputLayout': class 'std::unordered_map<size_t,ID3D11InputLayout *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CShaderManager'
+d:\mingyu\newdx\engine\include\resource\shadermanager.h(9): warning C4251: 'CShaderManager::m_mapInputLayout': class 'std::unordered_map<size_t,ID3D11InputLayout *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CShaderManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=ID3D11InputLayout *
           ]
-  d:\git\new2d\engine\include\resource\shadermanager.h(9): note: see declaration of 'std::unordered_map<size_t,ID3D11InputLayout *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\shadermanager.h(9): note: 'std::unordered_map<size_t,ID3D11InputLayout *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=ID3D11InputLayout *
           ]
-d:\git\new2d\engine\include\resource\shadermanager.h(10): warning C4251: 'CShaderManager::m_mapCBuffer': class 'std::unordered_map<size_t,PCBuffer,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CShaderManager'
+d:\mingyu\newdx\engine\include\resource\shadermanager.h(10): warning C4251: 'CShaderManager::m_mapCBuffer': class 'std::unordered_map<size_t,PCBuffer,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CShaderManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=PCBuffer
           ]
-  d:\git\new2d\engine\include\resource\shadermanager.h(10): note: see declaration of 'std::unordered_map<size_t,PCBuffer,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\shadermanager.h(10): note: 'std::unordered_map<size_t,PCBuffer,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=PCBuffer
           ]
-d:\git\new2d\engine\include\resource\shadermanager.h(11): warning C4251: 'CShaderManager::m_vecInputDesc': class 'std::vector<D3D11_INPUT_ELEMENT_DESC,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CShaderManager'
+d:\mingyu\newdx\engine\include\resource\shadermanager.h(11): warning C4251: 'CShaderManager::m_vecInputDesc': class 'std::vector<D3D11_INPUT_ELEMENT_DESC,std::allocator<_Ty>>'에서는 class 'CShaderManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=D3D11_INPUT_ELEMENT_DESC
           ]
-  d:\git\new2d\engine\include\resource\shadermanager.h(11): note: see declaration of 'std::vector<D3D11_INPUT_ELEMENT_DESC,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\resource\shadermanager.h(11): note: 'std::vector<D3D11_INPUT_ELEMENT_DESC,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=D3D11_INPUT_ELEMENT_DESC
           ]
-d:\git\new2d\engine\include\resource\material.h(43): warning C4251: 'CMaterial::m_vecContainer': class 'std::vector<PMaterialContainer,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CMaterial'
+d:\mingyu\newdx\engine\include\resource\material.h(43): warning C4251: 'CMaterial::m_vecContainer': class 'std::vector<PMaterialContainer,std::allocator<_Ty>>'에서는 class 'CMaterial'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=PMaterialContainer
           ]
-  d:\git\new2d\engine\include\resource\material.h(43): note: see declaration of 'std::vector<PMaterialContainer,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\resource\material.h(43): note: 'std::vector<PMaterialContainer,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=PMaterialContainer
           ]
-d:\git\new2d\engine\include\resource\material.h(47): warning C4251: 'CMaterial::m_mapCBuffer': class 'std::unordered_map<size_t,PCBufferNode,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CMaterial'
+d:\mingyu\newdx\engine\include\resource\material.h(47): warning C4251: 'CMaterial::m_mapCBuffer': class 'std::unordered_map<size_t,PCBufferNode,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CMaterial'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=PCBufferNode
           ]
-  d:\git\new2d\engine\include\resource\material.h(47): note: see declaration of 'std::unordered_map<size_t,PCBufferNode,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\material.h(47): note: 'std::unordered_map<size_t,PCBufferNode,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=PCBufferNode
           ]
-d:\git\new2d\engine\include\component\colliderbase.h(23): warning C4251: 'CColliderBase::m_vecBlockCallback': class 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+d:\mingyu\newdx\engine\include\component\colliderbase.h(23): warning C4251: 'CColliderBase::m_vecBlockCallback': class 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>'에서는 class 'CColliderBase'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
           ]
-  d:\git\new2d\engine\include\component\colliderbase.h(23): note: see declaration of 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\component\colliderbase.h(23): note: 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
           ]
-d:\git\new2d\engine\include\component\colliderbase.h(24): warning C4251: 'CColliderBase::m_vecBeginOverlapCallback': class 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+d:\mingyu\newdx\engine\include\component\colliderbase.h(24): warning C4251: 'CColliderBase::m_vecBeginOverlapCallback': class 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>'에서는 class 'CColliderBase'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
           ]
-  d:\git\new2d\engine\include\component\colliderbase.h(23): note: see declaration of 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\component\colliderbase.h(23): note: 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
           ]
-d:\git\new2d\engine\include\component\colliderbase.h(25): warning C4251: 'CColliderBase::m_vecEndOverlapCallback': class 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+d:\mingyu\newdx\engine\include\component\colliderbase.h(25): warning C4251: 'CColliderBase::m_vecEndOverlapCallback': class 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>'에서는 class 'CColliderBase'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
           ]
-  d:\git\new2d\engine\include\component\colliderbase.h(23): note: see declaration of 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\component\colliderbase.h(23): note: 'std::vector<std::function<void (CColliderBase *,CColliderBase *,float)>,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=std::function<void (CColliderBase *,CColliderBase *,float)>
           ]
-d:\git\new2d\engine\include\component\colliderbase.h(28): warning C4251: 'CColliderBase::m_CurrentFrameCollision': class 'std::list<CColliderBase *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+d:\mingyu\newdx\engine\include\component\colliderbase.h(28): warning C4251: 'CColliderBase::m_CurrentFrameCollision': class 'std::list<CColliderBase *,std::allocator<_Ty>>'에서는 class 'CColliderBase'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=CColliderBase *
           ]
-  d:\git\new2d\engine\include\component\colliderbase.h(28): note: see declaration of 'std::list<CColliderBase *,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\component\colliderbase.h(28): note: 'std::list<CColliderBase *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=CColliderBase *
           ]
-d:\git\new2d\engine\include\component\colliderbase.h(29): warning C4251: 'CColliderBase::m_CollisionList': class 'std::list<CColliderBase *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+d:\mingyu\newdx\engine\include\component\colliderbase.h(29): warning C4251: 'CColliderBase::m_CollisionList': class 'std::list<CColliderBase *,std::allocator<_Ty>>'에서는 class 'CColliderBase'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=CColliderBase *
           ]
-  d:\git\new2d\engine\include\component\colliderbase.h(28): note: see declaration of 'std::list<CColliderBase *,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\component\colliderbase.h(28): note: 'std::list<CColliderBase *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=CColliderBase *
           ]
-d:\git\new2d\engine\include\component\colliderbase.h(30): warning C4251: 'CColliderBase::m_vecSectionIndex': class 'std::vector<unsigned int,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CColliderBase'
+d:\mingyu\newdx\engine\include\component\colliderbase.h(30): warning C4251: 'CColliderBase::m_vecSectionIndex': class 'std::vector<unsigned int,std::allocator<_Ty>>'에서는 class 'CColliderBase'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=unsigned int
           ]
-  d:\git\new2d\engine\include\component\colliderbase.h(30): note: see declaration of 'std::vector<unsigned int,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\component\colliderbase.h(30): note: 'std::vector<unsigned int,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=unsigned int
           ]
-d:\git\new2d\engine\include\timermanager.h(8): warning C4251: 'CTimerManager::m_mapTimer': class 'std::unordered_map<size_t,CTimer *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CTimerManager'
-          with
-          [
-              _Kty=size_t,
-              _Ty=CTimer *
-          ]
-  d:\git\new2d\engine\include\timermanager.h(8): note: see declaration of 'std::unordered_map<size_t,CTimer *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
-          with
-          [
-              _Kty=size_t,
-              _Ty=CTimer *
-          ]
-d:\git\new2d\engine\include\input.h(120): warning C4251: 'CInput::m_tKeyInfo': struct '_tagKeyInfo' needs to have dll-interface to be used by clients of class 'CInput'
-  d:\git\new2d\engine\include\input.h(28): note: see declaration of '_tagKeyInfo'
-d:\git\new2d\engine\include\input.h(122): warning C4251: 'CInput::m_mapAxis': class 'std::unordered_map<size_t,PKeyAxis,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CInput'
-          with
-          [
-              _Kty=size_t,
-              _Ty=PKeyAxis
-          ]
-  d:\git\new2d\engine\include\input.h(122): note: see declaration of 'std::unordered_map<size_t,PKeyAxis,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
-          with
-          [
-              _Kty=size_t,
-              _Ty=PKeyAxis
-          ]
-d:\git\new2d\engine\include\input.h(123): warning C4251: 'CInput::m_mapAction': class 'std::unordered_map<size_t,PKeyAction,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CInput'
-          with
-          [
-              _Kty=size_t,
-              _Ty=PKeyAction
-          ]
-  d:\git\new2d\engine\include\input.h(123): note: see declaration of 'std::unordered_map<size_t,PKeyAction,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
-          with
-          [
-              _Kty=size_t,
-              _Ty=PKeyAction
-          ]
-d:\git\new2d\engine\include\input.h(124): warning C4251: 'CInput::m_UseKeyList': class 'std::list<unsigned char,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CInput'
-          with
-          [
-              _Ty=unsigned char
-          ]
-  d:\git\new2d\engine\include\input.h(124): note: see declaration of 'std::list<unsigned char,std::allocator<_Ty>>'
-          with
-          [
-              _Ty=unsigned char
-          ]
-d:\git\new2d\engine\include\input.h(137): warning C4251: 'CInput::m_tMouseInfo': struct '_tagKeyInfo' needs to have dll-interface to be used by clients of class 'CInput'
-  d:\git\new2d\engine\include\input.h(28): note: see declaration of '_tagKeyInfo'
-d:\git\new2d\engine\include\resource\animation2dsequence.h(41): warning C4251: 'CAnimation2DSequence::m_vecTexture': class 'std::vector<CTexture *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CAnimation2DSequence'
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(41): warning C4251: 'CAnimation2DSequence::m_vecTexture': class 'std::vector<CTexture *,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=CTexture *
           ]
-  d:\git\new2d\engine\include\resource\animation2dsequence.h(41): note: see declaration of 'std::vector<CTexture *,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(41): note: 'std::vector<CTexture *,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=CTexture *
           ]
-d:\git\new2d\engine\include\resource\animation2dsequence.h(51): warning C4251: 'CAnimation2DSequence::m_NotifyList': class 'std::list<PAnim2DNotify,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CAnimation2DSequence'
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(51): warning C4251: 'CAnimation2DSequence::m_NotifyList': class 'std::list<PAnim2DNotify,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=PAnim2DNotify
           ]
-  d:\git\new2d\engine\include\resource\animation2dsequence.h(51): note: see declaration of 'std::list<PAnim2DNotify,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(51): note: 'std::list<PAnim2DNotify,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=PAnim2DNotify
           ]
-d:\git\new2d\engine\include\resource\animation2dsequence.h(52): warning C4251: 'CAnimation2DSequence::m_vecFrameInfo': class 'std::vector<Animation2DFrameInfo,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'CAnimation2DSequence'
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(52): warning C4251: 'CAnimation2DSequence::m_vecFrameInfo': class 'std::vector<Animation2DFrameInfo,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Ty=Animation2DFrameInfo
           ]
-  d:\git\new2d\engine\include\resource\animation2dsequence.h(52): note: see declaration of 'std::vector<Animation2DFrameInfo,std::allocator<_Ty>>'
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(52): note: 'std::vector<Animation2DFrameInfo,std::allocator<_Ty>>' 선언을 참조하십시오.
           with
           [
               _Ty=Animation2DFrameInfo
           ]
-d:\git\new2d\engine\include\resource\animation2dsequence.h(55): warning C4251: 'CAnimation2DSequence::m_strReturnSequence': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'CAnimation2DSequence'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-d:\git\new2d\engine\include\component\animation2d.h(35): warning C4251: 'CAnimation2D::m_mapAnimSequence': class 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'CAnimation2D'
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(55): warning C4251: 'CAnimation2DSequence::m_strReturnSequence': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\component\animation2d.h(35): warning C4251: 'CAnimation2D::m_mapAnimSequence': class 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CAnimation2D'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
           with
           [
               _Kty=size_t,
               _Ty=CAnimation2DSequence *
           ]
-  d:\git\new2d\engine\include\resource\resourcemanager.h(13): note: see declaration of 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(13): note: 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
           with
           [
               _Kty=size_t,
               _Ty=CAnimation2DSequence *
           ]
-d:\git\new2d\client2d\include\hk\hollowknight.cpp(70): warning C4305: '=': truncation from 'double' to 'float'
-d:\git\new2d\client2d\include\hk\hollowknight.cpp(263): warning C4244: 'argument': conversion from 'DIR_TYPE' to 'float', possible loss of data
-d:\git\new2d\client2d\include\hk\hollowknight.cpp(340): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\git\new2d\client2d\include\hk\hollowknight.cpp(360): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\git\new2d\client2d\include\hk\hollowknight.cpp(575): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Client2D.vcxproj -> D:\Git\NEW2D\Client2D\Include\../Bin/Client2D_Debug.exe
+d:\mingyu\newdx\client2d\include\hk\bug.cpp(194): warning C4244: '인수': 'DIR_TYPE'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\mingyu\newdx\client2d\include\hk\bug.cpp(240): warning C4244: '인수': 'DIR_TYPE'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  HKMode.cpp
+d:\mingyu\newdx\engine\include\matrix.h(7): warning C4251: '_tagMatrix::m': struct 'DirectX::XMMATRIX'에서는 union '_tagMatrix'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\directxmath.h(432): note: 'DirectX::XMMATRIX' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\ref.h(13): warning C4251: 'CRef::m_strName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'CRef'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\scene\scene.h(24): warning C4251: 'CScene::m_ObjList': class 'std::list<CGameObject *,std::allocator<_Ty>>'에서는 class 'CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+  d:\mingyu\newdx\engine\include\scene\scene.h(24): note: 'std::list<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+d:\mingyu\newdx\engine\include\scene\scene.h(25): warning C4251: 'CScene::m_BeginList': class 'std::list<CGameObject *,std::allocator<_Ty>>'에서는 class 'CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+  d:\mingyu\newdx\engine\include\scene\scene.h(24): note: 'std::list<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(8): warning C4251: 'CResourceManager::m_mapMesh': class 'std::unordered_map<size_t,CMesh *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMesh *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(8): note: 'std::unordered_map<size_t,CMesh *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMesh *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(9): warning C4251: 'CResourceManager::m_mapTexture': class 'std::unordered_map<size_t,CTexture *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CTexture *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(9): note: 'std::unordered_map<size_t,CTexture *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CTexture *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(10): warning C4251: 'CResourceManager::m_mapMaterial': class 'std::unordered_map<size_t,CMaterial *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMaterial *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(10): note: 'std::unordered_map<size_t,CMaterial *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMaterial *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(11): warning C4251: 'CResourceManager::m_mapSampler': class 'std::unordered_map<size_t,ID3D11SamplerState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=ID3D11SamplerState *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(11): note: 'std::unordered_map<size_t,ID3D11SamplerState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=ID3D11SamplerState *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(12): warning C4251: 'CResourceManager::m_mapRenderState': class 'std::unordered_map<size_t,CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CRenderState *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(12): note: 'std::unordered_map<size_t,CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CRenderState *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(13): warning C4251: 'CResourceManager::m_mapAnim2DSequence': class 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CAnimation2DSequence *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(13): note: 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CAnimation2DSequence *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): warning C4251: 'CResourceManager::m_DefaultMeshList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(15): warning C4251: 'CResourceManager::m_DefaultTextureList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(16): warning C4251: 'CResourceManager::m_DefaultRenderStateList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(17): warning C4251: 'CResourceManager::m_DefaultMaterialList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\material.h(43): warning C4251: 'CMaterial::m_vecContainer': class 'std::vector<PMaterialContainer,std::allocator<_Ty>>'에서는 class 'CMaterial'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=PMaterialContainer
+          ]
+  d:\mingyu\newdx\engine\include\resource\material.h(43): note: 'std::vector<PMaterialContainer,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=PMaterialContainer
+          ]
+d:\mingyu\newdx\engine\include\resource\material.h(47): warning C4251: 'CMaterial::m_mapCBuffer': class 'std::unordered_map<size_t,PCBufferNode,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CMaterial'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCBufferNode
+          ]
+  d:\mingyu\newdx\engine\include\resource\material.h(47): note: 'std::unordered_map<size_t,PCBufferNode,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCBufferNode
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(41): warning C4251: 'CAnimation2DSequence::m_vecTexture': class 'std::vector<CTexture *,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CTexture *
+          ]
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(41): note: 'std::vector<CTexture *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CTexture *
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(51): warning C4251: 'CAnimation2DSequence::m_NotifyList': class 'std::list<PAnim2DNotify,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=PAnim2DNotify
+          ]
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(51): note: 'std::list<PAnim2DNotify,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=PAnim2DNotify
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(52): warning C4251: 'CAnimation2DSequence::m_vecFrameInfo': class 'std::vector<Animation2DFrameInfo,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Animation2DFrameInfo
+          ]
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(52): note: 'std::vector<Animation2DFrameInfo,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Animation2DFrameInfo
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(55): warning C4251: 'CAnimation2DSequence::m_strReturnSequence': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\collisionmanager.h(18): warning C4251: 'CCollisionManager::m_ChannelList': class 'std::list<PCollisionChannel,std::allocator<_Ty>>'에서는 class 'CCollisionManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=PCollisionChannel
+          ]
+  d:\mingyu\newdx\engine\include\collisionmanager.h(18): note: 'std::list<PCollisionChannel,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=PCollisionChannel
+          ]
+d:\mingyu\newdx\engine\include\collisionmanager.h(19): warning C4251: 'CCollisionManager::m_mapProfile': class 'std::unordered_map<size_t,PCollisionProfile,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CCollisionManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCollisionProfile
+          ]
+  d:\mingyu\newdx\engine\include\collisionmanager.h(19): note: 'std::unordered_map<size_t,PCollisionProfile,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCollisionProfile
+          ]
+d:\mingyu\newdx\engine\include\collisionmanager.h(20): warning C4251: 'CCollisionManager::m_ColliderList': class 'std::list<CColliderBase *,std::allocator<_Ty>>'에서는 class 'CCollisionManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CColliderBase *
+          ]
+  d:\mingyu\newdx\engine\include\collisionmanager.h(20): note: 'std::list<CColliderBase *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CColliderBase *
+          ]
+d:\mingyu\newdx\engine\include\component\scenecomponent.h(15): warning C4251: 'CSceneComponent::m_vecChild': class 'std::vector<CSceneComponent *,std::allocator<_Ty>>'에서는 class 'CSceneComponent'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CSceneComponent *
+          ]
+  d:\mingyu\newdx\engine\include\component\scenecomponent.h(15): note: 'std::vector<CSceneComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CSceneComponent *
+          ]
+d:\mingyu\newdx\engine\include\object\gameobject.h(19): warning C4251: 'CGameObject::m_vecObjComponent': class 'std::vector<CObjectComponent *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CObjectComponent *
+          ]
+  d:\mingyu\newdx\engine\include\object\gameobject.h(19): note: 'std::vector<CObjectComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CObjectComponent *
+          ]
+d:\mingyu\newdx\engine\include\object\gameobject.h(20): warning C4251: 'CGameObject::m_vecChild': class 'std::vector<CGameObject *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+  d:\mingyu\newdx\engine\include\object\gameobject.h(20): note: 'std::vector<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+d:\mingyu\newdx\engine\include\object\gameobject.h(22): warning C4251: 'CGameObject::m_BeginList': class 'std::list<CComponent *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CComponent *
+          ]
+  d:\mingyu\newdx\engine\include\object\gameobject.h(22): note: 'std::list<CComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CComponent *
+          ]
+  SetAnimation.cpp
+d:\mingyu\newdx\engine\include\matrix.h(7): warning C4251: '_tagMatrix::m': struct 'DirectX::XMMATRIX'에서는 union '_tagMatrix'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\directxmath.h(432): note: 'DirectX::XMMATRIX' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\ref.h(13): warning C4251: 'CRef::m_strName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'CRef'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\scene\scene.h(24): warning C4251: 'CScene::m_ObjList': class 'std::list<CGameObject *,std::allocator<_Ty>>'에서는 class 'CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+  d:\mingyu\newdx\engine\include\scene\scene.h(24): note: 'std::list<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+d:\mingyu\newdx\engine\include\scene\scene.h(25): warning C4251: 'CScene::m_BeginList': class 'std::list<CGameObject *,std::allocator<_Ty>>'에서는 class 'CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+  d:\mingyu\newdx\engine\include\scene\scene.h(24): note: 'std::list<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(8): warning C4251: 'CResourceManager::m_mapMesh': class 'std::unordered_map<size_t,CMesh *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMesh *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(8): note: 'std::unordered_map<size_t,CMesh *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMesh *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(9): warning C4251: 'CResourceManager::m_mapTexture': class 'std::unordered_map<size_t,CTexture *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CTexture *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(9): note: 'std::unordered_map<size_t,CTexture *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CTexture *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(10): warning C4251: 'CResourceManager::m_mapMaterial': class 'std::unordered_map<size_t,CMaterial *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMaterial *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(10): note: 'std::unordered_map<size_t,CMaterial *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMaterial *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(11): warning C4251: 'CResourceManager::m_mapSampler': class 'std::unordered_map<size_t,ID3D11SamplerState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=ID3D11SamplerState *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(11): note: 'std::unordered_map<size_t,ID3D11SamplerState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=ID3D11SamplerState *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(12): warning C4251: 'CResourceManager::m_mapRenderState': class 'std::unordered_map<size_t,CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CRenderState *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(12): note: 'std::unordered_map<size_t,CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CRenderState *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(13): warning C4251: 'CResourceManager::m_mapAnim2DSequence': class 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CAnimation2DSequence *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(13): note: 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CAnimation2DSequence *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): warning C4251: 'CResourceManager::m_DefaultMeshList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(15): warning C4251: 'CResourceManager::m_DefaultTextureList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(16): warning C4251: 'CResourceManager::m_DefaultRenderStateList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(17): warning C4251: 'CResourceManager::m_DefaultMaterialList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\material.h(43): warning C4251: 'CMaterial::m_vecContainer': class 'std::vector<PMaterialContainer,std::allocator<_Ty>>'에서는 class 'CMaterial'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=PMaterialContainer
+          ]
+  d:\mingyu\newdx\engine\include\resource\material.h(43): note: 'std::vector<PMaterialContainer,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=PMaterialContainer
+          ]
+d:\mingyu\newdx\engine\include\resource\material.h(47): warning C4251: 'CMaterial::m_mapCBuffer': class 'std::unordered_map<size_t,PCBufferNode,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CMaterial'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCBufferNode
+          ]
+  d:\mingyu\newdx\engine\include\resource\material.h(47): note: 'std::unordered_map<size_t,PCBufferNode,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCBufferNode
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(41): warning C4251: 'CAnimation2DSequence::m_vecTexture': class 'std::vector<CTexture *,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CTexture *
+          ]
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(41): note: 'std::vector<CTexture *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CTexture *
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(51): warning C4251: 'CAnimation2DSequence::m_NotifyList': class 'std::list<PAnim2DNotify,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=PAnim2DNotify
+          ]
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(51): note: 'std::list<PAnim2DNotify,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=PAnim2DNotify
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(52): warning C4251: 'CAnimation2DSequence::m_vecFrameInfo': class 'std::vector<Animation2DFrameInfo,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Animation2DFrameInfo
+          ]
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(52): note: 'std::vector<Animation2DFrameInfo,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Animation2DFrameInfo
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(55): warning C4251: 'CAnimation2DSequence::m_strReturnSequence': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\collisionmanager.h(18): warning C4251: 'CCollisionManager::m_ChannelList': class 'std::list<PCollisionChannel,std::allocator<_Ty>>'에서는 class 'CCollisionManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=PCollisionChannel
+          ]
+  d:\mingyu\newdx\engine\include\collisionmanager.h(18): note: 'std::list<PCollisionChannel,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=PCollisionChannel
+          ]
+d:\mingyu\newdx\engine\include\collisionmanager.h(19): warning C4251: 'CCollisionManager::m_mapProfile': class 'std::unordered_map<size_t,PCollisionProfile,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CCollisionManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCollisionProfile
+          ]
+  d:\mingyu\newdx\engine\include\collisionmanager.h(19): note: 'std::unordered_map<size_t,PCollisionProfile,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCollisionProfile
+          ]
+d:\mingyu\newdx\engine\include\collisionmanager.h(20): warning C4251: 'CCollisionManager::m_ColliderList': class 'std::list<CColliderBase *,std::allocator<_Ty>>'에서는 class 'CCollisionManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CColliderBase *
+          ]
+  d:\mingyu\newdx\engine\include\collisionmanager.h(20): note: 'std::list<CColliderBase *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CColliderBase *
+          ]
+d:\mingyu\newdx\engine\include\component\scenecomponent.h(15): warning C4251: 'CSceneComponent::m_vecChild': class 'std::vector<CSceneComponent *,std::allocator<_Ty>>'에서는 class 'CSceneComponent'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CSceneComponent *
+          ]
+  d:\mingyu\newdx\engine\include\component\scenecomponent.h(15): note: 'std::vector<CSceneComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CSceneComponent *
+          ]
+d:\mingyu\newdx\engine\include\object\gameobject.h(19): warning C4251: 'CGameObject::m_vecObjComponent': class 'std::vector<CObjectComponent *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CObjectComponent *
+          ]
+  d:\mingyu\newdx\engine\include\object\gameobject.h(19): note: 'std::vector<CObjectComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CObjectComponent *
+          ]
+d:\mingyu\newdx\engine\include\object\gameobject.h(20): warning C4251: 'CGameObject::m_vecChild': class 'std::vector<CGameObject *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+  d:\mingyu\newdx\engine\include\object\gameobject.h(20): note: 'std::vector<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+d:\mingyu\newdx\engine\include\object\gameobject.h(22): warning C4251: 'CGameObject::m_BeginList': class 'std::list<CComponent *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CComponent *
+          ]
+  d:\mingyu\newdx\engine\include\object\gameobject.h(22): note: 'std::list<CComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CComponent *
+          ]
+  SetBugAnim.cpp
+d:\mingyu\newdx\engine\include\matrix.h(7): warning C4251: '_tagMatrix::m': struct 'DirectX::XMMATRIX'에서는 union '_tagMatrix'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\directxmath.h(432): note: 'DirectX::XMMATRIX' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\ref.h(13): warning C4251: 'CRef::m_strName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'CRef'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\scene\scene.h(24): warning C4251: 'CScene::m_ObjList': class 'std::list<CGameObject *,std::allocator<_Ty>>'에서는 class 'CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+  d:\mingyu\newdx\engine\include\scene\scene.h(24): note: 'std::list<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+d:\mingyu\newdx\engine\include\scene\scene.h(25): warning C4251: 'CScene::m_BeginList': class 'std::list<CGameObject *,std::allocator<_Ty>>'에서는 class 'CScene'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+  d:\mingyu\newdx\engine\include\scene\scene.h(24): note: 'std::list<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(8): warning C4251: 'CResourceManager::m_mapMesh': class 'std::unordered_map<size_t,CMesh *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMesh *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(8): note: 'std::unordered_map<size_t,CMesh *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMesh *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(9): warning C4251: 'CResourceManager::m_mapTexture': class 'std::unordered_map<size_t,CTexture *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CTexture *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(9): note: 'std::unordered_map<size_t,CTexture *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CTexture *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(10): warning C4251: 'CResourceManager::m_mapMaterial': class 'std::unordered_map<size_t,CMaterial *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMaterial *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(10): note: 'std::unordered_map<size_t,CMaterial *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CMaterial *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(11): warning C4251: 'CResourceManager::m_mapSampler': class 'std::unordered_map<size_t,ID3D11SamplerState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=ID3D11SamplerState *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(11): note: 'std::unordered_map<size_t,ID3D11SamplerState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=ID3D11SamplerState *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(12): warning C4251: 'CResourceManager::m_mapRenderState': class 'std::unordered_map<size_t,CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CRenderState *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(12): note: 'std::unordered_map<size_t,CRenderState *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CRenderState *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(13): warning C4251: 'CResourceManager::m_mapAnim2DSequence': class 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CAnimation2DSequence *
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(13): note: 'std::unordered_map<size_t,CAnimation2DSequence *,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=CAnimation2DSequence *
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): warning C4251: 'CResourceManager::m_DefaultMeshList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(15): warning C4251: 'CResourceManager::m_DefaultTextureList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(16): warning C4251: 'CResourceManager::m_DefaultRenderStateList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\resourcemanager.h(17): warning C4251: 'CResourceManager::m_DefaultMaterialList': class 'std::list<std::string,std::allocator<_Ty>>'에서는 class 'CResourceManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=std::string
+          ]
+  d:\mingyu\newdx\engine\include\resource\resourcemanager.h(14): note: 'std::list<std::string,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=std::string
+          ]
+d:\mingyu\newdx\engine\include\resource\material.h(43): warning C4251: 'CMaterial::m_vecContainer': class 'std::vector<PMaterialContainer,std::allocator<_Ty>>'에서는 class 'CMaterial'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=PMaterialContainer
+          ]
+  d:\mingyu\newdx\engine\include\resource\material.h(43): note: 'std::vector<PMaterialContainer,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=PMaterialContainer
+          ]
+d:\mingyu\newdx\engine\include\resource\material.h(47): warning C4251: 'CMaterial::m_mapCBuffer': class 'std::unordered_map<size_t,PCBufferNode,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CMaterial'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCBufferNode
+          ]
+  d:\mingyu\newdx\engine\include\resource\material.h(47): note: 'std::unordered_map<size_t,PCBufferNode,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCBufferNode
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(41): warning C4251: 'CAnimation2DSequence::m_vecTexture': class 'std::vector<CTexture *,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CTexture *
+          ]
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(41): note: 'std::vector<CTexture *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CTexture *
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(51): warning C4251: 'CAnimation2DSequence::m_NotifyList': class 'std::list<PAnim2DNotify,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=PAnim2DNotify
+          ]
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(51): note: 'std::list<PAnim2DNotify,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=PAnim2DNotify
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(52): warning C4251: 'CAnimation2DSequence::m_vecFrameInfo': class 'std::vector<Animation2DFrameInfo,std::allocator<_Ty>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Animation2DFrameInfo
+          ]
+  d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(52): note: 'std::vector<Animation2DFrameInfo,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Animation2DFrameInfo
+          ]
+d:\mingyu\newdx\engine\include\resource\animation2dsequence.h(55): warning C4251: 'CAnimation2DSequence::m_strReturnSequence': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'CAnimation2DSequence'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\mingyu\newdx\engine\include\collisionmanager.h(18): warning C4251: 'CCollisionManager::m_ChannelList': class 'std::list<PCollisionChannel,std::allocator<_Ty>>'에서는 class 'CCollisionManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=PCollisionChannel
+          ]
+  d:\mingyu\newdx\engine\include\collisionmanager.h(18): note: 'std::list<PCollisionChannel,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=PCollisionChannel
+          ]
+d:\mingyu\newdx\engine\include\collisionmanager.h(19): warning C4251: 'CCollisionManager::m_mapProfile': class 'std::unordered_map<size_t,PCollisionProfile,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'CCollisionManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCollisionProfile
+          ]
+  d:\mingyu\newdx\engine\include\collisionmanager.h(19): note: 'std::unordered_map<size_t,PCollisionProfile,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=size_t,
+              _Ty=PCollisionProfile
+          ]
+d:\mingyu\newdx\engine\include\collisionmanager.h(20): warning C4251: 'CCollisionManager::m_ColliderList': class 'std::list<CColliderBase *,std::allocator<_Ty>>'에서는 class 'CCollisionManager'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CColliderBase *
+          ]
+  d:\mingyu\newdx\engine\include\collisionmanager.h(20): note: 'std::list<CColliderBase *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CColliderBase *
+          ]
+d:\mingyu\newdx\engine\include\component\scenecomponent.h(15): warning C4251: 'CSceneComponent::m_vecChild': class 'std::vector<CSceneComponent *,std::allocator<_Ty>>'에서는 class 'CSceneComponent'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CSceneComponent *
+          ]
+  d:\mingyu\newdx\engine\include\component\scenecomponent.h(15): note: 'std::vector<CSceneComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CSceneComponent *
+          ]
+d:\mingyu\newdx\engine\include\object\gameobject.h(19): warning C4251: 'CGameObject::m_vecObjComponent': class 'std::vector<CObjectComponent *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CObjectComponent *
+          ]
+  d:\mingyu\newdx\engine\include\object\gameobject.h(19): note: 'std::vector<CObjectComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CObjectComponent *
+          ]
+d:\mingyu\newdx\engine\include\object\gameobject.h(20): warning C4251: 'CGameObject::m_vecChild': class 'std::vector<CGameObject *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+  d:\mingyu\newdx\engine\include\object\gameobject.h(20): note: 'std::vector<CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CGameObject *
+          ]
+d:\mingyu\newdx\engine\include\object\gameobject.h(22): warning C4251: 'CGameObject::m_BeginList': class 'std::list<CComponent *,std::allocator<_Ty>>'에서는 class 'CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CComponent *
+          ]
+  d:\mingyu\newdx\engine\include\object\gameobject.h(22): note: 'std::list<CComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CComponent *
+          ]
+  코드를 생성하고 있습니다...
+  Client2D.vcxproj -> D:\MINGYU\NEWDX\Client2D\Include\../Bin/Client2D_Debug.exe

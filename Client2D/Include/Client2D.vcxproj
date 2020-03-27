@@ -187,6 +187,7 @@
     <ClCompile Include="HK\NewHK.cpp" />
     <ClCompile Include="HK\Sencer.cpp" />
     <ClCompile Include="HK\SetAnimation.cpp" />
+    <ClCompile Include="HK\SetBugAnim.cpp" />
     <ClCompile Include="HK\SideEffect.cpp" />
     <ClCompile Include="HK\SoftEffect.cpp" />
     <ClCompile Include="HK\TestStage.cpp" />

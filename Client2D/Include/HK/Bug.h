@@ -20,10 +20,19 @@ public:
 	void Reverse();
 	void CheckFront();
 	void MoveBack(float fTime);
+	void JumpBack(float fTime);
 
 	void JumpEnd(float fTime);
 
+
+
+	void SetCurrentState(BUG_STATE  eState);
+	void SetAnimation();
+
 	void OnBlock(class CColliderBase* pSrc, class CColliderBase* pDest, float fTime);
+
+
+
 
 
 private:
@@ -41,6 +50,8 @@ private:
 	class Sencer* m_pLeftSencer;
 	// class MonsterEffect* m_pEffect;
 
+	bool m_bDead = false;
+
 	DIR_TYPE m_eDir;
 
 	DIR_TYPE m_eMoveBackDir;
@@ -50,4 +61,12 @@ private:
 	float m_fMoveBackTime;
 
 	int m_iHP;
+
+	BUG_STATE m_eState;
+	std::vector<std::string> m_vecStateName;
+
+	// 날아가며 죽기
+	float m_fJumpTime = 0.f;
+	float m_fJumpTotalTime = 1.f;
+	bool m_bJump = false;
 };

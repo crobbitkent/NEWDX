@@ -33,6 +33,15 @@ enum PLAYER_STATE
 	PS_END,
 };
 
+
+enum BUG_STATE
+{
+	BS_WALK,
+	BS_TURN,
+	BS_DIE,
+
+};
+
 enum DIR_TYPE
 {
 	DIR_UP = -3,

@@ -168,6 +168,9 @@
     <ClCompile Include="HK\NewHK.cpp">
       <Filter>HK\04. Object</Filter>
     </ClCompile>
+    <ClCompile Include="HK\SetBugAnim.cpp">
+      <Filter>HK\01. Mode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">

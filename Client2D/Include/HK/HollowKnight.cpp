@@ -91,13 +91,12 @@ HollowKnight::~HollowKnight()
 
 	SAFE_RELEASE(m_pAttackEffect);
 
-	/*for (int i = 0; i < 5; ++i)
+	for (int i = 0; i < 5; ++i)
 	{
 		SAFE_RELEASE(m_stackHP[i]);
 	}
-*/
 
-	SAFE_RELEASE_VECLIST(m_stackHP);
+	m_stackHP.clear();
 
 	if (false == m_stackHP.empty())
 	{
@@ -186,7 +185,7 @@ bool HollowKnight::Init()
 	// m_pBody->CollisionMouse(true);
 
 	// HP UI ¼³Á¤
-	// SetHP();
+	SetHP();
 
 
 
