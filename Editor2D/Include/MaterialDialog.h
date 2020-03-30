@@ -46,4 +46,17 @@ public:
 	CListBox m_SubsetList;
 	afx_msg void OnLbnSelchangeListSubset();
 	afx_msg void OnBnClickedButtonContainerModify();
+
+	CListBox m_MaterialList;
+	afx_msg void OnLbnSelchangeListMaterial();
+	unsigned char m_DiffuseR;
+	afx_msg void OnEnChangeEditMaterialDiffuseR();
+	unsigned char m_DiffuseG;
+	afx_msg void OnEnChangeEditMaterialDiffuseG();
+	unsigned char m_DiffuseB;
+	afx_msg void OnEnChangeEditMaterialDiffuseB();
+	unsigned char m_DiffuseA;
+	afx_msg void OnEnChangeEditMaterialDiffuseA();
+	afx_msg void OnBnClickedButtonDiffuseModify();
+	afx_msg void OnBnClickedButtonMaterialTextureLoad();
 };

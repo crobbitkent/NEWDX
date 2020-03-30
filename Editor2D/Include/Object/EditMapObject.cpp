@@ -27,7 +27,7 @@ void CEditMapObject::CreateTileMap(TILE_TYPE eType, int iCountX, int iCountY, in
 
 	m_pTileMap->CreateTile(eType, iCountX, iCountY, Vector3(iSizeX, iSizeY, 1.f));
 
-	m_pTileMap->SetTileMaterial("MainMapTileMaterial");
+	// m_pTileMap->SetTileMaterial("MainMapTileMaterial");
 
 	for (int i = 0; i < 5; ++i)
 	{

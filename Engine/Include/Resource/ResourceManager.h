@@ -15,6 +15,13 @@ private:
 	list<string>			m_DefaultTextureList;
 	list<string>			m_DefaultRenderStateList;
 	list<string>			m_DefaultMaterialList;
+	unordered_map<size_t, class CMaterial*>::iterator m_MaterialIter;
+
+public:
+	// MFC¸¦ À§ÇÑ
+	void ClearMaterialIterator();
+	class CMaterial* GetCurrentMaterial();
+	void NextMaterial();
 
 public:
 	bool Init();

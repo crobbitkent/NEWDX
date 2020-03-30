@@ -28,6 +28,29 @@ CResourceManager::~CResourceManager()
 	DESTROY_SINGLE(CShaderManager);
 }
 
+void CResourceManager::ClearMaterialIterator()
+{
+	m_MaterialIter = m_mapMaterial.begin();
+}
+
+CMaterial * CResourceManager::GetCurrentMaterial()
+{
+	if (m_mapMaterial.end() == m_MaterialIter)
+	{
+		return nullptr;
+	}
+
+	return m_MaterialIter->second;
+}
+
+void CResourceManager::NextMaterial()
+{
+	if (m_mapMaterial.end() != m_MaterialIter)
+	{
+		++m_MaterialIter;
+	}
+}
+
 bool CResourceManager::Init()
 {
 	// Shader ÃÊ±âÈ­
@@ -522,6 +545,7 @@ bool CResourceManager::CreateMaterial(const string & strName)
 		return false;
 	}
 
+	pMaterial->SetName(strName);
 	pMaterial->SetSerialNumber(strName);
 
 	hash<string>	hs;

@@ -4,6 +4,9 @@
 #include "stdafx.h"
 #include "Editor2D.h"
 
+#include "MainFrm.h"
+#include "TileMapEditorDialog.h"
+
 #include "MaterialDialog.h"
 #include "afxdialogex.h"
 #include "Resource/ResourceManager.h"
@@ -17,6 +20,10 @@ CMaterialDialog::CMaterialDialog(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MATERIAL_DIALOG, pParent)
 	, m_bIsInstancing(FALSE)
 	, m_strMaterialName(_T(""))
+	, m_DiffuseR(0)
+	, m_DiffuseG(0)
+	, m_DiffuseB(0)
+	, m_DiffuseA(0)
 {
 
 }
@@ -37,6 +44,11 @@ void CMaterialDialog::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LIST_CONTAINER, m_ContainerList);
 	DDX_Text(pDX, IDC_EDIT_MATERIAL_NAME, m_strMaterialName);
 	DDX_Control(pDX, IDC_LIST_SUBSET, m_SubsetList);
+	DDX_Control(pDX, IDC_LIST_MATERIAL, m_MaterialList);
+	DDX_Text(pDX, IDC_EDIT_MATERIAL_DIFFUSE_R, m_DiffuseR);
+	DDX_Text(pDX, IDC_EDIT_MATERIAL_DIFFUSE_G, m_DiffuseG);
+	DDX_Text(pDX, IDC_EDIT_MATERIAL_DIFFUSE_B, m_DiffuseB);
+	DDX_Text(pDX, IDC_EDIT_MATERIAL_DIFFUSE_A, m_DiffuseA);
 }
 
 
@@ -56,6 +68,14 @@ BEGIN_MESSAGE_MAP(CMaterialDialog, CDialogEx)
 	ON_BN_CLICKED(IDOK, &CMaterialDialog::OnBnClickedOk)
 	ON_LBN_SELCHANGE(IDC_LIST_SUBSET, &CMaterialDialog::OnLbnSelchangeListSubset)
 	ON_BN_CLICKED(IDC_BUTTON_CONTAINER_MODIFY, &CMaterialDialog::OnBnClickedButtonContainerModify)
+
+	ON_LBN_SELCHANGE(IDC_LIST_MATERIAL, &CMaterialDialog::OnLbnSelchangeListMaterial)
+	ON_EN_CHANGE(IDC_EDIT_MATERIAL_DIFFUSE_R, &CMaterialDialog::OnEnChangeEditMaterialDiffuseR)
+	ON_EN_CHANGE(IDC_EDIT_MATERIAL_DIFFUSE_G, &CMaterialDialog::OnEnChangeEditMaterialDiffuseG)
+	ON_EN_CHANGE(IDC_EDIT_MATERIAL_DIFFUSE_B, &CMaterialDialog::OnEnChangeEditMaterialDiffuseB)
+	ON_EN_CHANGE(IDC_EDIT_MATERIAL_DIFFUSE_B, &CMaterialDialog::OnEnChangeEditMaterialDiffuseA)
+	ON_BN_CLICKED(IDC_BUTTON_DIFFUSE_MODIFY, &CMaterialDialog::OnBnClickedButtonDiffuseModify)
+	ON_BN_CLICKED(IDC_BUTTON_MATERIAL_TEXTURE_LOAD, &CMaterialDialog::OnBnClickedButtonMaterialTextureLoad)
 END_MESSAGE_MAP()
 
 
@@ -174,6 +194,10 @@ void CMaterialDialog::OnBnClickedOk()
 
 	CMaterial* pMaterial = GET_SINGLE(CResourceManager)->FindMaterial(strName);
 
+	// resetContent 함수는 리스트박스의 내용을 모두 지워준다.
+	m_ContainerList.ResetContent();
+	m_SubsetList.ResetContent();
+
 	for (size_t i = 0; i < pMaterial->GetContainerCount(); ++i)
 	{
 		TCHAR	strContainer[256] = {};
@@ -186,6 +210,15 @@ void CMaterialDialog::OnBnClickedOk()
 			wsprintf(strSubset, TEXT("Subset %d"), j);
 			m_SubsetList.AddString(strSubset);
 		}
+	}
+
+	m_MaterialList.AddString(m_strMaterialName);
+
+	CMainFrame*	pMainFrame = (CMainFrame*)AfxGetMainWnd();
+
+	if (pMainFrame->GetTileMapDlg())
+	{
+		pMainFrame->GetTileMapDlg()->PostMessageW(UM_MATERIAL_UPDATE);
 	}
 
 	SAFE_RELEASE(pMaterial);
@@ -267,21 +300,21 @@ void CMaterialDialog::OnBnClickedButtonContainerModify()
 	pMaterial->SetMaterialShaderStyle((MATERIAL_SHADER_STYLE)iShaderStyle);
 
 	CString	strText;
-	m_DefaultShaderCombo.GetDlgItemTextW(iDefaultShader, strText);
+	m_DefaultShaderCombo.GetWindowTextW(strText);
 
 	string	strConvert = CT2CA(strText);
 
 	pMaterial->SetDefaultShader(strConvert);
 
-	m_InstancingShaderCombo.GetDlgItemTextW(iInstancingShader, strText);
+	m_InstancingShaderCombo.GetWindowTextW(strText);
 	strConvert = CT2CA(strText);
 	pMaterial->SetInstancingShader(strConvert);
 
-	m_InstancingLayoutCombo.GetDlgItemTextW(iInstancingLayout, strText);
+	m_InstancingLayoutCombo.GetWindowTextW(strText);
 	strConvert = CT2CA(strText);
 	pMaterial->SetInstancingLayout(strConvert);
 
-	m_RenderStateCombo.GetDlgItemTextW(iRenderState, strText);
+	m_RenderStateCombo.GetWindowTextW(strText);
 	strConvert = CT2CA(strText);
 	pMaterial->SetRenderState(strConvert);
 
@@ -289,4 +322,118 @@ void CMaterialDialog::OnBnClickedButtonContainerModify()
 		pMaterial->EnableInstancing();
 
 	SAFE_RELEASE(pMaterial);
+}
+
+void CMaterialDialog::OnLbnSelchangeListMaterial()
+{
+}
+
+void CMaterialDialog::OnEnChangeEditMaterialDiffuseR()
+{
+}
+
+void CMaterialDialog::OnEnChangeEditMaterialDiffuseG()
+{
+}
+
+void CMaterialDialog::OnEnChangeEditMaterialDiffuseB()
+{
+}
+
+
+void CMaterialDialog::OnEnChangeEditMaterialDiffuseA()
+{
+}
+
+// 재질의 DIFFUSE 변경
+void CMaterialDialog::OnBnClickedButtonDiffuseModify()
+{
+	UpdateData(TRUE);
+
+	if (m_strMaterialName.IsEmpty())
+		return;
+
+	string	strName = CT2CA(m_strMaterialName);
+
+	CMaterial* pMaterial = GET_SINGLE(CResourceManager)->FindMaterial(strName);
+
+	if (!pMaterial)
+	{
+		AfxMessageBox(TEXT("잘못된 이름입니다."));
+		return;
+	}
+
+	int	iContainer = m_ContainerList.GetCurSel();
+
+	if (iContainer == -1)
+	{
+		AfxMessageBox(TEXT("컨테이너를 선택하세요"));
+		return;
+	}
+
+	int	iSubset = m_SubsetList.GetCurSel();
+
+	if (iSubset == -1)
+	{
+		AfxMessageBox(TEXT("서브셋을 선택하세요"));
+		return;
+	}
+
+	Vector4	vDiffuse = Vector4(m_DiffuseR / 255.f, m_DiffuseG / 255.f, m_DiffuseB / 255.f, m_DiffuseA / 255.f);
+
+	pMaterial->SetSubsetDiffuse(vDiffuse, iContainer, iSubset);
+
+	SAFE_RELEASE(pMaterial);
+}
+
+void CMaterialDialog::OnBnClickedButtonMaterialTextureLoad()
+{
+	TCHAR	strFilter[] = TEXT("Texture(*.BMP, *.PNG, *.JPG) | *.bmp;*.png;*.jpg | All Files(*.*)|*.*||");
+
+	// 파일 다이얼로그를 이용하여 이미지를 불러온다.
+	CFileDialog	dlg(TRUE, TEXT(".png"), TEXT("Tile"), OFN_HIDEREADONLY, strFilter);
+
+	if (dlg.DoModal() == IDOK)
+	{
+		CString strFullPath = dlg.GetPathName();
+
+		CString	strTexName = dlg.GetFileTitle();
+
+		string	strTexKey = CT2CA(strTexName);
+
+		UpdateData(TRUE);
+
+		if (m_strMaterialName.IsEmpty())
+			return;
+
+		string	strName = CT2CA(m_strMaterialName);
+
+		CMaterial* pMaterial = GET_SINGLE(CResourceManager)->FindMaterial(strName);
+
+		if (!pMaterial)
+		{
+			AfxMessageBox(TEXT("잘못된 이름입니다."));
+			return;
+		}
+
+		int	iContainer = m_ContainerList.GetCurSel();
+
+		if (iContainer == -1)
+		{
+			AfxMessageBox(TEXT("컨테이너를 선택하세요"));
+			return;
+		}
+
+		int	iSubset = m_SubsetList.GetCurSel();
+
+		if (iSubset == -1)
+		{
+			AfxMessageBox(TEXT("서브셋을 선택하세요"));
+			return;
+		}
+
+		pMaterial->SetTextureFromFullPath(0, strTexKey, strFullPath, iContainer, iSubset);
+
+		SAFE_RELEASE(pMaterial);
+	}
 }

@@ -9,6 +9,11 @@
 #include "Object/EditMapObject.h"
 #include "Scene/Scene.h"
 #include "Scene/SceneManager.h"
+#include "Resource/ResourceManager.h"
+#include "Resource/Texture.h"
+#include "Resource/Material.h"
+#include "Component/TileMap.h"
+
 
 // CTileMapEditorDialog 대화 상자
 
@@ -23,12 +28,14 @@ CTileMapEditorDialog::CTileMapEditorDialog(CWnd* pParent /*=nullptr*/)
 	, m_strImageName(_T(""))
 	, m_iTileImageSizeX(0)
 	, m_iTileImageSizeY(0)
+	, m_pTileMapObj(nullptr)
 {
 
 }
 
 CTileMapEditorDialog::~CTileMapEditorDialog()
 {
+	SAFE_RELEASE(m_pTileMapObj);
 }
 
 void CTileMapEditorDialog::DoDataExchange(CDataExchange* pDX)
@@ -43,6 +50,7 @@ void CTileMapEditorDialog::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_TILEIMAGESIZEY, m_iTileImageSizeY);
 	DDX_Control(pDX, IDC_COMBO_TILETYPE, m_TileTypeCombo);
 	DDX_Control(pDX, IDC_COMBO_TILEOPTION, m_TileOptionCombo);
+	DDX_Control(pDX, IDC_LIST_TILEMAP_MATERIAL, m_MaterialList);
 }
 
 
@@ -60,6 +68,10 @@ BEGIN_MESSAGE_MAP(CTileMapEditorDialog, CDialogEx)
 	ON_CBN_SELCHANGE(IDC_COMBO_TILEOPTION, &CTileMapEditorDialog::OnCbnSelchangeComboTileoption)
 	ON_BN_CLICKED(IDC_BUTTON_TILEMAP_CREATE, &CTileMapEditorDialog::OnBnClickedButtonCreateTilemap)
 	ON_BN_CLICKED(IDC_BUTTON_LOAD_TILEMAP_IMAGE, &CTileMapEditorDialog::OnBnClickedButtonLoadTilemapImage)
+
+	ON_LBN_SELCHANGE(IDC_LIST_TILEMAP_MATERIAL, &CTileMapEditorDialog::OnLbnSelchangeListTilemapMaterial)
+	ON_MESSAGE(UM_MATERIAL_UPDATE, &CTileMapEditorDialog::OnMaterialUpdate)
+	ON_BN_CLICKED(IDC_BUTTON_TILEMAP_SET_MATERIAL, &CTileMapEditorDialog::OnBnClickedButtonTilemapSetMaterial)
 END_MESSAGE_MAP()
 
 
@@ -119,16 +131,16 @@ void CTileMapEditorDialog::OnBnClickedButtonCreateTilemap()
 		return;
 	}
 
+	SAFE_RELEASE(m_pTileMapObj);
+
 	CScene*	pScene = GET_SINGLE(CSceneManager)->GetScene();
 
-	CEditMapObject*	pEditMap = pScene->SpawnObject<CEditMapObject>();
+	m_pTileMapObj = pScene->SpawnObject<CEditMapObject>();
 
 	string	strKey = CT2CA(m_strImageName);
 
-	pEditMap->CreateTileMap((TILE_TYPE)iTileType, m_iTileCountX, m_iTileCountY, m_iTileSizeX, m_iTileSizeY,
+	m_pTileMapObj->CreateTileMap((TILE_TYPE)iTileType, m_iTileCountX, m_iTileCountY, m_iTileSizeX, m_iTileSizeY,
 		strKey, m_strTexturePath);
-
-	SAFE_RELEASE(pEditMap);
 }
 
 
@@ -145,5 +157,78 @@ void CTileMapEditorDialog::OnBnClickedButtonLoadTilemapImage()
 		m_strTexturePath = dlg.GetPathName();
 
 		m_strImageName = dlg.GetFileTitle();
+
+		string	strKey = CT2CA(m_strImageName);
+
+		if (GET_SINGLE(CResourceManager)->LoadTextureFullPath(strKey, m_strTexturePath.GetString()))
+		{
+			CTexture*	pTex = GET_SINGLE(CResourceManager)->FindTexture(strKey);
+
+			m_iTileImageSizeX = pTex->GetWidth();
+			m_iTileImageSizeY = pTex->GetHeight();
+
+			SAFE_RELEASE(pTex);
+
+			UpdateData(FALSE);
+		}
+	}
+}
+
+BOOL CTileMapEditorDialog::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	OnMaterialUpdate(0, 0);
+
+	return TRUE;
+}
+
+void CTileMapEditorDialog::OnLbnSelchangeListTilemapMaterial()
+{
+}
+
+LRESULT CTileMapEditorDialog::OnMaterialUpdate(WPARAM wParam, LPARAM lParam)
+{
+	GET_SINGLE(CResourceManager)->ClearMaterialIterator();
+
+	CMaterial*	pMaterial = GET_SINGLE(CResourceManager)->GetCurrentMaterial();
+
+	m_MaterialList.ResetContent();
+
+	while (pMaterial)
+	{
+		CString	strName = CA2CT(pMaterial->GetName().c_str());
+		m_MaterialList.AddString(strName);
+
+		GET_SINGLE(CResourceManager)->NextMaterial();
+
+		pMaterial = GET_SINGLE(CResourceManager)->GetCurrentMaterial();
+	}
+
+	return 0;
+}
+
+void CTileMapEditorDialog::OnBnClickedButtonTilemapSetMaterial()
+{
+	if (!m_pTileMapObj)
+		return;
+
+	int	iMaterial = m_MaterialList.GetCurSel();
+
+	if (iMaterial == -1)
+		return;
+
+	CString	strMaterial;
+
+	m_MaterialList.GetText(iMaterial, strMaterial);
+
+	string	strMaterialKey = CT2CA(strMaterial);
+
+	CTileMap*	pTileMap = m_pTileMapObj->FindSceneComponent<CTileMap>();
+
+	if (pTileMap)
+	{
+		pTileMap->SetMaterial(strMaterialKey);
+		SAFE_RELEASE(pTileMap);
 	}
 }

@@ -3,6 +3,7 @@ cd..
 cd..
 
 xcopy .\GameEngine\Include\*.h .\Engine\Include\ /s /d /y
+xcopy .\GameEngine\Include\*.inl .\Engine\Include\ /s /d /y
 xcopy .\GameEngine\Bin\*.lib .\Engine\Bin\ /s /d /y
 xcopy .\GameEngine\Bin\*.dll .\Engine\Bin\ /s /d /y
 xcopy .\GameEngine\Bin\*.lib .\Client2D\Bin\ /s /d /y

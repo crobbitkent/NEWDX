@@ -16,18 +16,18 @@ public:
 	virtual void Update(float fTime);
 	virtual void Render(float fTime);
 
-	void MoveX(float fTime);
-	void Reverse();
-	void CheckFront();
-	void MoveBack(float fTime);
-	void JumpBack(float fTime);
+	 void MoveX(float fTime);
+	 void Reverse();
+	 void CheckFront();
+	 void MoveBack(float fTime);
+	 void JumpBack(float fTime);
 
-	void JumpEnd(float fTime);
+	 void JumpEnd(float fTime);
 
 
 
-	void SetCurrentState(BUG_STATE  eState);
-	void SetAnimation();
+	 void SetCurrentState(BUG_STATE  eState);
+	 void SetAnimation();
 
 	void OnBlock(class CColliderBase* pSrc, class CColliderBase* pDest, float fTime);
 
@@ -35,7 +35,7 @@ public:
 
 
 
-private:
+protected:
 	class CStaticMeshComponent* m_pMesh;
 
 	class CCharacterMovementComponent* m_pMovement;

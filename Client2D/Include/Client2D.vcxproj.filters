@@ -46,6 +46,12 @@
     <Filter Include="HK\03. Effect\02. Heal">
       <UniqueIdentifier>{c8a46881-cc7d-452c-b713-eefb43fb4bcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HK\04. Object\01. Bug">
+      <UniqueIdentifier>{2c16d3a2-3e05-46c7-a3a5-3b426edfd95a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HK\04. Object\01. Bug\Parent">
+      <UniqueIdentifier>{e3dcb819-16a8-48a1-9f8f-969400834217}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -86,9 +92,6 @@
     </ClCompile>
     <ClCompile Include="RandomNumber.cpp">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="HK\Bug.cpp">
-      <Filter>HK\04. Object</Filter>
     </ClCompile>
     <ClCompile Include="HK\BlackSoftEffect.cpp">
       <Filter>HK\03. Effect</Filter>
@@ -171,6 +174,15 @@
     <ClCompile Include="HK\SetBugAnim.cpp">
       <Filter>HK\01. Mode</Filter>
     </ClCompile>
+    <ClCompile Include="HK\DashingBug.cpp">
+      <Filter>HK\04. Object\01. Bug</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\Bug.cpp">
+      <Filter>HK\04. Object\01. Bug\Parent</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\JustBug.cpp">
+      <Filter>HK\04. Object\01. Bug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -214,9 +226,6 @@
     </ClInclude>
     <ClInclude Include="RandomNumber.h">
       <Filter>소스 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="HK\Bug.h">
-      <Filter>HK\04. Object</Filter>
     </ClInclude>
     <ClInclude Include="HK\BlackSoftEffect.h">
       <Filter>HK\03. Effect</Filter>
@@ -292,6 +301,15 @@
     </ClInclude>
     <ClInclude Include="HK\NewHK.h">
       <Filter>HK\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\DashingBug.h">
+      <Filter>HK\04. Object\01. Bug</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\Bug.h">
+      <Filter>HK\04. Object\01. Bug\Parent</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\JustBug.h">
+      <Filter>HK\04. Object\01. Bug</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

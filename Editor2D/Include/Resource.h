@@ -1,7 +1,10 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++에서 생성한 포함 파일입니다.
-// Editor2D.rc에서 사용되고 있습니다.
+// Microsoft Visual C++ generated include file.
+// Used by Editor2D.rc
 //
+#define IDC_BUTTON_DIFFUSE_MODIFY       3
+#define IDOK3                           4
+#define IDC_BUTTON_MATERIAL_TEXTURE_LOAD 4
 #define IDD_ABOUTBOX                    100
 #define IDR_MAINFRAME                   128
 #define IDR_Editor2DTYPE                130
@@ -27,16 +30,23 @@
 #define IDC_BUTTON_LOAD_TILEMAP_IMAGE   1014
 #define IDC_COMBO_RENDERSTATE           1014
 #define IDC_COMBO_SHADERSTYLE           1015
+#define IDC_BUTTON_TILEMAP_SET_MATERIAL 1015
 #define IDC_COMBO_INSTANCINGLAYOUT      1016
 #define IDC_CHECK_INSTANCING_ENABLE     1017
 #define IDC_LIST_CONTAINER              1018
 #define IDC_LIST_SUBSET                 1019
 #define IDC_BUTTON_CONTAINER_CREATE     1020
 #define IDC_BUTTON_CONTAINER_DELETE     1021
+#define IDC_LIST_TILEMAP_MATERIAL       1021
 #define IDC_BUTTON_CONTAINER_MODIFY     1022
 #define IDC_BUTTON_SUBSET_CREATE        1023
 #define IDC_BUTTON_SUBSET_DELETE        1024
 #define IDC_COMBO_DEFAULTSHADER         1025
+#define IDC_LIST_MATERIAL               1026
+#define IDC_EDIT_MATERIAL_DIFFUSE_R     1027
+#define IDC_EDIT_MATERIAL_DIFFUSE_G     1028
+#define IDC_EDIT_MATERIAL_DIFFUSE_B     1029
+#define IDC_EDIT_MATERIAL_DIFFUSE_A     1030
 #define ID_TILEMAP_TILEMAPEDITOR        32771
 #define ID_MONSTER                      32772
 #define ID_TILEMAPEDITOR                32773
@@ -50,7 +60,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        314
 #define _APS_NEXT_COMMAND_VALUE         32777
-#define _APS_NEXT_CONTROL_VALUE         1021
+#define _APS_NEXT_CONTROL_VALUE         1022
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

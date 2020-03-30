@@ -44,6 +44,9 @@ protected:
 public:
 	afx_msg void OnTilemapEditor();
 	afx_msg void OnMaterialCreate();
+
+	class CTileMapEditorDialog* GetTileMapDlg() { return m_pTileMapEditor; }
+	class CMaterialDialog* GetMaterialDlg() { return m_pMaterialEditor; }
 };
 
 

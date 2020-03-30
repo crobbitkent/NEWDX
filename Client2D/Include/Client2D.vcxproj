@@ -168,6 +168,7 @@
     <ClCompile Include="HK\Bug.cpp" />
     <ClCompile Include="HK\BurstEffect.cpp" />
     <ClCompile Include="HK\CrackEffect.cpp" />
+    <ClCompile Include="HK\DashingBug.cpp" />
     <ClCompile Include="HK\DustEffect.cpp" />
     <ClCompile Include="HK\FireBall.cpp" />
     <ClCompile Include="HK\FireBallHit.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="HK\HKMouse.cpp" />
     <ClCompile Include="HK\HollowKnight.cpp" />
     <ClCompile Include="HK\HPEffect.cpp" />
+    <ClCompile Include="HK\JustBug.cpp" />
     <ClCompile Include="HK\MonsterHitEffect.cpp" />
     <ClCompile Include="HK\NewHK.cpp" />
     <ClCompile Include="HK\Sencer.cpp" />
@@ -212,6 +214,7 @@
     <ClInclude Include="HK\Bug.h" />
     <ClInclude Include="HK\BurstEffect.h" />
     <ClInclude Include="HK\CrackEffect.h" />
+    <ClInclude Include="HK\DashingBug.h" />
     <ClInclude Include="HK\DustEffect.h" />
     <ClInclude Include="HK\FireBall.h" />
     <ClInclude Include="HK\FireBallHit.h" />
@@ -227,6 +230,7 @@
     <ClInclude Include="HK\HKMouse.h" />
     <ClInclude Include="HK\HollowKnight.h" />
     <ClInclude Include="HK\HPEffect.h" />
+    <ClInclude Include="HK\JustBug.h" />
     <ClInclude Include="HK\MonsterHitEffect.h" />
     <ClInclude Include="HK\NewHK.h" />
     <ClInclude Include="HK\Sencer.h" />

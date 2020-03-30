@@ -9,7 +9,10 @@
 
 #include "HollowKnight.h"
 #include "NewHK.h"
-#include "Bug.h"
+#include "JustBug.h"
+#include "DashingBug.h"
+
+
 #include "TestStage.h"
 #include "HKButton.h"
 
@@ -53,7 +56,7 @@ bool HKMode::Init()
 	 SAFE_RELEASE(hk);*/
 
 
-	Bug* bug = m_pScene->SpawnObject<Bug>(Vector3(500.f, 500.f, 0.f));
+	JustBug* bug = m_pScene->SpawnObject<JustBug>(Vector3(500.f, 500.f, 0.f));
 	SAFE_RELEASE(bug);
 
 	

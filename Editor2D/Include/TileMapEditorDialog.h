@@ -42,8 +42,14 @@ public:
 	CComboBox m_TileTypeCombo;
 	CComboBox m_TileOptionCombo;
 
+	CListBox m_MaterialList;
+
+	virtual BOOL OnInitDialog();
+	afx_msg void OnLbnSelchangeListTilemapMaterial();
+	afx_msg LRESULT OnMaterialUpdate(WPARAM wParam, LPARAM lParam);
+	afx_msg void OnBnClickedButtonTilemapSetMaterial();
 
 private:
 	CString m_strTexturePath;
-
+	class CEditMapObject* m_pTileMapObj;
 };

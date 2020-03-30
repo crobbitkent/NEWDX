@@ -49,10 +49,7 @@ bool Bug::Init()
 
 	m_pMesh = CGameObject::CreateComponent<CStaticMeshComponent>("Mesh");
 	m_pAnimation = CAnimation2D::CreateAnimation2D<CAnimation2D>();
-
 	m_pBody = CGameObject::CreateComponent<CColliderRect>("BugBody");
-
-
 	CStaticMesh* pMesh = (CStaticMesh*)GET_SINGLE(CResourceManager)->FindMesh("TexRect");
 	m_pMesh->SetStaticMesh(pMesh);
 	SAFE_RELEASE(pMesh);
@@ -84,12 +81,8 @@ bool Bug::Init()
 	m_pMesh->SetMaterial(pMaterial);
 	SAFE_RELEASE(pMaterial);
 
-
-// 	m_pMesh->SetRelativePos(1000.f, 500.f, 0.f);
 	m_pMesh->SetRelativeScale(400.f, 400.f, 1.f);
 	m_pMesh->SetPivot(0.5f, 0.585f, 0.f);
-
-
 
 	m_pBody->SetExtent(150.f, 150.f);
 	m_pBody->SetPivot(0.5f, 0.5f, 0.f);
@@ -197,6 +190,7 @@ void Bug::MoveX(float fTime)
 		break;
 	}*/
 
+	
 	Flip(m_eDir);
 
 	m_pMovement->AddMovement(GetWorldAxis(AXIS_X) * m_eDir);
@@ -309,7 +303,7 @@ void Bug::SetCurrentState(BUG_STATE eState)
 
 	m_eState = eState;
 
-	
+
 
 	std::string stateName = "BUG_";
 	stateName.append(m_vecStateName[eState]);
@@ -323,12 +317,17 @@ void Bug::SetAnimation()
 	m_pAnimation->AddAnimation2DSequence("BUG_TURN");
 	m_pAnimation->AddAnimation2DSequence("BUG_DIE");
 	m_pAnimation->AddAnimation2DSequence("BUG_DEAD");
+	m_pAnimation->AddAnimation2DSequence("BUG_DASH");
+	m_pAnimation->AddAnimation2DSequence("BUG_BWALK");
+
+
 
 	m_vecStateName.push_back("WALK");
 	m_vecStateName.push_back("TURN");
 	m_vecStateName.push_back("DIE");
 	m_vecStateName.push_back("DEAD");
-
+	m_vecStateName.push_back("DASH");
+	m_vecStateName.push_back("bwalk");
 }
 
 

@@ -97,7 +97,118 @@ void HKMode::SetBug()
 	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("BUG_DEAD", Vector2(0.f, 0.f),
 		Vector2(400.f, 400.f));
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Dashing Bug
+	frameCount = 6;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_WALK", true, 0.5f, frameCount);
 
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/DASHING_BUG/WALK/DB_WALK%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "DB_WALK%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("DB_WALK", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DB_WALK", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+
+	// DB Turn
+	frameCount = 2;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_TURN", true, 0.1f, frameCount);
+
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/DASHING_BUG/TURN/DB_TURN%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "DB_TURN%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("DB_TURN", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DB_TURN", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+
+
+
+	// DB DIE
+	frameCount = 6;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_DIE", true, 0.8f, frameCount);
+
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/DASHING_BUG/DIE/DB_DIE%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "DB_DIE%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("DB_DIE", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DB_DIE", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+
+	// DB DASH
+	frameCount = 7;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_DASH", true, 0.4f, frameCount);
+
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/DASHING_BUG/RUN/DB_RUN%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "DB_DASH%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("DB_DASH", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DB_DASH", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+	// DB DEAD
+	frameCount = 2;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_DEAD", false, 0.1f, frameCount);
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/DASHING_BUG/DEAD/DB_DEAD%d.png"), i);
+		char strKey[256] = {};
+		sprintf_s(strKey, "DB_DEAD%d", i);
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("DB_DEAD", strKey, strFileName);
+	}
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DB_DEAD", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+	// DB BWALK
+	frameCount = 2;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_BWALK", false, 0.1f, frameCount);
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/DASHING_BUG/BWALK/DB_BWALK%d.png"), i);
+		char strKey[256] = {};
+		sprintf_s(strKey, "DB_BWALK%d", i);
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("DB_BWALK", strKey, strFileName);
+	}
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DB_BWALK", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
 }
+
 
 
