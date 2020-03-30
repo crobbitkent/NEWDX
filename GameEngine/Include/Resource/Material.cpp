@@ -109,6 +109,16 @@ Vector4 CMaterial::GetDiffuse(int iContainer, int iSubset) const
 	return m_vecContainer[iContainer]->vecSubset[iSubset]->vDiffuse;
 }
 
+size_t CMaterial::GetContainerCount() const
+{
+	return m_vecContainer.size();
+}
+
+size_t CMaterial::GetSubsetCount(int iIndex) const
+{
+	return m_vecContainer[iIndex]->vecSubset.size();
+}
+
 bool CMaterial::CreateCBufferNode(const string & strName, int iRegister, int iSize)
 {
 	PCBufferNode	pBuffer = FindCBufferNode(strName);
@@ -416,11 +426,18 @@ bool CMaterial::SetTexture(int iRegister, CTexture * pTexture, int iContainer, i
 	return true;
 }
 
-void CMaterial::SetRenderState(RENDER_STATE_TYPE eType, const string & strName)
+void CMaterial::SetRenderState(const string & strName)
 {
-	SAFE_RELEASE(m_pRenderState[eType]);
+	CRenderState* pState = GET_SINGLE(CResourceManager)->FindRenderState(strName);
 
-	m_pRenderState[eType] = GET_SINGLE(CResourceManager)->FindRenderState(strName);
+	if (nullptr == pState)
+	{
+		return;
+	}
+
+	RENDER_STATE_TYPE eType = pState->GetRenderStateType();
+	SAFE_RELEASE(m_pRenderState[eType]);
+	m_pRenderState[eType] = pState;
 }
 
 void CMaterial::ClearTexture(int iContainer, int iSubset)

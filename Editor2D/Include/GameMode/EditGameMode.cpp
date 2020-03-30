@@ -1,7 +1,5 @@
 
 #include "../stdafx.h"
-
-
 #include "EditGameMode.h"
 #include "../Object/EditMapObject.h"
 #include "Scene/Scene.h"
@@ -9,17 +7,33 @@
 #include "Resource/ResourceManager.h"
 #include "Resource/Animation2DSequence.h"
 #include "Resource/Material.h"
+#include "../Object/FreeCamera.h"
 
-#include "Engine.h"
-#include "Scene/Scene.h"
-#include "Scene/SceneManager.h"
 
-CEditGameMode::CEditGameMode()
+CEditGameMode::CEditGameMode() :
+	m_pCamera(nullptr),
+	m_pTileMapObj(nullptr)
 {
 }
 
 CEditGameMode::~CEditGameMode()
 {
+	SAFE_RELEASE(m_pTileMapObj);
+	SAFE_RELEASE(m_pCamera);
+}
+
+void CEditGameMode::SetTileMapObj(CEditMapObject * pTileMap)
+{
+	SAFE_RELEASE(m_pTileMapObj);
+	m_pTileMapObj = pTileMap;
+
+	if (m_pTileMapObj)
+		m_pTileMapObj->AddRef();
+}
+
+CEditMapObject * CEditGameMode::GetTileMapObj() const
+{
+	return m_pTileMapObj;
 }
 
 bool CEditGameMode::Init()
@@ -29,9 +43,13 @@ bool CEditGameMode::Init()
 	CreateMaterial();
 
 
-	CEditMapObject*	pEditMap = m_pScene->SpawnObject<CEditMapObject>();
+	/*CEditMapObject*	pEditMap = m_pScene->SpawnObject<CEditMapObject>();
 
-	SAFE_RELEASE(pEditMap);
+	SAFE_RELEASE(pEditMap);*/
+
+	m_pCamera = m_pScene->SpawnObject<CFreeCamera>();
+
+	SetPlayer(m_pCamera);
 
 	/*GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("MouseDefault", true, 1.f, 13);
 

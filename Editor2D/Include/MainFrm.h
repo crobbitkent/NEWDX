@@ -33,11 +33,17 @@ protected:  // control bar embedded members
 	CToolBar          m_wndToolBar;
 	CStatusBar        m_wndStatusBar;
 
+	class CTileMapEditorDialog* m_pTileMapEditor;
+	class CMaterialDialog* m_pMaterialEditor;
+
 // Generated message map functions
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	DECLARE_MESSAGE_MAP()
 
+public:
+	afx_msg void OnTilemapEditor();
+	afx_msg void OnMaterialCreate();
 };
 
 

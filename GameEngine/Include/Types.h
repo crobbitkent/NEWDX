@@ -28,9 +28,9 @@ using namespace std;
 #include "Vector3.h"
 #include "Vector4.h"
 
-#ifdef _DEBUG
-#define	new	new(_CLIENT_BLOCK, __FILE__, __LINE__)
-#endif // _DEBUG
+// #ifdef _DEBUG
+// #define	new	new(_CLIENT_BLOCK, __FILE__, __LINE__)
+// #endif // _DEBUG
 
 
 #define BOOM assert(false);

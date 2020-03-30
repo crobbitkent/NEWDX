@@ -11,4 +11,5 @@ xcopy .\GameEngine\Bin\*.lib .\Editor2D\Bin\ /s /d /y
 xcopy .\GameEngine\Bin\*.dll .\Editor2D\Bin\ /s /d /y
 xcopy .\GameEngine\Bin\Resource\*.* .\Client2D\Bin\Resource\ /s /d /y
 xcopy .\GameEngine\Bin\Resource\*.* .\Engine\Bin\Resource\ /s /d /y
+
 xcopy .\GameEngine\Bin\Resource\*.* .\Editor2D\Bin\Resource\ /s /d /y

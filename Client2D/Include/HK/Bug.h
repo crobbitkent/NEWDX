@@ -69,4 +69,7 @@ private:
 	float m_fJumpTime = 0.f;
 	float m_fJumpTotalTime = 1.f;
 	bool m_bJump = false;
+
+	float m_fCurrentForce;
+	float m_fMoveSpeed;
 };

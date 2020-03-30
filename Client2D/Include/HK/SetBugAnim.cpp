@@ -60,7 +60,7 @@ void HKMode::SetBug()
 
 	// BUG DIE
 	frameCount = 4;
-	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("BUG_DIE", false, 0.5f, frameCount);
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("BUG_DIE", false, 0.8f, frameCount);
 
 	for (int i = 0; i < frameCount; ++i)
 	{
@@ -78,7 +78,24 @@ void HKMode::SetBug()
 		Vector2(400.f, 400.f));
 
 
+	// BUG DEAD
+	frameCount = 2;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("BUG_DEAD", false, 0.2f, frameCount);
 
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/BUG/BUG_DEAD%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "BUG_DEAD%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("BUG_DEAD", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("BUG_DEAD", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
 
 
 }

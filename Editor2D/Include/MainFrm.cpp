@@ -7,6 +7,9 @@
 
 #include "MainFrm.h"
 
+#include "TileMapEditorDialog.h"
+#include "MaterialDialog.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -17,6 +20,9 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
+	ON_COMMAND(ID_TILEMAPEDITOR, &CMainFrame::OnTilemapEditor)
+	ON_COMMAND(ID_MATERIAL_CREATE, &CMainFrame::OnMaterialCreate) 
+
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -32,10 +38,23 @@ static UINT indicators[] =
 CMainFrame::CMainFrame() noexcept
 {
 	// TODO: add member initialization code here
+	m_pTileMapEditor = nullptr;
+	m_pMaterialEditor = nullptr;
 }
 
 CMainFrame::~CMainFrame()
 {
+	if (m_pTileMapEditor)
+	{
+		delete	m_pTileMapEditor;
+		m_pTileMapEditor = nullptr;
+	}
+
+	if (m_pMaterialEditor)
+	{
+		delete	m_pMaterialEditor;
+		m_pMaterialEditor = nullptr;
+	}
 }
 
 int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
@@ -84,3 +103,29 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 // CMainFrame message handlers
 
+
+
+void CMainFrame::OnTilemapEditor()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	if (!m_pTileMapEditor)
+	{
+		m_pTileMapEditor = new CTileMapEditorDialog;
+
+		m_pTileMapEditor->Create(IDD_TILEMAP_EDITOR_DIALOG);
+	}
+
+	m_pTileMapEditor->ShowWindow(SW_SHOW);
+}
+
+void CMainFrame::OnMaterialCreate()
+{
+	if (!m_pMaterialEditor)
+	{
+		m_pMaterialEditor = new CMaterialDialog;
+
+		m_pMaterialEditor->Create(IDD_MATERIAL_DIALOG);
+	}
+
+	m_pMaterialEditor->ShowWindow(SW_SHOW);
+}

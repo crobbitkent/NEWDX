@@ -46,6 +46,11 @@ bool SoftEffect::Init()
 
 	int ran = RandomNumber::GetRandomNumber(0, 40);
 
+	if (0 > ran)
+	{
+		BOOM
+	}
+
 	m_pMesh->SetRelativeScale(1.f + (float)ran, 1.f + (float)ran, 1.f);
 	m_pMesh->SetPivot(0.5f, 0.5f, 0.f);
 

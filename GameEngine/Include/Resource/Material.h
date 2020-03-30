@@ -55,6 +55,8 @@ public:
 	void EnableInstancing();
 	bool IsEnableInstancing()	const;
 	Vector4 GetDiffuse(int iContainer, int iSubset)	const;
+	size_t GetContainerCount() const;
+	size_t GetSubsetCount(int iIndex) const;
 
 public:
 	bool CreateCBufferNode(const string& strName, int iRegister, int iSize);
@@ -78,7 +80,7 @@ public:
 	bool SetTextureFromFullPath(int iRegister, const string& strName, const vector<const TCHAR*>& vecFullPath,
 		int iContainer = 0, int iSubset = 0);
 	bool SetTexture(int iRegister, class CTexture* pTexture, int iContainer = 0, int iSubset = 0);
-	void SetRenderState(RENDER_STATE_TYPE eType, const string& strName);
+	void SetRenderState(const string& strName);
 	void ClearTexture(int iContainer = 0, int iSubset = 0);
 	void SetInstancingShader(const string& strName);
 	void SetInstancingLayout(const string& strName);

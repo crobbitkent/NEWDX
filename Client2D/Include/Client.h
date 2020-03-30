@@ -39,7 +39,7 @@ enum BUG_STATE
 	BS_WALK,
 	BS_TURN,
 	BS_DIE,
-
+	BS_DEAD
 };
 
 enum DIR_TYPE

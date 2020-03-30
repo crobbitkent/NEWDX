@@ -157,3 +157,24 @@ enum PLAYER_POSITION
 	PP_BOTTOM,
 	PP_END
 };
+
+
+enum NAV_INSERT_TYPE
+{
+	NIT_NONE,
+	NIT_OPEN,
+	NIT_CLOSE
+};
+
+enum NAV_NODE_DIR
+{
+	NND_LT,
+	NND_T,
+	NND_RT,
+	NND_R,
+	NND_RB,
+	NND_B,
+	NND_LB,
+	NND_L,
+	NND_END
+};

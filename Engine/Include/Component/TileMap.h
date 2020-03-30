@@ -35,6 +35,12 @@ protected:
 	int						m_iRenderCount;
 
 public:
+	int GetTileCountX()	const;
+	int	GetTileCountY()	const;
+	int	GetTileCount()	const;
+	Vector3 GetTileSize()	const;
+
+public:
 	void SetMesh(const string& strName);
 	void SetInputLayout(const string& strName);
 	void SetMaterial(const string& strName);
@@ -43,10 +49,19 @@ public:
 	void SetTileInputLayout(const string& strName);
 	void SetTileMaterial(const string& strName);
 	void SetTileAlphaBlend();
-	void CreateTile(TILE_TYPE eType, unsigned int iCountX, unsigned int iCountY, 
+	void CreateTile(TILE_TYPE eType, unsigned int iCountX, unsigned int iCountY,
 		const Vector3& vTileSize, const Vector3& vPos = Vector3::Zero);
 	void AddFrame(const Vector2& vStart, const Vector2& vEnd, const Vector2& vImgSize,
 		IMAGE_TYPE eType);
+	class CTile* GetTile(const Vector3& vPos);
+	class CTile* GetTile(float x, float y);
+	class CTile* GetTileFromIndex(int x, int y);
+	int GetTileIndex(const Vector3& vPos);
+	int GetTileIndex(float x, float y);
+	int GetTileIndexX(const Vector3& vPos);
+	int GetTileIndexX(float x);
+	int GetTileIndexY(const Vector3& vPos);
+	int GetTileIndexY(float y);
 
 public:
 	virtual bool Init();

@@ -2,6 +2,7 @@
 // Editor2D.cpp : Defines the class behaviors for the application.
 //
 
+
 #include "stdafx.h"
 #include "afxwinappex.h"
 #include "afxdialogex.h"
@@ -17,6 +18,7 @@
 #include "Engine.h"
 #include "Scene/Scene.h"
 #include "Scene/SceneManager.h"
+#include "GameMode/EditGameMode.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

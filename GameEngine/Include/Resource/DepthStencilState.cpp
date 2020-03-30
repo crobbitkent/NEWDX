@@ -5,6 +5,8 @@
 CDepthStencilState::CDepthStencilState()
 {
 	m_iStencilRef	= 0xffffffff;
+
+	m_eRenderStateType = RST_DEPTH;
 }
 
 CDepthStencilState::~CDepthStencilState()

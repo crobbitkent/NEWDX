@@ -112,6 +112,9 @@
     <Filter Include="01. Engine\09. Excel">
       <UniqueIdentifier>{b1383958-94ab-4bfd-9e13-09534b93620b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Scene\02. Navigation">
+      <UniqueIdentifier>{db9317b0-7d7a-4172-9c3e-cd4868904d20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macro.h">
@@ -312,6 +315,15 @@
     <ClInclude Include="ExcelManager.h">
       <Filter>01. Engine\09. Excel</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\Navigation.h">
+      <Filter>03. Scene\02. Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Navigation2D.h">
+      <Filter>03. Scene\02. Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Navigation3D.h">
+      <Filter>03. Scene\02. Navigation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -493,6 +505,15 @@
     </ClCompile>
     <ClCompile Include="ExcelManager.cpp">
       <Filter>01. Engine\09. Excel</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Navigation2D.cpp">
+      <Filter>03. Scene\02. Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Navigation3D.cpp">
+      <Filter>03. Scene\02. Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Navigation.cpp">
+      <Filter>03. Scene\02. Navigation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

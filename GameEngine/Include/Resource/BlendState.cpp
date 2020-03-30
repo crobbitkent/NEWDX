@@ -5,6 +5,8 @@ CBlendState::CBlendState()
 {
 	memset(m_fBlendFactor, 0, sizeof(float) * 4);
 	m_iSampleMask = 0xffffffff;
+
+	m_eRenderStateType = RST_BLEND;
 }
 
 CBlendState::~CBlendState()

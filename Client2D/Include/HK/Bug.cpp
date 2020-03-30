@@ -24,6 +24,9 @@ Bug::Bug()
 	, m_iHP(3)
 {
 	m_eState = (BUG_STATE)4;
+	m_fCurrentForce = 2.f;
+	m_fMoveSpeed = 300.f;
+
 }
 
 Bug::~Bug()
@@ -72,7 +75,7 @@ bool Bug::Init()
 	m_pMovement->SetUpdateComponent(m_pMesh);
 
 
-	m_pMovement->SetMoveSpeed(300.f);
+	m_pMovement->SetMoveSpeed(m_fMoveSpeed);
 
 
 	/////////////////////////////
@@ -121,6 +124,8 @@ bool Bug::Init()
 	SetAnimation();
 	SetCurrentState(BS_WALK);
 
+	SetForce(m_fCurrentForce);
+
 	return true;
 }
 
@@ -148,24 +153,27 @@ void Bug::Update(float fTime)
 	}
 
 
-	if(BS_DIE == m_eState && true == anim)
+	if(BS_DEAD == m_eState && true == anim)
 	{
 		m_bDead = true;
 
 		return;
 	}
-	else
+
+
+	if (true == m_bJump)
+	{
+		JumpBack(fTime);
+	}
+	else if(BS_DEAD != m_eState)
 	{
 		CheckFront();
 
 		MoveBack(fTime);
 	}
 
-	if (true == m_bJump)
-	{
-		JumpBack(fTime);
-	}
 
+	
 
 	// m_pMovement->AddRotationZ(180.f * fTime * rotationNumber);
 }
@@ -257,10 +265,15 @@ void Bug::JumpBack(float fTime)
 {
 	if (false == m_bJumping)
 	{
-		m_pMovement->SetMoveSpeed(500.f);
+		m_pMovement->SetMoveSpeed(m_fMoveSpeed);
 
 		m_fForce = m_fOriginForce * 400;
-		SetCurrentState(BS_DIE);
+		
+		if (BS_DIE != m_eState)
+		{
+			SetCurrentState(BS_DIE);
+		}
+
 
 		// 큰 먼지 생성
 		// DustEffect* dust = m_pScene->SpawnObject<DustEffect>(
@@ -272,7 +285,7 @@ void Bug::JumpBack(float fTime)
 		m_bOnLand = false;
 	}
 
-	// m_pMovement->AddMovement(GetWorldAxis(AXIS_X) * m_eMoveBackDir);
+	m_pMovement->AddMovement(GetWorldAxis(AXIS_X) * m_eMoveBackDir);
 	m_fForce -= m_fOriginForce * m_fOriginForce;
 }
 
@@ -309,10 +322,12 @@ void Bug::SetAnimation()
 	m_pAnimation->AddAnimation2DSequence("BUG_WALK");
 	m_pAnimation->AddAnimation2DSequence("BUG_TURN");
 	m_pAnimation->AddAnimation2DSequence("BUG_DIE");
+	m_pAnimation->AddAnimation2DSequence("BUG_DEAD");
 
 	m_vecStateName.push_back("WALK");
 	m_vecStateName.push_back("TURN");
 	m_vecStateName.push_back("DIE");
+	m_vecStateName.push_back("DEAD");
 
 }
 
@@ -346,13 +361,38 @@ void Bug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 		if (0 >= m_iHP)
 		{	
 			m_bJump = true;
-			// m_fMoveBackTimeMax = 0.5f;
+			m_fMoveBackTimeMax = 0.2f;
+			m_fMoveSpeed = 500.f;
 		}
 	}
 
 
 	if (true == pDest->IsStage())
 	{
+		if (true == m_bJump)
+		{
+			m_fCurrentForce = m_fCurrentForce * 0.05;
+			m_fMoveSpeed = m_fMoveSpeed * 0.25;
+
+			if (m_fCurrentForce <= 0.05f)
+			{
+				SetCurrentState(BS_DEAD);
+				m_bJump = false;
+				m_bMoveBack = false;
+			}
+			else
+			{
+				ClearGravity();
+				m_pMovement->AddMovement(Vector3(0.f, pSrc->GetIntersect().y * 2.f, 0.f));
+				SetForce(m_fCurrentForce);
+				m_bJump = true;
+				m_bJumping = false;
+				return;
+			}
+
+			
+		}
+
 		ClearGravity();
 		JumpEnd(fTime);
 

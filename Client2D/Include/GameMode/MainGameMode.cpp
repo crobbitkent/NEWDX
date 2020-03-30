@@ -97,7 +97,7 @@ bool CMainGameMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(STANDARD_TEX_SHADER);
 	pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 
 	SAFE_RELEASE(pMaterial);
@@ -108,7 +108,7 @@ bool CMainGameMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(STANDARD_ANIM2D_SHADER);
 	//pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 
 	SAFE_RELEASE(pMaterial);
@@ -119,7 +119,7 @@ bool CMainGameMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(STANDARD_ANIM2D_OUTLINE_SHADER);
 	//pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	pMaterial->CreateCBufferNode(OUTLINE_CBUFFER, 11, sizeof(OutLineCBuffer));
 
@@ -149,7 +149,7 @@ bool CMainGameMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(TILEMAP_SHADER);
 	pMaterial->SetTexture(0, "Bullet", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	pMaterial->EnableInstancing();
 	pMaterial->AddRef();

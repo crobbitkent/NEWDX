@@ -96,7 +96,7 @@ bool HKMode::CreateMaterial()
 	CMaterial* pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("PlayerMaterial");
 	pMaterial->SetSubsetShader(STANDARD_TEX_SHADER);
 	pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	SAFE_RELEASE(pMaterial);
 
@@ -105,7 +105,7 @@ bool HKMode::CreateMaterial()
 	pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("StageMaterial");
 	pMaterial->SetSubsetShader(STANDARD_TEX_SHADER);
 	pMaterial->SetTexture(0, "TestStage", TEXT("TestCollision.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	SAFE_RELEASE(pMaterial);
 
@@ -116,7 +116,7 @@ bool HKMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(STANDARD_ANIM2D_SHADER);
 	// pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	SAFE_RELEASE(pMaterial);
 
@@ -128,7 +128,7 @@ bool HKMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(STANDARD_ANIM2D_SHADER);
 	// pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	SAFE_RELEASE(pMaterial);
 	//////////////////////////////////////////////////////
@@ -139,7 +139,7 @@ bool HKMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(STANDARD_ANIM2D_SHADER);
 	// pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	SAFE_RELEASE(pMaterial);
 
@@ -152,7 +152,7 @@ bool HKMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(STANDARD_ANIM2D_SHADER);
 	// pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	SAFE_RELEASE(pMaterial);
 
@@ -164,7 +164,7 @@ bool HKMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(STANDARD_ANIM2D_SHADER);
 	// pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	SAFE_RELEASE(pMaterial);
 
@@ -176,7 +176,7 @@ bool HKMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(STANDARD_ANIM2D_SHADER);
 	// pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	SAFE_RELEASE(pMaterial);
 
@@ -190,7 +190,7 @@ bool HKMode::CreateMaterial()
 
 	pMaterial->SetSubsetShader(STANDARD_ANIM2D_SHADER);
 	// pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	SAFE_RELEASE(pMaterial);
 
@@ -199,7 +199,7 @@ bool HKMode::CreateMaterial()
 	GET_SINGLE(CResourceManager)->CreateMaterial("PlayerAnimOutlineMtrl");
 	pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("PlayerAnimOutlineMtrl");
 	pMaterial->SetSubsetShader(STANDARD_ANIM2D_OUTLINE_SHADER);
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	pMaterial->CreateCBufferNode(OUTLINE_CBUFFER, 11, sizeof(OutLineCBuffer));
 	SAFE_RELEASE(pMaterial);
@@ -210,7 +210,7 @@ bool HKMode::CreateMaterial()
 	pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("SoftMaterial");
 	pMaterial->SetSubsetShader(STANDARD_TEX_SHADER);
 	if (false == pMaterial->SetTexture(0, "Soft", TEXT("HOLLOW/Effect/Soft.png"))) { BOOM; }
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	// pMaterial->EnableInstancing();	
 	// pMaterial->AddRef();
@@ -223,7 +223,7 @@ bool HKMode::CreateMaterial()
 	pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("BlackSoftMaterial");
 	pMaterial->SetSubsetShader(STANDARD_TEX_SHADER);
 	if (false == pMaterial->SetTexture(0, "BlackSoft", TEXT("HOLLOW/Effect/BlackSoft.png"))) { BOOM; }
-	pMaterial->SetRenderState(RST_BLEND, "AlphaBlend");
+	pMaterial->SetRenderState("AlphaBlend");
 	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
 	// pMaterial->EnableInstancing();
 	// pMaterial->AddRef();

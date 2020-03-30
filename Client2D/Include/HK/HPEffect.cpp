@@ -49,11 +49,16 @@ bool HPEffect::Init()
 	m_pUI->SetTexture("HPEffect", TEXT("HOLLOW/Effect/Soft.png"));
 
 	int ran = RandomNumber::GetRandomNumber(0, 40);
+	
 	m_pUI->SetRelativeScale(1.f + (float)ran, 1.f + (float)ran, 1.f);
 
 	m_fLifeTotalTime = .1f + RandomNumber::GetRandomNumber(0, 70) / 100.f;
 
 	m_fMoveSpeed = (float)RandomNumber::GetRandomNumber(5, 30) * 0.2f;
+
+
+	// m_pUI->Begin();
+	// m_pUI->Unable();
 
 	return true;
 }
@@ -61,6 +66,7 @@ bool HPEffect::Init()
 void HPEffect::Begin()
 {
 	CGameObject::Begin();
+
 }
 
 void HPEffect::Update(float fTime)

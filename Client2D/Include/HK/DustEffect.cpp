@@ -60,7 +60,7 @@ bool DustEffect::Init()
 
 	m_pAnimation->ChangeAnimation("DUSTEFFECT");
 
-	m_fLifeTotalTime = 1.f + RandomNumber::GetRandomNumber(0, 70) / 100.f;
+	m_fLifeTotalTime = 0.1f + RandomNumber::GetRandomNumber(0, 140) / 100.f;
 
 	return true;
 }

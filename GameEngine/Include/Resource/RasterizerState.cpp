@@ -4,6 +4,7 @@
 
 CRasterizerState::CRasterizerState()
 {
+	m_eRenderStateType = RST_RASTERIZER;
 }
 
 CRasterizerState::~CRasterizerState()

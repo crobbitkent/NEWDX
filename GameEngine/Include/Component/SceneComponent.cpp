@@ -219,7 +219,10 @@ void CSceneComponent::RenderInstancing(float fTime, PInstancingBuffer pBuffer)
 
 void CSceneComponent::SetRelativeScale(const Vector3 & vScale)
 {
-	m_pTransform->SetRelativeScale(vScale);
+	if (nullptr != m_pTransform)
+	{
+		m_pTransform->SetRelativeScale(vScale);
+	}
 }
 
 void CSceneComponent::SetRelativeScale(float x, float y, float z)

@@ -237,6 +237,9 @@
     <ClInclude Include="Resource\StaticMesh.h" />
     <ClInclude Include="Resource\Texture.h" />
     <ClInclude Include="Scene\GameMode.h" />
+    <ClInclude Include="Scene\Navigation.h" />
+    <ClInclude Include="Scene\Navigation2D.h" />
+    <ClInclude Include="Scene\Navigation3D.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Scheduler.h" />
@@ -300,6 +303,9 @@
     <ClCompile Include="Resource\StaticMesh.cpp" />
     <ClCompile Include="Resource\Texture.cpp" />
     <ClCompile Include="Scene\GameMode.cpp" />
+    <ClCompile Include="Scene\Navigation.cpp" />
+    <ClCompile Include="Scene\Navigation2D.cpp" />
+    <ClCompile Include="Scene\Navigation3D.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Scheduler.cpp" />

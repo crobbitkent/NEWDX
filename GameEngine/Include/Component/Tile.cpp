@@ -18,8 +18,9 @@ CTile::CTile()
 	m_pLayout = GET_SINGLE(CShaderManager)->FindInputLayout(TILEMAP_INSTANCING_LAYOUT);
 	m_pAlphaBlend = nullptr;
 	m_pMaterial = nullptr;
-	m_eType	= TT_NONE;
-	m_eOption	= TO_NONE;
+	m_eType = TT_NONE;
+	m_eOption = TO_NONE;
+	ClearNav();
 }
 
 CTile::~CTile()
@@ -27,6 +28,77 @@ CTile::~CTile()
 	SAFE_RELEASE(m_pMaterial);
 	SAFE_RELEASE(m_pAlphaBlend);
 	SAFE_RELEASE(m_pMesh);
+}
+
+float CTile::GetG() const
+{
+	return m_fG;
+}
+
+float CTile::GetTotal() const
+{
+	return m_fTotal;
+}
+
+NAV_INSERT_TYPE CTile::GetNavType() const
+{
+	return m_eNavType;
+}
+
+int CTile::GetIndexX() const
+{
+	return m_iIndexX;
+}
+
+int CTile::GetIndexY() const
+{
+	return m_iIndexY;
+}
+
+int CTile::GetIndex() const
+{
+	return m_iIndex;
+}
+
+TILE_OPTION CTile::GetTileOption() const
+{
+	return m_eOption;
+}
+
+Vector3 CTile::GetTilePos() const
+{
+	return m_vPos;
+}
+
+CTile * CTile::GetParent() const
+{
+	return m_pParent;
+}
+
+void CTile::SetCost(float fG, float fH)
+{
+	m_fG = fG;
+	m_fH = fH;
+	m_fTotal = fG + fH;
+}
+
+void CTile::ClearNav()
+{
+	m_eNavType = NIT_NONE;
+	m_fG = 0.f;
+	m_fH = 0.f;
+	m_fTotal = 0.f;
+	m_pParent = nullptr;
+}
+
+void CTile::SetNavInsertType(NAV_INSERT_TYPE eType)
+{
+	m_eNavType = eType;
+}
+
+void CTile::SetParent(CTile * pParent)
+{
+	m_pParent = pParent;
 }
 
 void CTile::SetMesh(const string & strName)
@@ -70,7 +142,7 @@ void CTile::SetAlphaBlend()
 
 void CTile::SetFrame(const ImageFrame & tFrame)
 {
-	m_tImgFrame	= tFrame;
+	m_tImgFrame = tFrame;
 }
 
 void CTile::SetInstancingData(PTileMapInstancingData pData)
@@ -79,7 +151,7 @@ void CTile::SetInstancingData(PTileMapInstancingData pData)
 
 	CCameraComponent*	pCamera = pScene->GetCameraManager()->GetMainCamera();
 
-	pData->matWVP	= m_matWorld * pCamera->GetViewMatrix() * pCamera->GetProjMatrix();
+	pData->matWVP = m_matWorld * pCamera->GetViewMatrix() * pCamera->GetProjMatrix();
 	pData->matWVP.Transpose();
 
 	pData->vStart = m_tImgFrame.vStart;
@@ -96,7 +168,7 @@ void CTile::PostUpdate(float fTime)
 	matScale.Scaling(m_vSize);
 	matPos.Translation(m_vPos);
 
-	m_matWorld	= matScale * matPos;
+	m_matWorld = matScale * matPos;
 }
 
 void CTile::Render(float fTime)

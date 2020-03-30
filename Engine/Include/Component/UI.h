@@ -29,6 +29,8 @@ public:
 	void SetMesh(const string& strName);
 	void SetInputLayout(const string& strName);
 
+	void Unable();
+	
 public:
 	virtual bool Init();
 	virtual void Begin();

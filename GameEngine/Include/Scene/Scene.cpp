@@ -3,6 +3,9 @@
 #include "../Object/GameObject.h"
 #include "../CameraManager.h"
 
+#include "Navigation2D.h"
+#include "Navigation3D.h"
+
 CScene::CScene()	:
 	m_pGameMode(nullptr)
 {
@@ -13,10 +16,22 @@ CScene::CScene()	:
 	m_pCameraManager->m_pScene = this;
 
 	m_pCameraManager->Init();
+
+	m_pNavigation[0] = new CNavigation2D;
+	m_pNavigation[1] = new CNavigation3D;
+
+	m_pNavigation[0]->m_pScene = this;
+	m_pNavigation[1]->m_pScene = this;
+
 }
 
 CScene::~CScene()
 {
+	for (int i = 0; i < 2; ++i)
+	{
+		SAFE_DELETE(m_pNavigation[i]);
+	}
+
 	SAFE_DELETE(m_pCameraManager);
 	SAFE_RELEASE_VECLIST(m_BeginList);
 	SAFE_DELETE(m_pGameMode);
@@ -31,6 +46,11 @@ CGameMode * CScene::GetGameMode() const
 CCameraManager * CScene::GetCameraManager() const
 {
 	return m_pCameraManager;
+}
+
+CNavigation * CScene::GetNavigation(RENDER_MODE eMode) const
+{
+	return m_pNavigation[eMode];
 }
 
 bool CScene::Init()

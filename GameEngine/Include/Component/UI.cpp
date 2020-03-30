@@ -21,6 +21,8 @@ CUI::CUI()
 	m_bUI	= true;
 
 	m_pAlphaBlend	= nullptr;
+
+	m_pBody = nullptr;
 }
 
 CUI::CUI(const CUI & com)	:
@@ -79,6 +81,12 @@ void CUI::SetInputLayout(const string & strName)
 	m_pLayout	= GET_SINGLE(CShaderManager)->FindInputLayout(strName);
 }
 
+void CUI::Unable()
+{
+	SAFE_RELEASE(m_pBody);
+	m_pBody = nullptr;
+}
+
 bool CUI::Init()
 {
 	if (!CSceneComponent::Init())
@@ -101,14 +109,20 @@ void CUI::Begin()
 	m_pBody->AddEndOverlapCallback(this, &CUI::BodyCollisionExit);
 
 	m_pAlphaBlend	= GET_SINGLE(CResourceManager)->FindRenderState(RENDERSTATE_ALPHABLEND);
+
+
 }
 
 void CUI::Update(float fTime)
 {
 	CSceneComponent::Update(fTime);
 
-	m_pBody->SetRelativeScale(GetRelativeScale());
-	m_pBody->SetExtent(GetRelativeScale().x, GetRelativeScale().y);
+	if (nullptr != m_pBody)
+	{
+		m_pBody->SetRelativeScale(GetRelativeScale());
+		m_pBody->SetExtent(GetRelativeScale().x, GetRelativeScale().y);
+	}
+	
 }
 
 void CUI::Render(float fTime)

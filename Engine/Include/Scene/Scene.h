@@ -15,10 +15,12 @@ private:
 private:
 	CGameMode*	m_pGameMode;
 	class CCameraManager*	m_pCameraManager;
+	class CNavigation*		m_pNavigation[2];
 
 public:
 	CGameMode* GetGameMode()	const;
 	class CCameraManager* GetCameraManager()	const;
+	class CNavigation* GetNavigation(RENDER_MODE eMode) const;
 
 private:
 	list<class CGameObject*>	m_ObjList;

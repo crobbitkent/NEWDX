@@ -9,9 +9,11 @@
 #include "../Resource/Material.h"
 #include "Tile.h"
 #include "../Scene/Scene.h"
+#include "../Scene/Navigation2D.h"
 #include "../CameraManager.h"
 #include "CameraComponent.h"
 #include "../Device.h"
+#include "Transform.h"
 
 CTileMap::CTileMap()
 {
@@ -22,15 +24,15 @@ CTileMap::CTileMap()
 	m_pMesh = (CStaticMesh*)GET_SINGLE(CResourceManager)->FindMesh("TexRect");
 	m_pLayout = GET_SINGLE(CShaderManager)->FindInputLayout(POS_UV_LAYOUT);
 	m_pAlphaBlend = nullptr;
-	m_pMaterial	= nullptr;
-	m_pTileArray	= nullptr;
+	m_pMaterial = nullptr;
+	m_pTileArray = nullptr;
 
 	m_iTileCountX = 0;
 	m_iTileCountY = 0;
 	m_iTileCount = 0;
-	m_eTileType	= TT_NONE;
+	m_eTileType = TT_NONE;
 
-	m_bTileRender	= false;
+	m_bTileRender = false;
 }
 
 CTileMap::CTileMap(const CTileMap & com) :
@@ -43,7 +45,7 @@ CTileMap::CTileMap(const CTileMap & com) :
 
 	m_pLayout = com.m_pLayout;
 
-	if(m_pMaterial)
+	if (m_pMaterial)
 		m_pMaterial->AddRef();
 
 	m_pAlphaBlend = nullptr;
@@ -55,9 +57,9 @@ CTileMap::CTileMap(const CTileMap & com) :
 	m_vSize = com.m_vSize;
 	m_vTileSize = com.m_vTileSize;
 	m_eTileType = com.m_eTileType;
-	m_pTileArray	= nullptr;
+	m_pTileArray = nullptr;
 
-	m_bTileRender	= com.m_bTileRender;
+	m_bTileRender = com.m_bTileRender;
 }
 
 CTileMap::~CTileMap()
@@ -84,6 +86,26 @@ CTileMap::~CTileMap()
 	SAFE_RELEASE(m_pMesh);
 }
 
+int CTileMap::GetTileCountX() const
+{
+	return m_iTileCountX;
+}
+
+int CTileMap::GetTileCountY() const
+{
+	return m_iTileCountY;
+}
+
+int CTileMap::GetTileCount() const
+{
+	return m_iTileCount;
+}
+
+Vector3 CTileMap::GetTileSize() const
+{
+	return m_vTileSize;
+}
+
 void CTileMap::SetMesh(const string & strName)
 {
 	SAFE_RELEASE(m_pMesh);
@@ -99,7 +121,7 @@ void CTileMap::SetMaterial(const string & strName)
 {
 	CMaterial*	pMtrl = GET_SINGLE(CResourceManager)->FindMaterial(strName);
 
-	if(pMtrl)
+	if (pMtrl)
 	{
 		if (!m_pMaterial)
 		{
@@ -117,15 +139,15 @@ void CTileMap::SetMaterial(const string & strName)
 
 void CTileMap::SetAlphaBlend()
 {
-	if(m_pAlphaBlend)
+	if (m_pAlphaBlend)
 		return;
 
-	m_pAlphaBlend	= GET_SINGLE(CResourceManager)->FindRenderState(RENDERSTATE_ALPHABLEND);
+	m_pAlphaBlend = GET_SINGLE(CResourceManager)->FindRenderState(RENDERSTATE_ALPHABLEND);
 }
 
 void CTileMap::SetTileMesh(const string & strName)
 {
-	if(m_iTileCount == 0)
+	if (m_iTileCount == 0)
 		return;
 
 	for (unsigned int i = 0; i < m_iTileCount; ++i)
@@ -155,7 +177,7 @@ void CTileMap::SetTileMaterial(const string & strName)
 		m_pTileArray[i]->SetMaterial(strName);
 	}
 
-	m_bTileRender	= true;
+	m_bTileRender = true;
 }
 
 void CTileMap::SetTileAlphaBlend()
@@ -169,7 +191,7 @@ void CTileMap::SetTileAlphaBlend()
 	}
 }
 
-void CTileMap::CreateTile(TILE_TYPE eType, unsigned int iCountX, unsigned int iCountY, 
+void CTileMap::CreateTile(TILE_TYPE eType, unsigned int iCountX, unsigned int iCountY,
 	const Vector3 & vTileSize, const Vector3& vPos)
 {
 	if (m_iTileCount != 0)
@@ -189,9 +211,9 @@ void CTileMap::CreateTile(TILE_TYPE eType, unsigned int iCountX, unsigned int iC
 	m_iTileCountY = iCountY;
 	m_iTileCount = m_iTileCountX * m_iTileCountY;
 
-	m_eTileType	= eType;
-	m_vTileSize	= vTileSize;
-	m_vSize	= m_vTileSize * Vector3((float)m_iTileCountX, (float)m_iTileCountY, 0.f);
+	m_eTileType = eType;
+	m_vTileSize = vTileSize;
+	m_vSize = m_vTileSize * Vector3((float)m_iTileCountX, (float)m_iTileCountY, 0.f);
 
 	SetWorldScale(m_vSize.x, m_vSize.y, 1.f);
 
@@ -205,12 +227,15 @@ void CTileMap::CreateTile(TILE_TYPE eType, unsigned int iCountX, unsigned int iC
 		{
 			int	iIndex = i * m_iTileCountX + j;
 
-			m_pTileArray[iIndex]	= new CTile;
+			m_pTileArray[iIndex] = new CTile;
 
-			m_pTileArray[iIndex]->m_eType	= eType;
-			m_pTileArray[iIndex]->m_eOption	= TO_NONE;
+			m_pTileArray[iIndex]->m_eType = eType;
+			m_pTileArray[iIndex]->m_eOption = TO_NONE;
 			m_pTileArray[iIndex]->m_vPos = vPos + Vector3(j * m_vTileSize.x, i * m_vTileSize.y, 0.f);
 			m_pTileArray[iIndex]->m_vSize = m_vTileSize;
+			m_pTileArray[iIndex]->m_iIndexX = j;
+			m_pTileArray[iIndex]->m_iIndexY = i;
+			m_pTileArray[iIndex]->m_iIndex = iIndex;
 
 			if (!m_vecFrame.empty())
 			{
@@ -222,19 +247,21 @@ void CTileMap::CreateTile(TILE_TYPE eType, unsigned int iCountX, unsigned int iC
 	// 전체 타일 수만큼 인스턴싱 버퍼를 할당해준다.
 	m_pInstancingBuffer = new InstancingBuffer;
 
-	m_pInstancingBuffer->iSize	= sizeof(TileMapInstancingData);
-	m_pInstancingBuffer->iCount	= m_iTileCount;
-	m_pInstancingBuffer->eUsage	= D3D11_USAGE_DYNAMIC;
-	D3D11_BUFFER_DESC	tDesc	= {};
+	m_pInstancingBuffer->iSize = sizeof(TileMapInstancingData);
+	m_pInstancingBuffer->iCount = m_iTileCount;
+	m_pInstancingBuffer->eUsage = D3D11_USAGE_DYNAMIC;
+	D3D11_BUFFER_DESC	tDesc = {};
 
-	tDesc.Usage	= D3D11_USAGE_DYNAMIC;
-	tDesc.ByteWidth	= m_pInstancingBuffer->iSize * m_pInstancingBuffer->iCount;
+	tDesc.Usage = D3D11_USAGE_DYNAMIC;
+	tDesc.ByteWidth = m_pInstancingBuffer->iSize * m_pInstancingBuffer->iCount;
 	tDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	tDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 
 	DEVICE->CreateBuffer(&tDesc, nullptr, &m_pInstancingBuffer->pBuffer);
 
-	m_pInstancingData	= new TileMapInstancingData[m_iTileCount];
+	m_pInstancingData = new TileMapInstancingData[m_iTileCount];
+
+	((CNavigation2D*)m_pScene->GetNavigation(RM_2D))->SetTileMap(this);
 }
 
 void CTileMap::AddFrame(const Vector2 & vStart, const Vector2 & vEnd, const Vector2& vImgSize,
@@ -242,11 +269,11 @@ void CTileMap::AddFrame(const Vector2 & vStart, const Vector2 & vEnd, const Vect
 {
 	ImageFrame	tFrame = {};
 
-	tFrame.vStart	= vStart;
-	tFrame.vEnd	= vEnd;
-	tFrame.vImageSize	= vImgSize;
-	tFrame.iImageType	= eType;
-	tFrame.iFrame	= m_vecFrame.size();
+	tFrame.vStart = vStart;
+	tFrame.vEnd = vEnd;
+	tFrame.vImageSize = vImgSize;
+	tFrame.iImageType = eType;
+	tFrame.iFrame = m_vecFrame.size();
 
 	m_vecFrame.push_back(tFrame);
 
@@ -257,6 +284,100 @@ void CTileMap::AddFrame(const Vector2 & vStart, const Vector2 & vEnd, const Vect
 			m_pTileArray[i]->SetFrame(tFrame);
 		}
 	}
+}
+
+CTile * CTileMap::GetTile(const Vector3 & vPos)
+{
+	int	iIndex = GetTileIndex(vPos);
+
+	if (iIndex == -1)
+		return nullptr;
+
+	return m_pTileArray[iIndex];
+}
+
+CTile * CTileMap::GetTile(float x, float y)
+{
+	int	iIndex = GetTileIndex(x, y);
+
+	if (iIndex == -1)
+		return nullptr;
+
+	return m_pTileArray[iIndex];
+}
+
+CTile * CTileMap::GetTileFromIndex(int x, int y)
+{
+	if (x == -1 || y == -1)
+		return nullptr;
+
+	return m_pTileArray[y * m_iTileCountX + x];
+}
+
+int CTileMap::GetTileIndex(const Vector3 & vPos)
+{
+	int	x = GetTileIndexX(vPos.x);
+	int	y = GetTileIndexY(vPos.y);
+
+	if (x == -1 || y == -1)
+		return -1;
+
+	return y * m_iTileCountX + x;
+}
+
+int CTileMap::GetTileIndex(float x, float y)
+{
+	int	iX = GetTileIndexX(x);
+	int	iY = GetTileIndexY(y);
+
+	if (iX == -1 || iY == -1)
+		return -1;
+
+	return iY * m_iTileCountX + iX;
+}
+
+int CTileMap::GetTileIndexX(const Vector3 & vPos)
+{
+	return GetTileIndexX(vPos.x);
+}
+
+int CTileMap::GetTileIndexX(float x)
+{
+	if (m_eTileType == TT_RECT)
+	{
+		float	fConvertX = x - m_pTransform->GetRelativePos().x;
+
+		int	iX = (int)(fConvertX / m_vTileSize.x);
+
+		if (iX < 0 || iX >= m_iTileCountX)
+			return -1;
+
+		return iX;
+	}
+
+	return -1;
+}
+
+int CTileMap::GetTileIndexY(const Vector3 & vPos)
+{
+	return GetTileIndexY(vPos.y);
+}
+
+int CTileMap::GetTileIndexY(float y)
+{
+	if (m_eTileType == TT_RECT)
+	{
+		float	fConvertY = y - m_pTransform->GetRelativePos().y;
+
+		int	iY = (int)(fConvertY / m_vTileSize.y);
+
+		if (iY < 0 || iY >= m_iTileCountY)
+			return -1;
+
+		return iY;
+	}
+
+	return -1;
 }
 
 bool CTileMap::Init()
@@ -288,7 +409,7 @@ void CTileMap::PostUpdate(float fTime)
 
 	if (m_bTileRender)
 	{
-		m_iRenderCount	= 0;
+		m_iRenderCount = 0;
 
 		CCameraComponent*	pCamera = m_pScene->GetCameraManager()->GetMainCamera();
 
@@ -316,14 +437,14 @@ void CTileMap::PostUpdate(float fTime)
 			}
 		}
 
-		D3D11_MAPPED_SUBRESOURCE	tMap	= {};
+		D3D11_MAPPED_SUBRESOURCE	tMap = {};
 		CONTEXT->Map(m_pInstancingBuffer->pBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &tMap);
 
 		memcpy(tMap.pData, m_pInstancingData, sizeof(TileMapInstancingData) * m_iRenderCount);
 
 		CONTEXT->Unmap(m_pInstancingBuffer->pBuffer, 0);
 
-		m_pInstancingBuffer->iCount	= m_iRenderCount;
+		m_pInstancingBuffer->iCount = m_iRenderCount;
 	}
 }
 
@@ -331,9 +452,9 @@ void CTileMap::Render(float fTime)
 {
 	CSceneComponent::Render(fTime);
 
-	if(m_pMaterial)
+	if (m_pMaterial)
 	{
-		if(m_pAlphaBlend)
+		if (m_pAlphaBlend)
 			m_pAlphaBlend->SetState();
 
 		size_t	iContainer = m_pMesh->GetContainerCount();
@@ -351,7 +472,7 @@ void CTileMap::Render(float fTime)
 			}
 		}
 
-		if(m_pAlphaBlend)
+		if (m_pAlphaBlend)
 			m_pAlphaBlend->ResetState();
 	}
 
