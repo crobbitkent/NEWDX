@@ -82,7 +82,7 @@ bool Bug::Init()
 	SAFE_RELEASE(pMaterial);
 
 	m_pMesh->SetRelativeScale(400.f, 400.f, 1.f);
-	m_pMesh->SetPivot(0.5f, 0.585f, 0.f);
+
 
 	m_pBody->SetExtent(150.f, 150.f);
 	m_pBody->SetPivot(0.5f, 0.5f, 0.f);
@@ -106,7 +106,7 @@ bool Bug::Init()
 
 	pSencerBody = m_pLeftSencer->GetBody();
 	m_pMesh->AddChild(pSencerBody, TR_POS);
-	
+
 	pSencerBody->SetRelativePos(-(m_pBody->GetExtent().x * 0.5f + 1), -(m_pBody->GetExtent().y * 0.5f + 1), 0.f);
 
 	m_pBody->SetMonster(true);
@@ -114,8 +114,8 @@ bool Bug::Init()
 
 
 
-	SetAnimation();
-	SetCurrentState(BS_WALK);
+
+
 
 	SetForce(m_fCurrentForce);
 
@@ -130,6 +130,10 @@ void Bug::Begin()
 void Bug::Update(float fTime)
 {
 	CGameObject::Update(fTime);
+
+	// char	strText[256] = {};
+	// sprintf_s(strText, "LEFT = %d, RIGHT = %d\n", m_pLeftSencer->IsOverlap(), m_pRightSencer->IsOverlap());
+	// OutputDebugStringA(strText);
 
 
 
@@ -146,7 +150,7 @@ void Bug::Update(float fTime)
 	}
 
 
-	if(BS_DEAD == m_eState && true == anim)
+	if (BS_DEAD == m_eState && true == anim)
 	{
 		m_bDead = true;
 
@@ -154,11 +158,78 @@ void Bug::Update(float fTime)
 	}
 
 
+
 	if (true == m_bJump)
 	{
+		if (false == m_bOnLand)
+		{
+			bool leftFree = m_pLeftSencer->IsOverlap();
+			bool rightFree = m_pRightSencer->IsOverlap();
+
+			// 점프중에 바닥에
+			if (false == leftFree && false == rightFree)
+			{
+				if (DIR_LEFT == m_eDir)
+				{
+					// 왼쪽으로 가고 있는데 왼쪽 센서가...
+					if (true == leftFree || true == m_bNoLeft)
+					{
+						// Reverse();
+						m_eDir = DIR_RIGHT;
+						m_eMoveBackDir = DIR_RIGHT;
+						m_bNoLeft = false;
+						m_pLeftSencer->ClearOverlap();
+						m_pRightSencer->ClearOverlap();
+
+						
+					}
+				}
+				else if (DIR_RIGHT == m_eDir)
+				{
+					// 오른쪽으로 가고 있는데 왼쪽 센서가...
+					if (true == rightFree || true == m_bNoRight)
+					{
+						// Reverse();
+						m_eDir = DIR_LEFT;
+						m_eMoveBackDir = DIR_LEFT;
+						m_bNoRight = false;
+						m_pLeftSencer->ClearOverlap();
+						m_pRightSencer->ClearOverlap();
+
+					}
+				}
+			}
+			// 점프중인데 오른쪽이 걸렸다.
+			else if (true == leftFree && false == rightFree)
+			{
+				if (true == m_bNoRight)
+				{
+					// Reverse();
+					m_eDir = DIR_LEFT;
+					m_eMoveBackDir = DIR_LEFT;
+					m_bNoRight = false;
+					m_pLeftSencer->ClearOverlap();
+					m_pRightSencer->ClearOverlap();
+
+				}
+			}
+			else if (false == leftFree && true == rightFree)
+			{
+				if (true == m_bNoLeft)
+				{
+					// Reverse();
+					m_eDir = DIR_RIGHT;
+					m_eMoveBackDir = DIR_RIGHT;
+					m_bNoLeft = false;
+					m_pLeftSencer->ClearOverlap();
+					m_pRightSencer->ClearOverlap();
+
+				}
+			}			
+		}
 		JumpBack(fTime);
 	}
-	else if(BS_DEAD != m_eState)
+	else if (BS_DEAD != m_eState)
 	{
 		CheckFront();
 
@@ -166,9 +237,8 @@ void Bug::Update(float fTime)
 	}
 
 
+		// m_pMovement->AddRotationZ(180.f * fTime * rotationNumber);
 	
-
-	// m_pMovement->AddRotationZ(180.f * fTime * rotationNumber);
 }
 
 void Bug::Render(float fTime)
@@ -190,7 +260,7 @@ void Bug::MoveX(float fTime)
 		break;
 	}*/
 
-	
+
 	Flip(m_eDir);
 
 	m_pMovement->AddMovement(GetWorldAxis(AXIS_X) * m_eDir);
@@ -209,21 +279,27 @@ void Bug::CheckFront()
 	if (DIR_LEFT == m_eDir)
 	{
 		// 왼쪽으로 가고 있는데 왼쪽 센서가...
-		if (true == m_pLeftSencer->IsOverlap())
+		if (true == m_pLeftSencer->IsOverlap() || true == m_bNoLeft)
 		{
 			Reverse();
 			m_eDir = DIR_RIGHT;
+			m_bNoLeft = false;
+			m_pLeftSencer->ClearOverlap();
+			m_pRightSencer->ClearOverlap();
 			return;
 		}
 	}
 
-	if(DIR_RIGHT == m_eDir)
+	if (DIR_RIGHT == m_eDir)
 	{
 		// 오른쪽으로 가고 있는데 왼쪽 센서가...
-		if (true == m_pRightSencer->IsOverlap())
+		if (true == m_pRightSencer->IsOverlap() || true == m_bNoRight)
 		{
 			Reverse();
 			m_eDir = DIR_LEFT;
+			m_bNoRight = false;
+			m_pLeftSencer->ClearOverlap();
+			m_pRightSencer->ClearOverlap();
 			return;
 		}
 	}
@@ -243,11 +319,11 @@ void Bug::MoveBack(float fTime)
 
 		if (m_fMoveBackTime >= m_fMoveBackTimeMax)
 		{
-			m_pMovement->SetMoveSpeed(300.f);
+			m_pMovement->SetMoveSpeed(m_fMoveSpeed);
 
 			m_bMoveBack = false;
 			m_fMoveBackTime = 0.f;
-		}	
+		}
 	}
 	else
 	{
@@ -262,7 +338,7 @@ void Bug::JumpBack(float fTime)
 		m_pMovement->SetMoveSpeed(m_fMoveSpeed);
 
 		m_fForce = m_fOriginForce * 400;
-		
+
 		if (BS_DIE != m_eState)
 		{
 			SetCurrentState(BS_DIE);
@@ -305,20 +381,42 @@ void Bug::SetCurrentState(BUG_STATE eState)
 
 
 
-	std::string stateName = "BUG_";
+	std::string stateName = m_strAniName;
+	stateName.append("_");
 	stateName.append(m_vecStateName[eState]);
 
 	m_pAnimation->ChangeAnimation(stateName);
 }
 
-void Bug::SetAnimation()
+void Bug::SetAnimation(const string& strAniName)
 {
-	m_pAnimation->AddAnimation2DSequence("BUG_WALK");
-	m_pAnimation->AddAnimation2DSequence("BUG_TURN");
-	m_pAnimation->AddAnimation2DSequence("BUG_DIE");
-	m_pAnimation->AddAnimation2DSequence("BUG_DEAD");
-	m_pAnimation->AddAnimation2DSequence("BUG_DASH");
-	m_pAnimation->AddAnimation2DSequence("BUG_BWALK");
+	m_strAniName = strAniName;
+	m_strAniName.append("_WALK");
+	m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	m_strAniName.clear();
+	m_strAniName = strAniName;
+	m_strAniName.append("_TURN");
+	m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	m_strAniName.clear();
+	m_strAniName = strAniName;
+	m_strAniName.append("_DIE");
+	m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	m_strAniName.clear();
+	m_strAniName = strAniName;
+	m_strAniName.append("_DEAD");
+	m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	m_strAniName.clear();
+	m_strAniName = strAniName;
+	m_strAniName.append("_DASH");
+	m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	m_strAniName.clear();
+	m_strAniName = strAniName;
+	m_strAniName.append("_BWALK");
+	m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	m_strAniName.clear();
+	m_strAniName = strAniName;
+	m_strAniName.append("_STAND");
+	m_pAnimation->AddAnimation2DSequence(m_strAniName);
 
 
 
@@ -327,7 +425,14 @@ void Bug::SetAnimation()
 	m_vecStateName.push_back("DIE");
 	m_vecStateName.push_back("DEAD");
 	m_vecStateName.push_back("DASH");
-	m_vecStateName.push_back("bwalk");
+	m_vecStateName.push_back("BWALK");
+	m_vecStateName.push_back("STAND");
+
+
+	m_strAniName.clear();
+	m_strAniName = strAniName;
+
+	SetCurrentState(BS_WALK);
 }
 
 
@@ -358,16 +463,53 @@ void Bug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 		m_iHP -= 1;
 
 		if (0 >= m_iHP)
-		{	
+		{
 			m_bJump = true;
 			m_fMoveBackTimeMax = 0.2f;
 			m_fMoveSpeed = 500.f;
+
+			return;
 		}
 	}
 
 
 	if (true == pDest->IsStage())
 	{
+		int playerPos = (int)pSrc->GetIntersect().z;
+
+		switch (playerPos)
+		{
+		case 1: // LEFT
+			m_pMovement->AddMovement(Vector3(pSrc->GetIntersect().x * -2.f, 0.f, 0.f));
+			m_bNoRight = true;
+
+			break;
+		case 2: // TOP
+			m_pMovement->AddMovement(Vector3(0.f, pSrc->GetIntersect().y * 2.f, 0.f));
+			ClearGravity();
+			JumpEnd(fTime);
+			m_bOnLand = true;
+			m_bNoRight = false;
+			m_bNoLeft = false;
+			m_pLeftSencer->ClearOverlap();
+			m_pRightSencer->ClearOverlap();
+			break;
+		case 3: // RIGHT
+			m_pMovement->AddMovement(Vector3(pSrc->GetIntersect().x * 2.f, 0.f, 0.f));
+			m_bNoLeft = true;
+
+			break;
+		case 4: // BOTTOM
+			m_pMovement->AddMovement(Vector3(0.f, pSrc->GetIntersect().y * -2.f, 0.f));
+
+			// m_bCeiling = true;
+			break;
+		default:
+			BOOM
+				break;
+		}
+
+
 		if (true == m_bJump)
 		{
 			m_fCurrentForce = m_fCurrentForce * 0.05;
@@ -389,7 +531,7 @@ void Bug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 				return;
 			}
 
-			
+
 		}
 
 		ClearGravity();

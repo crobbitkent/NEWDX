@@ -11,6 +11,7 @@
 #include "NewHK.h"
 #include "JustBug.h"
 #include "DashingBug.h"
+#include "NewDashingBug.h"
 
 
 #include "TestStage.h"
@@ -56,7 +57,7 @@ bool HKMode::Init()
 	 SAFE_RELEASE(hk);*/
 
 
-	JustBug* bug = m_pScene->SpawnObject<JustBug>(Vector3(500.f, 500.f, 0.f));
+	DashingBug* bug = m_pScene->SpawnObject<DashingBug>(Vector3(500.f, 500.f, 0.f));
 	SAFE_RELEASE(bug);
 
 	
@@ -66,17 +67,17 @@ bool HKMode::Init()
 	TestStage* stage1 = m_pScene->SpawnObject<TestStage>(Vector3(0.f, 0.f, 0.f));
 	SAFE_RELEASE(stage1);
 	
-	/*TestStage* stage2 = m_pScene->SpawnObject<TestStage>(Vector3(1500.f, 101.f, 0.f));
+	TestStage* stage2 = m_pScene->SpawnObject<TestStage>(Vector3(1500.f, 101.f, 0.f));
 	stage2->SetScale(Vector3(2000.f, 200.f, 0.f));
 	SAFE_RELEASE(stage2);
 	
-	TestStage* stage3 = m_pScene->SpawnObject<TestStage>(Vector3(-2000.f, 501.f, 0.f));
+	TestStage* stage3 = m_pScene->SpawnObject<TestStage>(Vector3(-2000.f, 301.f, 0.f));
 	SAFE_RELEASE(stage3);
 
-	TestStage* stage4 = m_pScene->SpawnObject<TestStage>(Vector3(2000.f, 501.f, 0.f));
+	TestStage* stage4 = m_pScene->SpawnObject<TestStage>(Vector3(2000.f, 301.f, 0.f));
 	stage4->SetScale(Vector3(300.f, 100.f, 0.f));
 	SAFE_RELEASE(stage4);
-*/
+
 
 
 

@@ -121,5 +121,10 @@ private:
 	bool m_bNoRight = false;
 	bool m_bNoLeft = false;
 	bool m_bCeiling = false;
+
+	// 공격모션
+	bool m_bAttacking = false;
+	float m_fAttackTime = 0.f;
+	float m_fAttackTotalTime = 0.3f;
 };
 

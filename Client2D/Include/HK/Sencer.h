@@ -22,15 +22,19 @@ public:
 	class CColliderRect* GetBody() const { return m_pBody;  }
 
 	bool IsOverlap() const;
+	bool IsPlayer() const;
+	void ClearOverlap() { m_bFree = false; }
 
 	void OnBlock(class CColliderBase* pSrc, class CColliderBase* pDest, float fTime);
 	void OffBlock(class CColliderBase* pSrc, class CColliderBase* pDest, float fTime);
 
+	void Clear();
 
 private:
 	class CCharacterMovementComponent*	m_pMovement;
 	class CColliderRect* m_pBody;
 
-	bool m_bFree;
+	bool m_bFree = true;
+	bool m_bPlayer = false;
 };
 

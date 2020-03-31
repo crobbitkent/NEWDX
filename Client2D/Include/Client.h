@@ -54,4 +54,6 @@ enum BUG_STATE
 
 	BS_DASH,
 	BS_BWALK,
+
+	BS_STAND,
 };

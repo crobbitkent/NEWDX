@@ -27,6 +27,9 @@ bool JustBug::Init()
 		return false;
 	}
 
+	Bug::SetAnimation("BUG");
+	m_pMesh->SetPivot(0.5f, 0.585f, 0.f);
+
 	return true;
 }
 
@@ -77,11 +80,6 @@ void JustBug::JumpEnd(float fTime)
 void JustBug::SetCurrentState(BUG_STATE eState)
 {
 	Bug::SetCurrentState(eState);
-}
-
-void JustBug::SetAnimation()
-{
-
 }
 
 void JustBug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)

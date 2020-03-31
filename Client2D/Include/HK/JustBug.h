@@ -24,7 +24,6 @@ public:
 
 
 	void SetCurrentState(BUG_STATE  eState);
-	void SetAnimation();
 
 	void OnBlock(class CColliderBase* pSrc, class CColliderBase* pDest, float fTime);
 };

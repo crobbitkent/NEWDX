@@ -203,6 +203,17 @@ void HollowKnight::Update(float fTime)
 
 	// 충돌중이 아니라면
 
+	if (true == m_bAttacking)
+	{
+		m_fAttackTime += fTime;
+
+		if (m_fAttackTime >= m_fAttackTotalTime)
+		{
+			m_bAttacking = false;
+			m_fAttackTime = 0.f;
+		}
+	}
+	
 
 	// 중력, 충돌
 	if (true == m_bOnLand)
@@ -259,8 +270,27 @@ void HollowKnight::Update(float fTime)
 		if (m_fDamagedTotalTime >= m_fDamagedTime)
 		{
 			m_pMovement->SetMoveSpeed(2500.f);
+
+			if (true == m_bNoLeft && DIR_LEFT == m_eMonsterDir)
+			{	
+				m_eDirType = DIR_RIGHT;
+				m_eMonsterDir = DIR_RIGHT;
+			}
+			else if (true == m_bNoRight && DIR_RIGHT == m_eMonsterDir)
+			{
+				m_eDirType = DIR_LEFT;
+				m_eMonsterDir = DIR_LEFT;
+
+			}
+
 			m_pMovement->AddMovement(GetWorldAxis(AXIS_X) * m_eMonsterDir * 2.f);
-			m_pMovement->AddMovement(GetWorldAxis(AXIS_Y));
+
+
+			if (false == m_bCeiling)
+			{
+				m_pMovement->AddMovement(GetWorldAxis(AXIS_Y));
+			}
+			
 
 			m_bOnLand = false;
 			m_bHitStage = false;
@@ -278,6 +308,10 @@ void HollowKnight::Update(float fTime)
 			m_fForce = 0.f;
 			m_fDamagedTime = 0.f;
 		}	
+	}
+	else
+	{
+		m_pMovement->SetMoveSpeed(500.f);
 	}
 
 	if (true == m_bDamaged)
@@ -568,18 +602,25 @@ void HollowKnight::Fire(float fTime)
 
 void HollowKnight::Attack(float fTime)
 {
-	SetCurrentState(PS_ATTACK);
+	HKAttackEffect* attack;
+
+	if (false == m_bAttacking)
+	{
+		m_bAttacking = true;
+
+		attack = m_pScene->SpawnObject<HKAttackEffect>(
+			GetWorldPos() + GetWorldAxis(AXIS_X) * 100.f * (int)m_eDirType + Vector3(0.f, 10.f, 0.f)
+			);
+
+		attack->Flip(m_eDirType);
+
+		CColliderRect* pBody = attack->GetBody();
+		pBody->SetCollisionProfile("PlayerProjectile");
+		m_fAttackTime += fTime;
+		SAFE_RELEASE(attack);
+	}
 	
-	HKAttackEffect* attack = m_pScene->SpawnObject<HKAttackEffect>(
-		GetWorldPos() + GetWorldAxis(AXIS_X) * 100.f * (int)m_eDirType + Vector3(0.f, 10.f, 0.f)
-		);
-
-	attack->Flip(m_eDirType);
-
-	CColliderRect* pBody = attack->GetBody();
-	pBody->SetCollisionProfile("PlayerProjectile");
-
-	SAFE_RELEASE(attack);
+	SetCurrentState(PS_ATTACK);
 }
 
 void HollowKnight::Jump(float fTime)

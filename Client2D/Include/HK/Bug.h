@@ -27,7 +27,7 @@ public:
 
 
 	 void SetCurrentState(BUG_STATE  eState);
-	 void SetAnimation();
+	 void SetAnimation(const string& strAniName);
 
 	void OnBlock(class CColliderBase* pSrc, class CColliderBase* pDest, float fTime);
 
@@ -71,5 +71,16 @@ protected:
 	bool m_bJump = false;
 
 	float m_fCurrentForce;
+
+	// 충돌
+	bool m_bNoRight = false;
+	bool m_bNoLeft = false;
+
+	// 애니 앞부분 이름
+	string m_strAniName;
+
+	// 이동 속도
 	float m_fMoveSpeed;
 };
+
+

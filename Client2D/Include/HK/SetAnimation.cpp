@@ -610,6 +610,9 @@ void HKMode::SetCollision()
 	GET_SINGLE(CCollisionManager)->CreateChannel("Stage", CT_BLOCK);
 	GET_SINGLE(CCollisionManager)->CreateProfile("Stage", "Stage");
 
+	GET_SINGLE(CCollisionManager)->CreateChannel("Sencer", CT_BLOCK);
+	GET_SINGLE(CCollisionManager)->CreateProfile("Sencer", "Sencer");
+
 	GET_SINGLE(CCollisionManager)->CreateProfile("Player", "Player");
 	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("Player", "Player", CT_IGNORE);
 	//GET_SINGLE(CCollisionManager)->UpdateProfileChannel("Player", "Monster", CT_IGNORE);
@@ -656,7 +659,7 @@ void HKMode::SetUI()
 
 	// BREAK HP
 	frameCount = 22;
-	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("BREAKHP", true, 1.0f, frameCount);
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("BREAKHP", true, 0.6f, frameCount);
 
 	for (int i = 0; i < frameCount; ++i)
 	{

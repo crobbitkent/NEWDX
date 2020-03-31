@@ -102,7 +102,7 @@ void HKMode::SetBug()
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Dashing Bug
 	frameCount = 6;
-	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_WALK", true, 0.5f, frameCount);
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_WALK", true, 0.8f, frameCount);
 
 	for (int i = 0; i < frameCount; ++i)
 	{
@@ -197,7 +197,7 @@ void HKMode::SetBug()
 
 	// DB BWALK
 	frameCount = 2;
-	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_BWALK", false, 0.1f, frameCount);
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_BWALK", false, 0.2f, frameCount);
 	for (int i = 0; i < frameCount; ++i)
 	{
 		TCHAR	strFileName[MAX_PATH] = {};
@@ -207,6 +207,20 @@ void HKMode::SetBug()
 		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("DB_BWALK", strKey, strFileName);
 	}
 	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DB_BWALK", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+	// DB STAND
+	frameCount = 7;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DB_STAND", true, 1.4f, frameCount);
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/DASHING_BUG/STANDING/DB_STANDING%d.png"), i);
+		char strKey[256] = {};
+		sprintf_s(strKey, "DB_STAND%d", i);
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("DB_STAND", strKey, strFileName);
+	}
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DB_STAND", Vector2(0.f, 0.f),
 		Vector2(400.f, 400.f));
 }
 

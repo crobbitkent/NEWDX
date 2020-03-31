@@ -42,7 +42,7 @@ bool Sencer::Init()
 	m_pBody->SetPivot(0.5f, 0.5f, 0.f);
 	m_pBody->AddBlockCallback<Sencer>(this, &Sencer::OnBlock);
 	m_pBody->AddEndOverlapCallback<Sencer>(this, &Sencer::OffBlock);
-	m_pBody->SetCollisionProfile("Player");
+	m_pBody->SetCollisionProfile("Sencer");
 
 	m_pBody->EnableOverlap(true);
 
@@ -62,8 +62,6 @@ void Sencer::Begin()
 void Sencer::Update(float fTime)
 {
 	CGameObject::Update(fTime);
-
-
 }
 
 void Sencer::Render(float fTime)
@@ -76,13 +74,43 @@ bool Sencer::IsOverlap() const
 	return m_bFree;
 }
 
+bool Sencer::IsPlayer() const
+{
+	return m_bPlayer;
+}
+
 void Sencer::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 {
-	m_bFree = false;
+
+	
+
+	if ("Player" == pDest->GetCollisionProfile()->strName)
+	{
+		m_bPlayer = true;
+	}
+	else
+	{
+		m_bFree = false;
+	}
 }
 
 void Sencer::OffBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 {
+
+
+	if ("Player" == pDest->GetCollisionProfile()->strName)
+	{
+		m_bPlayer = false;
+	}
+	else
+	{
+		m_bFree = true;
+	}
+}
+
+void Sencer::Clear()
+{
+	m_bPlayer = false;
 	m_bFree = true;
 }
 

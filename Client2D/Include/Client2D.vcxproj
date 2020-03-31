@@ -183,6 +183,7 @@
     <ClCompile Include="HK\HKMode.cpp" />
     <ClCompile Include="HK\HKMouse.cpp" />
     <ClCompile Include="HK\HollowKnight.cpp" />
+    <ClCompile Include="HK\HornBug.cpp" />
     <ClCompile Include="HK\HPEffect.cpp" />
     <ClCompile Include="HK\JustBug.cpp" />
     <ClCompile Include="HK\MonsterHitEffect.cpp" />
@@ -229,6 +230,7 @@
     <ClInclude Include="HK\HKMode.h" />
     <ClInclude Include="HK\HKMouse.h" />
     <ClInclude Include="HK\HollowKnight.h" />
+    <ClInclude Include="HK\HornBug.h" />
     <ClInclude Include="HK\HPEffect.h" />
     <ClInclude Include="HK\JustBug.h" />
     <ClInclude Include="HK\MonsterHitEffect.h" />
