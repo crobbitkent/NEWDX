@@ -222,6 +222,119 @@ void HKMode::SetBug()
 	}
 	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DB_STAND", Vector2(0.f, 0.f),
 		Vector2(400.f, 400.f));
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Dashing Bug
+	frameCount = 7;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("HB_WALK", true, 0.8f, frameCount);
+
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/HORN_BUG/WALK/HB_WALK%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "HB_WALK%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("HB_WALK", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("HB_WALK", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+
+	// HB Turn
+	frameCount = 3;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("HB_TURN", true, 0.1f, frameCount);
+
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/HORN_BUG/TURN/HB_TURN%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "HB_TURN%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("HB_TURN", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("HB_TURN", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+
+
+
+	// HB DIE
+	frameCount = 5;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("HB_DIE", true, 0.5f, frameCount);
+
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/HORN_BUG/DIE/HB_DIE%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "HB_DIE%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("HB_DIE", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("HB_DIE", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+
+	// HB DASH
+	frameCount = 4;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("HB_DASH", true, 0.4f, frameCount);
+
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/HORN_BUG/RUN/HB_RUN%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "HB_DASH%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("HB_DASH", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("HB_DASH", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+	// HB DEAD
+	frameCount = 3;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("HB_DEAD", false, 0.5f, frameCount);
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/HORN_BUG/DEAD/HB_DEAD%d.png"), i);
+		char strKey[256] = {};
+		sprintf_s(strKey, "HB_DEAD%d", i);
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("HB_DEAD", strKey, strFileName);
+	}
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("HB_DEAD", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
+
+	// HB BRUN
+	frameCount = 5;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("HB_BDASH", false, 0.4f, frameCount);
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/HORN_BUG/BRUN/HB_BRUN%d.png"), i);
+		char strKey[256] = {};
+		sprintf_s(strKey, "HB_BDASH%d", i);
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("HB_BDASH", strKey, strFileName);
+	}
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("HB_BDASH", Vector2(0.f, 0.f),
+		Vector2(400.f, 400.f));
 }
 
 

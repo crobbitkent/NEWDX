@@ -417,6 +417,14 @@ void Bug::SetAnimation(const string& strAniName)
 	m_strAniName = strAniName;
 	m_strAniName.append("_STAND");
 	m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	m_strAniName.clear();
+	m_strAniName = strAniName;
+	m_strAniName.append("_BDASH");
+	m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	m_strAniName.clear();
+	m_strAniName = strAniName;
+	m_strAniName.append("_BDIE");
+	m_pAnimation->AddAnimation2DSequence(m_strAniName);
 
 
 
@@ -427,6 +435,9 @@ void Bug::SetAnimation(const string& strAniName)
 	m_vecStateName.push_back("DASH");
 	m_vecStateName.push_back("BWALK");
 	m_vecStateName.push_back("STAND");
+
+	m_vecStateName.push_back("BDASH");
+	m_vecStateName.push_back("BDIE");
 
 
 	m_strAniName.clear();

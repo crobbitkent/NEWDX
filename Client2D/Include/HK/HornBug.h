@@ -39,7 +39,7 @@ private:
 	// DASH
 	float m_fDashTime = 0.f;
 	float m_fDashTotalTime = 1.f;
-	bool m_bDash = false;
+	bool m_bWillDash = false; // 곧 대쉬를 하겠다!
 
 	// STAND
 	float m_fStandTime = 0.f;

@@ -11,7 +11,8 @@
 #include "NewHK.h"
 #include "JustBug.h"
 #include "DashingBug.h"
-#include "NewDashingBug.h"
+#include "HornBug.h"
+
 
 
 #include "TestStage.h"
@@ -57,7 +58,7 @@ bool HKMode::Init()
 	 SAFE_RELEASE(hk);*/
 
 
-	DashingBug* bug = m_pScene->SpawnObject<DashingBug>(Vector3(500.f, 500.f, 0.f));
+	HornBug* bug = m_pScene->SpawnObject<HornBug>(Vector3(500.f, 500.f, 0.f));
 	SAFE_RELEASE(bug);
 
 	
