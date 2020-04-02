@@ -20,7 +20,6 @@ d:\mingyu\newdx\client2d\binobj\bug.obj
 d:\mingyu\newdx\client2d\binobj\blacksofteffect.obj
 d:\mingyu\newdx\client2d\binobj\startgamemode.obj
 d:\mingyu\newdx\client2d\binobj\maingamemode.obj
-d:\mingyu\newdx\client2d\binobj\testbutton.obj
 d:\mingyu\newdx\client2d\binobj\testbar.obj
 d:\mingyu\newdx\client2d\binobj\startbutton.obj
 d:\mingyu\newdx\client2d\binobj\minion.obj
@@ -39,15 +38,18 @@ d:\mingyu\newdx\client2d\binobj\newhk.obj
 d:\mingyu\newdx\client2d\binobj\monsterhiteffect.obj
 d:\mingyu\newdx\client2d\binobj\justbug.obj
 d:\mingyu\newdx\client2d\binobj\hpeffect.obj
+d:\mingyu\newdx\client2d\binobj\hornbug.obj
 d:\mingyu\newdx\client2d\binobj\hollowknight.obj
 d:\mingyu\newdx\client2d\binobj\randomnumber.obj
 d:\mingyu\newdx\client2d\binobj\testpixelcollision.obj
 d:\mingyu\newdx\client2d\binobj\testobject.obj
+d:\mingyu\newdx\client2d\binobj\testbutton.obj
+d:\mingyu\newdx\client2d\binobj\jumpbug.obj
 d:\mingyu\newdx\client2d\bin\client2d_debug.exe
 d:\mingyu\newdx\client2d\bin\client2d_debug.ilk
 d:\mingyu\newdx\client2d\bin\client2d_debug.pdb
 d:\mingyu\newdx\client2d\binobj\client2d.res
-d:\mingyu\newdx\client2d\binobj\hollowknight.obj.enc
+d:\mingyu\newdx\client2d\binobj\newdashingbug.obj
 d:\mingyu\newdx\client2d\binobj\../bin/client2d_debug.pdb
 d:\mingyu\newdx\client2d\include\../bin/client2d_debug.exe
 d:\mingyu\newdx\client2d\binobj\../bin/client2d_debug.ilk

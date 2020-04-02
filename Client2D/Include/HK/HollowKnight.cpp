@@ -187,8 +187,7 @@ bool HollowKnight::Init()
 	// HP UI 설정
 	SetHP();
 
-
-
+	m_fGravitySpeed = 1.f;
 	return true;
 }
 
@@ -225,6 +224,10 @@ void HollowKnight::Update(float fTime)
 		m_bFalling = false;
 		m_fJumpTime = 0.f;
 		m_fForce = 0.f;
+	}
+	else
+	{
+		m_fForce -= m_fOriginForce * m_fOriginForce;
 	}
 
 	if (false == m_pBody->IsColliding() && true == m_bOnLand)
@@ -273,12 +276,12 @@ void HollowKnight::Update(float fTime)
 
 			if (true == m_bNoLeft && DIR_LEFT == m_eMonsterDir)
 			{	
-				m_eDirType = DIR_RIGHT;
+				// m_eDirType = DIR_RIGHT;
 				m_eMonsterDir = DIR_RIGHT;
 			}
 			else if (true == m_bNoRight && DIR_RIGHT == m_eMonsterDir)
 			{
-				m_eDirType = DIR_LEFT;
+				// m_eDirType = DIR_LEFT;
 				m_eMonsterDir = DIR_LEFT;
 
 			}
@@ -633,7 +636,7 @@ void HollowKnight::Jump(float fTime)
 	// 점프 시간 제한 
 	if (m_fJumpTime >= m_fJumpTotalTime || true == m_bCeiling)
 	{
-		SlowGravity();
+		// SlowGravity();
 		JumpOver(fTime);
 		m_bCeiling = false;
 		return;
@@ -642,7 +645,7 @@ void HollowKnight::Jump(float fTime)
 	// 첫 점프
 	if (false == m_bJumping)
 	{
-		m_fForce = m_fOriginForce * 900;
+		m_fForce = m_fOriginForce * 700;
 		SetCurrentState(PS_JUMP);
 
 		// 큰 먼지 생성
@@ -662,8 +665,6 @@ void HollowKnight::Jump(float fTime)
 
 	m_bFalling = false;
 	m_bJumping = true;
-
-	m_fForce -= m_fOriginForce * m_fOriginForce;
 
 	m_bOnLand = false;
 	m_bHitStage = false;
@@ -696,8 +697,8 @@ void HollowKnight::Jump(float fTime)
 void HollowKnight::JumpEnd(float fTime)
 {
 	m_bJumping = false;
-	m_fForce = 0.f;
 	m_fJumpTime = 0.f;
+	m_bFalling = true;
 
 	if (false == m_bHitStage)
 	{
@@ -712,7 +713,6 @@ void HollowKnight::JumpOver(float fTime)
 {
 
 	m_bJumping = false;
-	m_fForce = 0.f;
 
 	if (false == m_bFalling)
 	{
@@ -1065,7 +1065,7 @@ void HollowKnight::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fT
 
 	if (true == pDest->IsMonster())
 	{
-		GET_SINGLE(CTimerManager)->CreateSlowMotion(10.f);
+		GET_SINGLE(CTimerManager)->CreateSlowMotion(5.f);
 
 		m_bDamaged = true;
 

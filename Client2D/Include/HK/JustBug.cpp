@@ -30,6 +30,8 @@ bool JustBug::Init()
 	Bug::SetAnimation("BUG");
 	m_pMesh->SetPivot(0.5f, 0.585f, 0.f);
 
+	m_pBody->AddBlockCallback<JustBug>(this, &JustBug::OnBlock);
+
 	return true;
 }
 

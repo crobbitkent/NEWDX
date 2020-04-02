@@ -51,6 +51,9 @@ bool HornBug::Init()
 	m_pPlayerLeftSencer->SetRelativePos(-300.f, 0.f, 0.f);
 	m_pPlayerRightSencer->SetRelativePos(300.f, 0.f, 0.f);
 
+
+	m_pBody->AddBlockCallback<HornBug>(this, &HornBug::OnBlock);
+
 	return true;
 }
 
@@ -256,11 +259,6 @@ void HornBug::JumpEnd(float fTime)
 
 void HornBug::Dash(float fTime)
 {
-
-
-
-
-
 
 }
 

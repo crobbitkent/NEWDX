@@ -33,9 +33,10 @@ void CTimerManager::Update()
 		float fTime = main->GetDeltaTime();
 
 
-		m_fSlowTotalTime -= fTime * 5.f;
+		m_fSlowTotalTime -= 0.05f;
 
 		int result = m_fSlowTotalTime * m_fSlowTotalTime;
+		// int result = m_fSlowTotalTime;
 
 		Sleep((DWORD)result);
 

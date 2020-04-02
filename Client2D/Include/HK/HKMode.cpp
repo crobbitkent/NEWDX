@@ -12,6 +12,8 @@
 #include "JustBug.h"
 #include "DashingBug.h"
 #include "HornBug.h"
+#include "JumpBug.h"
+#include "ShieldBug.h"
 
 
 
@@ -58,7 +60,7 @@ bool HKMode::Init()
 	 SAFE_RELEASE(hk);*/
 
 
-	HornBug* bug = m_pScene->SpawnObject<HornBug>(Vector3(500.f, 500.f, 0.f));
+	ShieldBug* bug = m_pScene->SpawnObject<ShieldBug>(Vector3(500.f, 500.f, 0.f));
 	SAFE_RELEASE(bug);
 
 	
@@ -244,6 +246,40 @@ bool HKMode::CreateMaterial()
 
 
 
+void HKMode::SetCollision()
+{
+	GET_SINGLE(CCollisionManager)->CreateChannel("Player", CT_BLOCK);
+	GET_SINGLE(CCollisionManager)->CreateChannel("Monster", CT_BLOCK);
+	GET_SINGLE(CCollisionManager)->CreateChannel("PlayerProjectile", CT_BLOCK);
+	GET_SINGLE(CCollisionManager)->CreateChannel("MonsterProjectile", CT_BLOCK);
+
+	GET_SINGLE(CCollisionManager)->CreateChannel("Stage", CT_BLOCK);
+	GET_SINGLE(CCollisionManager)->CreateProfile("Stage", "Stage");
+
+	GET_SINGLE(CCollisionManager)->CreateChannel("Sencer", CT_BLOCK);
+	GET_SINGLE(CCollisionManager)->CreateProfile("Sencer", "Sencer");
+
+	GET_SINGLE(CCollisionManager)->CreateProfile("Player", "Player");
+	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("Player", "Player", CT_IGNORE);
+	//GET_SINGLE(CCollisionManager)->UpdateProfileChannel("Player", "Monster", CT_IGNORE);
+	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("Player", "PlayerProjectile", CT_IGNORE);
+
+	GET_SINGLE(CCollisionManager)->CreateProfile("Monster", "Monster");
+	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("Monster", "Monster", CT_IGNORE);
+	//GET_SINGLE(CCollisionManager)->UpdateProfileChannel("Monster", "Player", CT_IGNORE);
+	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("Monster", "MonsterProjectile", CT_IGNORE);
+
+	GET_SINGLE(CCollisionManager)->CreateProfile("PlayerProjectile", "PlayerProjectile");
+	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("PlayerProjectile", "Player", CT_IGNORE);
+	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("PlayerProjectile", "PlayerProjectile", CT_IGNORE);
+	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("PlayerProjectile", "MonsterProjectile", CT_IGNORE);
+
+	GET_SINGLE(CCollisionManager)->CreateProfile("MonsterProjectile", "MonsterProjectile");
+	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("MonsterProjectile", "Monster", CT_IGNORE);
+	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("MonsterProjectile", "PlayerProjectile", CT_IGNORE);
+	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("MonsterProjectile", "MonsterProjectile", CT_IGNORE);
+
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////

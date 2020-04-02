@@ -19,11 +19,13 @@ public:
 	 void MoveX(float fTime);
 	 void Reverse();
 	 void CheckFront();
+	 void CheckCollision();
 	 void MoveBack(float fTime);
 	 void JumpBack(float fTime);
 
 	 void JumpEnd(float fTime);
 
+	 void TurnOff() { m_bTurn = false; }
 
 
 	 void SetCurrentState(BUG_STATE  eState);
@@ -75,12 +77,24 @@ protected:
 	// 충돌
 	bool m_bNoRight = false;
 	bool m_bNoLeft = false;
+	bool m_bLandPhysics = false; // 땅에 닿을때 방향 전환 방지
+	bool m_bNoMoveBack = false; // true면 MoveBack 안한다.
 
 	// 애니 앞부분 이름
 	string m_strAniName;
 
 	// 이동 속도
 	float m_fMoveSpeed;
+
+	// 돌기 
+	bool m_bTurn = true;
+
+	// DIELAND
+	bool m_bDieLand = false;
+
+	// Child 의 업데이트를 막는다
+	// Turn 할때 막는다. 
+	bool m_bChildUpdate = true;
 };
 
 

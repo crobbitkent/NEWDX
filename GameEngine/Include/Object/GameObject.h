@@ -24,6 +24,7 @@ protected:
 	// GRAVITY
 	bool m_bPhysics;
 	float m_fGravityTime;
+	float m_fGravitySpeed = 2.f;
 
 	float m_fOriginForce;
 	float m_fForce;
@@ -33,6 +34,7 @@ protected:
 	bool m_bMove;
 	int m_iDir;
 
+	bool m_bSlowAdjust = false;
 public:
 	class CScene* GetScene()	const;
 

@@ -186,6 +186,12 @@
     <ClCompile Include="HK\HornBug.cpp">
       <Filter>HK\04. Object\01. Bug</Filter>
     </ClCompile>
+    <ClCompile Include="HK\JumpBug.cpp">
+      <Filter>HK\04. Object\01. Bug</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\ShieldBug.cpp">
+      <Filter>HK\04. Object\01. Bug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -315,6 +321,12 @@
       <Filter>HK\04. Object\01. Bug</Filter>
     </ClInclude>
     <ClInclude Include="HK\HornBug.h">
+      <Filter>HK\04. Object\01. Bug</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\JumpBug.h">
+      <Filter>HK\04. Object\01. Bug</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\ShieldBug.h">
       <Filter>HK\04. Object\01. Bug</Filter>
     </ClInclude>
   </ItemGroup>

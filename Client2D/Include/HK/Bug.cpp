@@ -26,7 +26,7 @@ Bug::Bug()
 	m_eState = (BUG_STATE)4;
 	m_fCurrentForce = 2.f;
 	m_fMoveSpeed = 300.f;
-
+	m_bJumping = false;
 }
 
 Bug::~Bug()
@@ -86,7 +86,9 @@ bool Bug::Init()
 
 	m_pBody->SetExtent(150.f, 150.f);
 	m_pBody->SetPivot(0.5f, 0.5f, 0.f);
-	m_pBody->AddBlockCallback<Bug>(this, &Bug::OnBlock);
+
+
+
 	m_pBody->SetCollisionProfile("Monster");
 
 	// 중력 적용
@@ -135,7 +137,7 @@ void Bug::Update(float fTime)
 	// sprintf_s(strText, "LEFT = %d, RIGHT = %d\n", m_pLeftSencer->IsOverlap(), m_pRightSencer->IsOverlap());
 	// OutputDebugStringA(strText);
 
-
+	
 
 	if (true == m_bOnLand)
 	{
@@ -156,6 +158,18 @@ void Bug::Update(float fTime)
 
 		return;
 	}
+
+	////////////////////////////////////////////////////
+
+
+	if (BS_TURN == m_eState && true == m_pAnimation->IsSequenceEnd())
+	{
+		// Reverse();
+		m_bChildUpdate = true;
+		return;
+	}
+
+	
 
 
 
@@ -231,7 +245,14 @@ void Bug::Update(float fTime)
 	}
 	else if (BS_DEAD != m_eState)
 	{
-		CheckFront();
+		if (true == m_bOnLand && false == m_bLandPhysics)
+		{
+			CheckFront();
+		}
+		else
+		{
+			CheckCollision();
+		}
 
 		MoveBack(fTime);
 	}
@@ -279,13 +300,14 @@ void Bug::CheckFront()
 	if (DIR_LEFT == m_eDir)
 	{
 		// 왼쪽으로 가고 있는데 왼쪽 센서가...
-		if (true == m_pLeftSencer->IsOverlap() || true == m_bNoLeft)
+		if (true == m_pLeftSencer->IsOverlap())
 		{
-			Reverse();
+			SetCurrentState(BS_TURN);
 			m_eDir = DIR_RIGHT;
 			m_bNoLeft = false;
 			m_pLeftSencer->ClearOverlap();
 			m_pRightSencer->ClearOverlap();
+			m_bChildUpdate = false;
 			return;
 		}
 	}
@@ -293,29 +315,90 @@ void Bug::CheckFront()
 	if (DIR_RIGHT == m_eDir)
 	{
 		// 오른쪽으로 가고 있는데 왼쪽 센서가...
-		if (true == m_pRightSencer->IsOverlap() || true == m_bNoRight)
+		if (true == m_pRightSencer->IsOverlap())
 		{
-			Reverse();
+			SetCurrentState(BS_TURN);
 			m_eDir = DIR_LEFT;
 			m_bNoRight = false;
 			m_pLeftSencer->ClearOverlap();
 			m_pRightSencer->ClearOverlap();
+			m_bChildUpdate = false;
 			return;
 		}
 	}
+
+	CheckCollision();
+
+	return;
+}
+
+// false면 REVERSE해야한다.
+void Bug::CheckCollision()
+{
+	if (DIR_LEFT == m_eDir)
+	{
+		// 왼쪽으로 가고 있는데 왼쪽 센서가...
+		if (true == m_bNoLeft)
+		{
+			SetCurrentState(BS_TURN);
+			m_eDir = DIR_RIGHT;
+			m_bNoLeft = false;
+			m_pLeftSencer->ClearOverlap();
+			m_pRightSencer->ClearOverlap();
+			m_pMovement->SetMoveSpeed(0.f);
+			m_bChildUpdate = false;
+			return;
+		}
+	}
+
+	if (DIR_RIGHT == m_eDir)
+	{
+		// 오른쪽으로 가고 있는데 왼쪽 센서가...
+		if (true == m_bNoRight)
+		{
+			SetCurrentState(BS_TURN);
+			m_eDir = DIR_LEFT;
+			m_bNoRight = false;
+			m_pLeftSencer->ClearOverlap();
+			m_pRightSencer->ClearOverlap();
+			m_pMovement->SetMoveSpeed(0.f);
+			m_bChildUpdate = false;
+			return;
+		}
+	}
+
+	m_pMovement->SetMoveSpeed(m_fMoveSpeed);
 
 	return;
 }
 
 void Bug::MoveBack(float fTime)
 {
+	if (true == m_bNoMoveBack)
+	{
+		return;
+	}
+
 	if (true == m_bMoveBack)
 	{
 		m_fMoveBackTime += fTime;
 
 		m_pMovement->SetMoveSpeed(2000.f);
 
-		m_pMovement->AddMovement(GetWorldAxis(AXIS_X) * m_eMoveBackDir);
+		if (true == m_bNoRight && DIR_RIGHT == m_eMoveBackDir)
+		{
+
+		}
+		else if (true == m_bNoLeft && DIR_LEFT == m_eMoveBackDir)
+		{
+
+		}
+		else
+		{
+			m_pMovement->AddMovement(GetWorldAxis(AXIS_X) * m_eMoveBackDir);
+		}
+
+		
 
 		if (m_fMoveBackTime >= m_fMoveBackTimeMax)
 		{
@@ -337,12 +420,11 @@ void Bug::JumpBack(float fTime)
 	{
 		m_pMovement->SetMoveSpeed(m_fMoveSpeed);
 
-		m_fForce = m_fOriginForce * 400;
+		// 죽을때 항상 일정하게 날아간다.
+		ClearGravity();
+		m_fGravitySpeed = 2.f;
 
-		if (BS_DIE != m_eState)
-		{
-			SetCurrentState(BS_DIE);
-		}
+		m_fForce = m_fOriginForce * 400;
 
 
 		// 큰 먼지 생성
@@ -390,41 +472,57 @@ void Bug::SetCurrentState(BUG_STATE eState)
 
 void Bug::SetAnimation(const string& strAniName)
 {
-	m_strAniName = strAniName;
-	m_strAniName.append("_WALK");
-	m_pAnimation->AddAnimation2DSequence(m_strAniName);
-	m_strAniName.clear();
-	m_strAniName = strAniName;
-	m_strAniName.append("_TURN");
-	m_pAnimation->AddAnimation2DSequence(m_strAniName);
-	m_strAniName.clear();
-	m_strAniName = strAniName;
-	m_strAniName.append("_DIE");
-	m_pAnimation->AddAnimation2DSequence(m_strAniName);
-	m_strAniName.clear();
-	m_strAniName = strAniName;
-	m_strAniName.append("_DEAD");
-	m_pAnimation->AddAnimation2DSequence(m_strAniName);
-	m_strAniName.clear();
-	m_strAniName = strAniName;
-	m_strAniName.append("_DASH");
-	m_pAnimation->AddAnimation2DSequence(m_strAniName);
-	m_strAniName.clear();
-	m_strAniName = strAniName;
-	m_strAniName.append("_BWALK");
-	m_pAnimation->AddAnimation2DSequence(m_strAniName);
-	m_strAniName.clear();
-	m_strAniName = strAniName;
-	m_strAniName.append("_STAND");
-	m_pAnimation->AddAnimation2DSequence(m_strAniName);
-	m_strAniName.clear();
-	m_strAniName = strAniName;
-	m_strAniName.append("_BDASH");
-	m_pAnimation->AddAnimation2DSequence(m_strAniName);
-	m_strAniName.clear();
-	m_strAniName = strAniName;
-	m_strAniName.append("_BDIE");
-	m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_WALK");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_TURN");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_DIE");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_DEAD");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_DASH");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_BWALK");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_STAND");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_BDASH");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_BDIE");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_BJUMP");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_JUMP");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_DIELAND");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	//m_strAniName.clear();
+	//m_strAniName = strAniName;
+	//m_strAniName.append("_ATTACK");
+	//m_pAnimation->AddAnimation2DSequence(m_strAniName);
 
 
 
@@ -439,6 +537,29 @@ void Bug::SetAnimation(const string& strAniName)
 	m_vecStateName.push_back("BDASH");
 	m_vecStateName.push_back("BDIE");
 
+	m_vecStateName.push_back("BJUMP");
+	m_vecStateName.push_back("JUMP");
+	m_vecStateName.push_back("DIELAND");
+	m_vecStateName.push_back("ATTACK");
+
+	m_vecStateName.push_back("ATTACKA");
+	m_vecStateName.push_back("ATTACKB");
+	m_vecStateName.push_back("ATTACKC");
+
+	m_vecStateName.push_back("WAIT");
+
+	m_vecStateName.push_back("AATTACK");
+	m_vecStateName.push_back("BLOCK");
+
+
+	for (int i = 0; i < (int)BS_OVER; ++i)
+	{
+		m_strAniName.clear();
+		m_strAniName = strAniName;
+		m_strAniName.append("_");
+		m_strAniName.append(m_vecStateName[i]);
+		m_pAnimation->AddAnimation2DSequence(m_strAniName);
+	}
 
 	m_strAniName.clear();
 	m_strAniName = strAniName;
@@ -478,7 +599,9 @@ void Bug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 			m_bJump = true;
 			m_fMoveBackTimeMax = 0.2f;
 			m_fMoveSpeed = 500.f;
-
+			m_bLandPhysics = true;
+			m_bJumping = false;
+			SetCurrentState(BS_DIE);
 			return;
 		}
 	}
@@ -539,6 +662,12 @@ void Bug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 				SetForce(m_fCurrentForce);
 				m_bJump = true;
 				m_bJumping = false;
+
+				if (true == m_bDieLand)
+				{
+					SetCurrentState(BS_DIELAND);
+				}
+
 				return;
 			}
 

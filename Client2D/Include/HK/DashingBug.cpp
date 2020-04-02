@@ -39,6 +39,8 @@ bool DashingBug::Init()
 
 	m_fMoveSpeed = 100.f;
 
+	m_pBody->AddBlockCallback<DashingBug>(this, &DashingBug::OnBlock);
+
 	return true;
 }
 

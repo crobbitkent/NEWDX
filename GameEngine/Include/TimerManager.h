@@ -17,6 +17,7 @@ public:
 	void CreateSlowMotion(float fSetTime);
 	void StopSlowMotion();
 
+	bool IsSlowMotion() const { return m_bSlowMotion; }
 
 	DECLARE_SINGLE(CTimerManager)
 

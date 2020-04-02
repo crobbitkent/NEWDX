@@ -29,6 +29,12 @@ void CTimer::Update()
 	m_fDeltaTime = (tTick.QuadPart - m_tTick.QuadPart) /
 		(float)m_tSecond.QuadPart;
 
+	// deltaTime มฆวั
+	if (m_fDeltaTime >= 0.1f)
+	{
+		m_fDeltaTime = 0.f;
+	}
+
 	m_tTick = tTick;
 
 	++m_iTick;

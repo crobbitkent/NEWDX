@@ -185,12 +185,14 @@
     <ClCompile Include="HK\HollowKnight.cpp" />
     <ClCompile Include="HK\HornBug.cpp" />
     <ClCompile Include="HK\HPEffect.cpp" />
+    <ClCompile Include="HK\JumpBug.cpp" />
     <ClCompile Include="HK\JustBug.cpp" />
     <ClCompile Include="HK\MonsterHitEffect.cpp" />
     <ClCompile Include="HK\NewHK.cpp" />
     <ClCompile Include="HK\Sencer.cpp" />
     <ClCompile Include="HK\SetAnimation.cpp" />
     <ClCompile Include="HK\SetBugAnim.cpp" />
+    <ClCompile Include="HK\ShieldBug.cpp" />
     <ClCompile Include="HK\SideEffect.cpp" />
     <ClCompile Include="HK\SoftEffect.cpp" />
     <ClCompile Include="HK\TestStage.cpp" />
@@ -232,10 +234,12 @@
     <ClInclude Include="HK\HollowKnight.h" />
     <ClInclude Include="HK\HornBug.h" />
     <ClInclude Include="HK\HPEffect.h" />
+    <ClInclude Include="HK\JumpBug.h" />
     <ClInclude Include="HK\JustBug.h" />
     <ClInclude Include="HK\MonsterHitEffect.h" />
     <ClInclude Include="HK\NewHK.h" />
     <ClInclude Include="HK\Sencer.h" />
+    <ClInclude Include="HK\ShieldBug.h" />
     <ClInclude Include="HK\SideEffect.h" />
     <ClInclude Include="HK\SoftEffect.h" />
     <ClInclude Include="HK\TestStage.h" />
