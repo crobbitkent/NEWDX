@@ -5,13 +5,21 @@
 
 using namespace libxl;
 
-class ENGINE_DLL ExcelManager
+class ENGINE_DLL CExcelManager
 {
 public:
 
 
 	bool CreateBook();
+	bool LoadBook(const TCHAR* filename);
 
-	DECLARE_SINGLE(ExcelManager);
+	void Test();
+	int ReadingTest();
+
+
+
+
+
+	DECLARE_SINGLE(CExcelManager);
 };
 

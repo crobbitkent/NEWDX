@@ -107,6 +107,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../../libxl/include_cpp/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -120,6 +121,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../../libxl/include_cpp/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -135,6 +137,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../../libxl/include_cpp/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -152,6 +155,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../../libxl/include_cpp/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -165,6 +169,8 @@
     <ClCompile Include="GameMode\MainGameMode.cpp" />
     <ClCompile Include="GameMode\StartGameMode.cpp" />
     <ClCompile Include="HK\BlackSoftEffect.cpp" />
+    <ClCompile Include="HK\BlockHitB.cpp" />
+    <ClCompile Include="HK\BlockHitEffect.cpp" />
     <ClCompile Include="HK\Bug.cpp" />
     <ClCompile Include="HK\BurstEffect.cpp" />
     <ClCompile Include="HK\CrackEffect.cpp" />
@@ -214,6 +220,8 @@
     <ClInclude Include="GameMode\MainGameMode.h" />
     <ClInclude Include="GameMode\StartGameMode.h" />
     <ClInclude Include="HK\BlackSoftEffect.h" />
+    <ClInclude Include="HK\BlockHitB.h" />
+    <ClInclude Include="HK\BlockHitEffect.h" />
     <ClInclude Include="HK\Bug.h" />
     <ClInclude Include="HK\BurstEffect.h" />
     <ClInclude Include="HK\CrackEffect.h" />

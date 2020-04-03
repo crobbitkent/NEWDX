@@ -30,6 +30,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	pScene->Begin();
 
+
+
 	int iRet = GET_SINGLE(CEngine)->Run();
 
 	DESTROY_SINGLE(CEngine);

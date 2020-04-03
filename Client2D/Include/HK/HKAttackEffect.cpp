@@ -138,13 +138,34 @@ void HKAttackEffect::Start(float fTime, const Vector3& vPos)
 void HKAttackEffect::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 {
 	// HitEffect
-	HitEffect* attack = m_pScene->SpawnObject<HitEffect>(pSrc->GetIntersect() + Vector3(0.f, 0.f, -0.51f));
+	if (true == pDest->IsMonster())
+	{
+		if (false == pDest->GetBlock())
+		{
+			HitEffect* attack = m_pScene->SpawnObject<HitEffect>(pSrc->GetIntersect() + Vector3(0.f, 0.f, -0.51f));
 
-	SAFE_RELEASE(attack);
+			SAFE_RELEASE(attack);
 
-	SideEffect* side = m_pScene->SpawnObject<SideEffect>(pSrc->GetIntersect() + Vector3(0.f, 0.f, -0.52f));
+			SideEffect* side = m_pScene->SpawnObject<SideEffect>(pSrc->GetIntersect() + Vector3(0.f, 0.f, -0.52f));
 
-	SAFE_RELEASE(side);
+			SAFE_RELEASE(side);
+		}
+		else
+		{
+
+		}
+	}
+	else
+	{
+		HitEffect* attack = m_pScene->SpawnObject<HitEffect>(pSrc->GetIntersect() + Vector3(0.f, 0.f, -0.51f));
+
+		SAFE_RELEASE(attack);
+
+		SideEffect* side = m_pScene->SpawnObject<SideEffect>(pSrc->GetIntersect() + Vector3(0.f, 0.f, -0.52f));
+
+		SAFE_RELEASE(side);
+	}
+
 }
 
 CColliderRect * HKAttackEffect::GetBody() const

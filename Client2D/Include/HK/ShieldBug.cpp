@@ -8,9 +8,15 @@
 #include "Component/ColliderRect.h"
 #include "Component/ColliderOBB2D.h"
 
+#include "BlockHitEffect.h"
+#include "BlockHitB.h"
+
+
 #include "Sencer.h"
 
 #include "../RandomNumber.h"
+
+
 
 ShieldBug::ShieldBug()
 {
@@ -116,6 +122,7 @@ void ShieldBug::Update(float fTime)
 		{
 			SetCurrentState(BS_BLOCK);
 			m_bBlocking = true;
+			m_pBody->SetBlock(true);
 			m_bWillBlock= false;
 			return;
 		}
@@ -149,6 +156,7 @@ void ShieldBug::Update(float fTime)
 	if (BS_BLOCK == m_eState && m_pAnimation->IsSequenceEnd())
 	{
 		m_bBlocking = false;
+		m_pBody->SetBlock(false);
 		int ran = RandomNumber::GetRandomNumber(0, 2);
 		m_pMovement->SetMoveSpeed(600.f);
 		m_fMoveSpeed = 600.f;
@@ -206,7 +214,23 @@ void ShieldBug::Update(float fTime)
 		m_fMoveSpeed = 600.f;
 		return;
 	}
+	// 막기
+	if (BS_WAIT == m_eState && true == m_pAnimation->IsSequenceEnd())
+	{
+		SetCurrentState(BS_ATTACKC);
+		m_pMovement->SetMoveSpeed(600.f);
+		m_fMoveSpeed = 600.f;
+		return;
+	}
 
+	// 막은 상태에서 맞았을때 
+	if (BS_BLOCKHIT == m_eState && true == m_pAnimation->IsSequenceEnd())
+	{
+		SetCurrentState(BS_BLOCK);
+		m_pMovement->SetMoveSpeed(0.f);
+		m_fMoveSpeed = 0.f;
+		return;
+	}
 
 
 
@@ -221,6 +245,7 @@ void ShieldBug::Update(float fTime)
 			m_fMoveSpeed = 0.f;
 			m_pMovement->SetMoveSpeed(0.f);
 			m_bBlocking = true;
+			m_pBody->SetBlock(true);
 			return;
 		}
 		// 왼쪽 보고 있는데 오른쪽에 있는 경우
@@ -248,6 +273,7 @@ void ShieldBug::Update(float fTime)
 			m_fMoveSpeed = 0.f;
 			m_pMovement->SetMoveSpeed(0.f);
 			m_bBlocking = true;
+			m_pBody->SetBlock(true);
 			return;
 		}
 	}
@@ -328,7 +354,24 @@ void ShieldBug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime
 {
 	if (true == m_bBlocking)
 	{
+		if (nullptr == pDest)
+		{
+			return;
+		}
 
+		if ("PlayerProjectile" == pDest->GetCollisionProfile()->strName)
+		{
+			BlockHitEffect* effect = m_pScene->SpawnObject<BlockHitEffect>(Vector3(pSrc->GetIntersect().x, pSrc->GetIntersect().y, 0.f));
+			BlockHitB* effect2 = m_pScene->SpawnObject<BlockHitB>(Vector3(pSrc->GetIntersect().x, pSrc->GetIntersect().y, 0.f));
+
+			effect->Flip(m_eDir);
+
+			SAFE_RELEASE(effect); 
+			SAFE_RELEASE(effect2);
+
+			SetCurrentState(BS_BLOCKHIT);
+		}
+		
 	}
 	else
 	{

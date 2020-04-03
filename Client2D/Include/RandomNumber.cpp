@@ -55,7 +55,9 @@ int RandomNumber::GetRandomNumber(int min, int max)
 		max = 1;
 	}
 
-	srand(++mSeed);
+	unsigned int seed = ++mSeed * 2;
+
+	srand(seed);
 
 	unsigned int random = SeedRandomUInt();
 

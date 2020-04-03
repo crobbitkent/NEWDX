@@ -28,6 +28,8 @@
 
 #include "../RandomNumber.h"
 
+#include "ExcelManager.h"
+
 HKMode::HKMode()
 {
 }
@@ -49,6 +51,16 @@ bool HKMode::Init()
  	SetHK();
 	SetBug();
 	SetUI();
+
+
+	////////////////////////////////////////// ¿¢¼¿ ·Îµù
+
+	// GET_SINGLE(CExcelManager)->Test();
+	// DESTROY_SINGLE(CExcelManager);
+
+
+
+
 
 
 	HollowKnight* hk = m_pScene->SpawnObject<HollowKnight>();

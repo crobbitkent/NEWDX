@@ -550,6 +550,7 @@ void Bug::SetAnimation(const string& strAniName)
 
 	m_vecStateName.push_back("AATTACK");
 	m_vecStateName.push_back("BLOCK");
+	m_vecStateName.push_back("BLOCKHIT");
 
 
 	for (int i = 0; i < (int)BS_OVER; ++i)
@@ -593,6 +594,11 @@ void Bug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 
 
 		m_iHP -= 1;
+
+		if (true == m_bDead)
+		{
+			return;
+		}
 
 		if (0 >= m_iHP)
 		{

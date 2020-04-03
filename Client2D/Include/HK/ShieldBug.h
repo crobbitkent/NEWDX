@@ -48,6 +48,5 @@ private:
 
 	// BLOCK
 	bool m_bWillBlock = false;
-	bool m_bBlocking = false;
 };
 

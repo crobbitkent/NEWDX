@@ -161,14 +161,16 @@ bool HollowKnight::Init()
 	//////////////////////////////////////////////////////////////////////////////
 	m_pMesh->AddChild(m_pCamera, TR_POS);
 	m_pCamera->SetCameraType(CT_ORTHOGONAL);
-	m_pCamera->SetRelativePos(_RESOLUTION.iWidth / -2.f, _RESOLUTION.iHeight / -2.f, -10.f);
+	m_pCamera->SetRelativePos(_RESOLUTION.iWidth / -2.f, _RESOLUTION.iHeight / -2.f + 100.f, -10.f);
 	///////////////////////////////////////////////////////////////////////////////
 	m_pMovement = CGameObject::CreateComponent<CCharacterMovementComponent>("Movement");
 	m_pMovement->SetUpdateComponent(m_pMesh);
 
 	m_pMesh->SetRelativePos(-500.f, 500.f, 0.f);
-	m_pMesh->SetRelativeScale(400.f * 0.8f, 400.f * 0.8f, 1.f);
-	m_pMesh->SetPivot(0.5f, 0.565f, 0.f);
+	// m_pMesh->SetRelativeScale(400.f * 0.8f, 400.f * 0.8f, 1.f);
+	m_pMesh->SetRelativeScale(400.f, 400.f, 1.f);
+	// m_pMesh->SetPivot(0.5f, 0.565f, 0.f);
+	m_pMesh->SetPivot(0.5f, 0.525f, 0.f);
 
 	SetAnimation();
 	SetKey();

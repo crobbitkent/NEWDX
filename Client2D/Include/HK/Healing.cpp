@@ -45,6 +45,9 @@ bool Healing::Init()
 	CMaterial* pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("AttackEffectMaterial");
 	m_pMesh->SetMaterial(pMaterial);
 
+	// pMaterial->SetSubsetDiffuse(Vector4(1.f, 1.f, 1.f, 1.f));
+
+
 	m_pAnimation->AddAnimation2DSequence("HEALING");
 	m_pMesh->SetAnimation2D(m_pAnimation);
 

@@ -16,6 +16,8 @@ public:
 	virtual void Update(float fTime);
 	virtual void Render(float fTime);
 
+	bool IsBlocking() const { return m_bBlocking; }
+
 	 void MoveX(float fTime);
 	 void Reverse();
 	 void CheckFront();
@@ -95,6 +97,9 @@ protected:
 	// Child 의 업데이트를 막는다
 	// Turn 할때 막는다. 
 	bool m_bChildUpdate = true;
+
+	// 막기
+	bool m_bBlocking = false;
 };
 
 

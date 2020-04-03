@@ -661,7 +661,7 @@ void HKMode::SetBug()
 
 	// SB WAIT
 	frameCount = 2;
-	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("SB_WAIT", true, 0.8f, frameCount);
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("SB_WAIT", true, 0.4f, frameCount);
 	for (int i = 0; i < frameCount; ++i)
 	{
 		TCHAR	strFileName[MAX_PATH] = {};

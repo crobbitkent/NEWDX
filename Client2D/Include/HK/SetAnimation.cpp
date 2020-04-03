@@ -661,6 +661,41 @@ void HKMode::SetUI()
 	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("EMPTYHP", Vector2(0.f, 0.f),
 		Vector2(200.f, 200.f));
 
+	// Block Hit Effect
+	frameCount = 3;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("BLOCKHIT_EFFECT", true, 0.6f, frameCount);
 
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
 
+		wsprintf(strFileName, TEXT("HOLLOW/Effect/BlockHit/BlockHit%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "BLOCKHIT_EFFECT%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("BLOCKHIT_EFFECT", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("BLOCKHIT_EFFECT", Vector2(0.f, 0.f),
+		Vector2(600.f, 600.f));
+
+	// Block Hit Effect
+	frameCount = 4;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("BLOCKHIT_B_EFFECT", true, 0.4f, frameCount);
+
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Effect/BlockHitB/BlockHitB%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "BLOCKHIT_B_EFFECT%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("BLOCKHIT_B_EFFECT", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("BLOCKHIT_B_EFFECT", Vector2(0.f, 0.f),
+		Vector2(220.f, 225.f));
 }

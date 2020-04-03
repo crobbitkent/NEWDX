@@ -192,6 +192,12 @@
     <ClCompile Include="HK\ShieldBug.cpp">
       <Filter>HK\04. Object\01. Bug</Filter>
     </ClCompile>
+    <ClCompile Include="HK\BlockHitEffect.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\BlockHitB.cpp">
+      <Filter>HK\03. Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -328,6 +334,12 @@
     </ClInclude>
     <ClInclude Include="HK\ShieldBug.h">
       <Filter>HK\04. Object\01. Bug</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\BlockHitEffect.h">
+      <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\BlockHitB.h">
+      <Filter>HK\03. Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
