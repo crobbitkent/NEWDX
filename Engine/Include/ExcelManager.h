@@ -11,7 +11,7 @@ public:
 
 
 	bool CreateBook();
-	bool LoadBook(const TCHAR* filename);
+	bool LoadMonster(const TCHAR* filename);
 
 	void Test();
 	int ReadingTest();

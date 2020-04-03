@@ -95,9 +95,9 @@ void ShieldBug::Update(float fTime)
 	}
 
 	// DEBUG
-	char	strText[256] = {};
-	sprintf_s(strText, (m_vecStateName[m_eState] + "\n").c_str());
-	OutputDebugStringA(strText);
+	// char	strText[256] = {};
+	// sprintf_s(strText, (m_vecStateName[m_eState] + "\n").c_str());
+	// OutputDebugStringA(strText);
 
 
 	if (false == m_bChildUpdate)
@@ -226,9 +226,30 @@ void ShieldBug::Update(float fTime)
 	// 막은 상태에서 맞았을때 
 	if (BS_BLOCKHIT == m_eState && true == m_pAnimation->IsSequenceEnd())
 	{
-		SetCurrentState(BS_BLOCK);
+		SetCurrentState(BS_BATTACK);
 		m_pMovement->SetMoveSpeed(0.f);
 		m_fMoveSpeed = 0.f;
+		return;
+	}
+
+	if (BS_BATTACK == m_eState && true == m_pAnimation->IsSequenceEnd())
+	{
+		m_bBlocking = false;
+		m_pBody->SetBlock(false);
+		int ran = RandomNumber::GetRandomNumber(0, 2);
+		m_pMovement->SetMoveSpeed(600.f);
+		m_fMoveSpeed = 600.f;
+		if (0 == ran)
+		{
+			SetCurrentState(BS_ATTACKB);
+			return;
+		}
+		else
+		{
+			SetCurrentState(BS_ATTACKA);
+			return;
+		}
+
 		return;
 	}
 

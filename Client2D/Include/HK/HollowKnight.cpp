@@ -229,7 +229,12 @@ void HollowKnight::Update(float fTime)
 	}
 	else
 	{
-		m_fForce -= m_fOriginForce * m_fOriginForce;
+		if (true == m_bFalling)
+		{
+			// 떨어지기
+			m_fForce -= m_fOriginForce * m_fOriginForce;
+		}
+
 	}
 
 	if (false == m_pBody->IsColliding() && true == m_bOnLand)
@@ -327,7 +332,7 @@ void HollowKnight::Update(float fTime)
 		{
 			int black = RandomNumber::GetRandomNumber(1, 10);
 
-			if (black <= 3)
+			if (black <= 5)
 			{
 				int y = RandomNumber::GetRandomNumber(0, 100) - 50;
 				int x = RandomNumber::GetRandomNumber(0, 100) - 50;
@@ -577,10 +582,11 @@ void HollowKnight::MoveX(float fScale, float fTime)
 		}
 		else
 		{
+			// 걸으면 먼지
+
 			m_fDustTime = 0.f;
  			DustEffect* dust = m_pScene->SpawnObject<DustEffect>(
 				GetWorldPos() - Vector3(0.f, 400.f * 0.2f, 0.f));
-
 			SAFE_RELEASE(dust);
 		}
 	}
@@ -647,14 +653,18 @@ void HollowKnight::Jump(float fTime)
 	// 첫 점프
 	if (false == m_bJumping)
 	{
-		m_fForce = m_fOriginForce * 700;
+		m_fForce = m_fOriginForce * 800;
 		SetCurrentState(PS_JUMP);
+
+		m_pMovement->SetMoveSpeed(1000.f);
 
 		// 큰 먼지 생성
 		DustEffect* dust = m_pScene->SpawnObject<DustEffect>(
 			GetWorldPos() - Vector3(0.f, 400.f * 0.2f, 0.f));
 
 		dust->SetStaticSize(200.f);
+
+		dust->SetStop();
 
 		SAFE_RELEASE(dust);
 	}
@@ -698,6 +708,7 @@ void HollowKnight::Jump(float fTime)
 // 다 내려옴
 void HollowKnight::JumpEnd(float fTime)
 {
+	m_pMovement->SetMoveSpeed(500.f);
 	m_bJumping = false;
 	m_fJumpTime = 0.f;
 	m_bFalling = true;
@@ -713,7 +724,7 @@ void HollowKnight::JumpEnd(float fTime)
 // 이제 내려오기 시작
 void HollowKnight::JumpOver(float fTime)
 {
-
+	m_pMovement->SetMoveSpeed(500.f);
 	m_bJumping = false;
 
 	if (false == m_bFalling)
@@ -1036,7 +1047,7 @@ void HollowKnight::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fT
 			m_bNoRight = true;
 			break;
 		case 2: // TOP
-			m_pMovement->AddMovement(Vector3(0.f, pSrc->GetIntersect().y * 2.f, 0.f));
+			m_pMovement->AddMovement(Vector3(0.f, /*pSrc->GetColliderSectionMin().y - pDest->GetColliderSectionMax().y*/1000.f, 0.f));
 			ClearGravity();
 			JumpEnd(fTime);
 			m_bOnLand = true;

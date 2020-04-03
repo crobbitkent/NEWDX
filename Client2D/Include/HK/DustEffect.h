@@ -27,6 +27,7 @@ public:
 
 	void SetStaticSize(float fSize);
 
+	void SetStop();
 
 private:
 	float m_fLifeTime;
@@ -35,6 +36,9 @@ private:
 	int m_iDir;
 	bool m_bDirDecider = false;
 
+	bool m_bStop = false;
+
+	class CSceneComponent* m_pRotPivot;
 
 };
 

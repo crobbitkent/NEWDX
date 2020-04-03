@@ -675,7 +675,7 @@ void HKMode::SetBug()
 
 	// SB BLOCKHIT
 	frameCount = 4;
-	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("SB_BLOCKHIT", true, 0.2f, frameCount);
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("SB_BLOCKHIT", false, 0.2f, frameCount);
 	for (int i = 0; i < frameCount; ++i)
 	{
 		TCHAR	strFileName[MAX_PATH] = {};
@@ -685,6 +685,20 @@ void HKMode::SetBug()
 		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("SB_BLOCKHIT", strKey, strFileName);
 	}
 	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("SB_BLOCKHIT", Vector2(0.f, 0.f),
+		Vector2(600.f, 600.f));
+
+	// SB BEFORE ATTACK
+	frameCount = 3;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("SB_BATTACK", true, 0.1f, frameCount);
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+		wsprintf(strFileName, TEXT("HOLLOW/Monster/SHIELD_BUG/BATTACK/SB_BATTACK%d.png"), i);
+		char strKey[256] = {};
+		sprintf_s(strKey, "SB_BATTACK%d", i);
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("SB_BATTACK", strKey, strFileName);
+	}
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("SB_BATTACK", Vector2(0.f, 0.f),
 		Vector2(600.f, 600.f));
 }
 

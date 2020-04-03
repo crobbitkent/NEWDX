@@ -246,7 +246,7 @@ void CGameObject::Update(float fTime)
 	// GRAVITY
 	if (true == m_bPhysics)
 	{
-		m_fGravityTime += 0.001;
+		m_fGravityTime += 0.01;
 
 		m_fForce -= GRAVITY * m_fGravityTime * m_fGravityTime * m_fGravitySpeed;
 		m_pRootComponent->AddRelativePos(GetWorldAxis(AXIS_Y) * 1.f * m_fForce * 0.001 * m_fGravitySpeed);

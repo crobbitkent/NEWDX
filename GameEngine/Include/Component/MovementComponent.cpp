@@ -86,6 +86,11 @@ void CMovementComponent::PostUpdate(float fTime)
 			m_vVelocity -= (vDir * fMove);
 	}
 
+	if (fLength == 1000.f)
+	{
+		int a = 0;
+	}
+
 	fLength = m_vRotation.Length();
 	if (fLength > 0.f)
 	{
@@ -97,6 +102,11 @@ void CMovementComponent::PostUpdate(float fTime)
 
 void CMovementComponent::Render(float fTime)
 {
+	if (m_fVelocity == 1000.f)
+	{
+		int a = 0;
+	}
+
 	m_fVelocity = 0.f;
 	m_vVelocity = Vector3::Zero;
 }
@@ -105,6 +115,11 @@ void CMovementComponent::AddMovement(const Vector3 & vVelocity)
 {
 	if (!m_pUpdateComponent)
 		return;
+
+	if (vVelocity.y == 1000.f)
+	{
+		int a = 0;
+	}
 
 	m_vVelocity += vVelocity;
 

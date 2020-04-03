@@ -30,7 +30,7 @@ void CTimer::Update()
 		(float)m_tSecond.QuadPart;
 
 	// deltaTime มฆวั
-	if (m_fDeltaTime >= 0.1f)
+	if (m_fDeltaTime >= 0.5f)
 	{
 		m_fDeltaTime = 0.f;
 	}

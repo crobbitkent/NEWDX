@@ -698,4 +698,38 @@ void HKMode::SetUI()
 
 	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("BLOCKHIT_B_EFFECT", Vector2(0.f, 0.f),
 		Vector2(220.f, 225.f));
+
+	// Dust Effect Frame
+	frameCount = 13;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DUST_EFFECT_FRAME", true, 1.f, frameCount);
+
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+
+		wsprintf(strFileName, TEXT("HOLLOW/Effect/DustFrame/DUST_EFFECT%d.png"), i);
+
+		char strKey[256] = {};
+		sprintf_s(strKey, "DUST_EFFECT_FRAME%d", i);
+
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("DUST_EFFECT_FRAME", strKey, strFileName);
+	}
+
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DUST_EFFECT_FRAME", Vector2(0.f, 0.f),
+		Vector2(100.f, 100.f));
+
+
+	// Dust Effect Frame
+	frameCount = 2;
+	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("DUST_EFFECT_STATIC", true, 1.f, frameCount);
+	for (int i = 0; i < frameCount; ++i)
+	{
+		TCHAR	strFileName[MAX_PATH] = {};
+		wsprintf(strFileName, TEXT("HOLLOW/Effect/DustStatic/DUST_EFFECT_STATIC%d.png"), i);
+		char strKey[256] = {};
+		sprintf_s(strKey, "DUST_EFFECT_STATIC%d", i);
+		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("DUST_EFFECT_STATIC", strKey, strFileName);
+	}
+	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DUST_EFFECT_STATIC", Vector2(0.f, 0.f),
+		Vector2(100.f, 100.f));
 }

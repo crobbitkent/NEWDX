@@ -20,6 +20,10 @@ bool CTimerManager::Init()
 
 void CTimerManager::Update()
 {
+	char	strText[256] = {};
+	sprintf_s(strText, ("%d\n"), m_bSlowMotion);
+	OutputDebugStringA(strText);
+
 	if (true == m_bSlowMotion)
 	{
 		if (0 >= m_fSlowTotalTime)
@@ -33,7 +37,7 @@ void CTimerManager::Update()
 		float fTime = main->GetDeltaTime();
 
 
-		m_fSlowTotalTime -= 0.05f;
+		m_fSlowTotalTime -= 0.1f;
 
 		int result = m_fSlowTotalTime * m_fSlowTotalTime;
 		// int result = m_fSlowTotalTime;
@@ -42,6 +46,11 @@ void CTimerManager::Update()
 
 		main->m_fDeltaTime = 0.01f;
 	}
+
+
+
+
+	
 }
 
 bool CTimerManager::CreateTimer(const string & strName)

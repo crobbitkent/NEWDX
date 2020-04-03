@@ -1,6 +1,18 @@
-﻿  ExcelManager.cpp
+﻿  MovementComponent.cpp
 d:\mingyu\newdx\gameengine\include\matrix.h(7): warning C4251: '_tagMatrix::m': struct 'DirectX::XMMATRIX'에서는 union '_tagMatrix'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\directxmath.h(432): note: 'DirectX::XMMATRIX' 선언을 참조하십시오.
+d:\mingyu\newdx\gameengine\include\ref.h(13): warning C4251: 'CRef::m_strName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서는 class 'CRef'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' 선언을 참조하십시오.
+d:\mingyu\newdx\gameengine\include\component\scenecomponent.h(15): warning C4251: 'CSceneComponent::m_vecChild': class 'std::vector<CSceneComponent *,std::allocator<_Ty>>'에서는 class 'CSceneComponent'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=CSceneComponent *
+          ]
+  d:\mingyu\newdx\gameengine\include\component\scenecomponent.h(15): note: 'std::vector<CSceneComponent *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=CSceneComponent *
+          ]
   GameEngine.vcxproj -> D:\MINGYU\NEWDX\GameEngine\Include\../Bin/GameEngine_Debug.dll
   0개 파일이 복사되었습니다.
   파일을 찾을 수 없습니다-*.inl

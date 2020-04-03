@@ -17,6 +17,7 @@ DustEffect::DustEffect()
 {
 	m_fLifeTime = 0.f;
 	m_pAnimation = nullptr;
+	m_pRotPivot = nullptr;
 }
 
 DustEffect::~DustEffect()
@@ -24,6 +25,7 @@ DustEffect::~DustEffect()
 	SAFE_RELEASE(m_pMesh);
 	SAFE_RELEASE(m_pMovement);
 	SAFE_RELEASE(m_pAnimation);
+	SAFE_RELEASE(m_pRotPivot);
 }
 
 bool DustEffect::Init()
@@ -38,8 +40,11 @@ bool DustEffect::Init()
 	CMaterial* pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("PlayerAnimMaterial");
 	m_pMesh->SetMaterial(pMaterial);
 
+	m_pRotPivot = CreateComponent<CSceneComponent>("RotPivot");
+	m_pMesh->AddChild(m_pRotPivot, TR_POS | TR_ROT);
+
 	m_pAnimation = CAnimation2D::CreateAnimation2D<CAnimation2D>();
-	m_pAnimation->AddAnimation2DSequence("DUSTEFFECT");
+	m_pAnimation->AddAnimation2DSequence("DUST_EFFECT_STATIC");
 	m_pMesh->SetAnimation2D(m_pAnimation);
 
 	SAFE_RELEASE(pMaterial);
@@ -58,9 +63,13 @@ bool DustEffect::Init()
 
 	m_pMovement->SetMoveSpeed(200.f);
 
-	m_pAnimation->ChangeAnimation("DUSTEFFECT");
+	// m_pAnimation->ChangeAnimation("DUSTEFFECT");
+	// m_pAnimation->ChangeAnimation("DUST_EFFECT_FRAME");
+	m_pAnimation->ChangeAnimation("DUST_EFFECT_STATIC");
 
 	m_fLifeTotalTime = 0.1f + RandomNumber::GetRandomNumber(0, 140) / 100.f;
+
+	// m_pMovement->SetRotationSpeed(200.f);
 
 	return true;
 }
@@ -79,14 +88,17 @@ void DustEffect::Update(float fTime)
 		m_iDir = RandomNumber::GetRandomNumber(0, 10) % 2;
 	}
 
-	if (false == m_bDirDecider)
+
+	if (false == m_bStop)
 	{
-		m_pMovement->AddMovement(GetWorldAxis(AXIS_Y));
-		m_bDirDecider = true;
-	}
-	else
-	{
-		// LEFT
+		if (false == m_bDirDecider)
+		{
+			m_pMovement->AddMovement(GetWorldAxis(AXIS_Y));
+			m_bDirDecider = true;
+		}
+		else
+		{
+			// LEFT
 			if (0 == m_iDir)
 			{
 				m_pMovement->AddMovement(GetWorldAxis(AXIS_X));
@@ -95,10 +107,19 @@ void DustEffect::Update(float fTime)
 			{
 				m_pMovement->AddMovement(GetWorldAxis(AXIS_X) * -1.f);
 			}
-
 			m_bDirDecider = false;
-		
+		}
 	}
+	else
+	{
+		int a = 0;
+	}
+
+
+
+	// 회전	
+	// 자전
+	m_pMesh->SetRelativeRotationZ(180.f * fTime);
 
 
 	if (m_fLifeTime < m_fLifeTotalTime)
@@ -128,4 +149,9 @@ void DustEffect::SetMaxSize(float fSize)
 void DustEffect::SetStaticSize(float fSize)
 {
 	m_pMesh->SetRelativeScale(fSize, fSize, 1.f);
+}
+
+void DustEffect::SetStop()
+{
+	m_bStop = true;
 }

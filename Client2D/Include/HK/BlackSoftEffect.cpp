@@ -46,11 +46,11 @@ bool BlackSoftEffect::Init()
 
 	int ran = RandomNumber::GetRandomNumber(0, 60);
 
-	m_pMesh->SetRelativeScale(1.f + (float)ran, 1.f + (float)ran, 1.f);
+	m_pMesh->SetRelativeScale(.1f + (float)ran, .1f + (float)ran, 1.f);
 	m_pMesh->SetPivot(0.5f, 0.5f, 0.f);
 
 	int speed = RandomNumber::GetRandomNumber(0, 1000);
-	m_pMovement->SetMoveSpeed(1000.f + (float)speed);
+	m_pMovement->SetMoveSpeed(500.f + (float)speed);
 
 	// m_iDirDecider = RandomNumber::GetRandomNumber(1, 2);
 

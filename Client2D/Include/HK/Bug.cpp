@@ -143,6 +143,10 @@ void Bug::Update(float fTime)
 	{
 		ClearGravity();
 	}
+	else
+	{
+
+	}
 
 	bool anim = m_pAnimation->IsSequenceEnd();
 
@@ -542,13 +546,15 @@ void Bug::SetAnimation(const string& strAniName)
 	m_vecStateName.push_back("DIELAND");
 	m_vecStateName.push_back("ATTACK");
 
+
 	m_vecStateName.push_back("ATTACKA");
 	m_vecStateName.push_back("ATTACKB");
 	m_vecStateName.push_back("ATTACKC");
 
 	m_vecStateName.push_back("WAIT");
 
-	m_vecStateName.push_back("AATTACK");
+	m_vecStateName.push_back("AATTACK"); // After Attack
+	m_vecStateName.push_back("BTTACK"); // Before Attack
 	m_vecStateName.push_back("BLOCK");
 	m_vecStateName.push_back("BLOCKHIT");
 
@@ -633,6 +639,8 @@ void Bug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 			m_bNoLeft = false;
 			m_pLeftSencer->ClearOverlap();
 			m_pRightSencer->ClearOverlap();
+
+			m_bOnLand = true;
 			break;
 		case 3: // RIGHT
 			m_pMovement->AddMovement(Vector3(pSrc->GetIntersect().x * 2.f, 0.f, 0.f));
@@ -683,7 +691,6 @@ void Bug::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)
 		ClearGravity();
 		JumpEnd(fTime);
 
-		m_bOnLand = true;
 
 		m_pMovement->AddMovement(Vector3(0.f, pSrc->GetIntersect().y * 2.f, 0.f));
 		return;
