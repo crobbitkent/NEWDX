@@ -3,7 +3,7 @@
 #include "Component/ColliderBase.h"
 
 CSectionManager::CSectionManager() :
-	m_vDefaultSectionSize(5000.f, 1000.f, 1000.f),
+	m_vDefaultSectionSize(100000.f, 100000.f, 1000.f),
 	m_iSectionCountX(0),
 	m_iSectionCountY(0),
 	m_iSectionCountZ(0),

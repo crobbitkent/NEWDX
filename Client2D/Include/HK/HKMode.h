@@ -27,5 +27,6 @@ private:
 	void SetBug();
 	void SetUI();
 	void SetTileMap();
+	void SetStage1();
 };
 

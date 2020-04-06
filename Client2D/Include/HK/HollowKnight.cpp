@@ -167,7 +167,7 @@ bool HollowKnight::Init()
 	m_pMovement = CGameObject::CreateComponent<CCharacterMovementComponent>("Movement");
 	m_pMovement->SetUpdateComponent(m_pMesh);
 
-	m_pMesh->SetRelativePos(-500.f, 500.f, 0.f);
+	m_pMesh->SetRelativePos(0.f, 1000.f, 0.f);
 	// m_pMesh->SetRelativeScale(400.f * 0.8f, 400.f * 0.8f, 1.f);
 	m_pMesh->SetRelativeScale(400.f, 400.f, 1.f);
 	// m_pMesh->SetPivot(0.5f, 0.565f, 0.f);

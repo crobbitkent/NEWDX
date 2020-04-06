@@ -12,6 +12,7 @@ struct VS_INPUT_INSTANCING_TEX
 	int		iImgFrame	: IMGFRAME;
 	int		iImgType	: IMGTYPE;
 	int iTileOption : TILEOPTION;
+    int iTileType : TILETYPE;
 };
 
 struct VS_OUTPUT_INSTANCING_TEX
@@ -22,6 +23,7 @@ struct VS_OUTPUT_INSTANCING_TEX
 	int iTileOption :	TEXCOORD2;
 	int iImgType :		TEXCOORD3;
 	int iImgFrame :		TEXCOORD4;
+    int iTileType : TEXCOORD5;
 };
 
 struct PS_OUTPUT_SINGLE
@@ -34,6 +36,9 @@ struct PS_OUTPUT_SINGLE
 
 #define TILE_NONE 0
 #define TILE_NOMOVE 1
+
+#define TILE_RECT 1
+#define TILE_ISOMETRIC 2
 
 cbuffer TileMap	: register(b10)
 {
@@ -86,7 +91,7 @@ VS_OUTPUT_INSTANCING_TEX TileMapVS(VS_INPUT_INSTANCING_TEX input)
 
 	output.iImgType = input.iImgType;
 	output.iImgFrame = input.iImgFrame;
-
+    output.iTileType = input.iTileType;
 
 
 	return output;
@@ -111,22 +116,44 @@ PS_OUTPUT_SINGLE TileMapPS(VS_OUTPUT_INSTANCING_TEX input)
 
 	vColor = g_BaseTexture.Sample(g_LinearSmp, input.vUV);
 
-	if (input.iTileOption == TILE_NOMOVE)
-	{
-		if (input.vOriginUV.x <= 0.03f)
-			vColor = float4(1.f, 0.f, 0.f, 1.f);
+    if (input.iTileOption == TILE_NOMOVE)
+    {
+        if (input.iTileType == TILE_RECT)
+        {
+            if (input.vOriginUV.x <= 0.03f)
+                vColor = float4(1.f, 0.f, 0.f, 1.f);
+            else if (input.vOriginUV.x >= 0.97f)
+                vColor = float4(1.f, 0.f, 0.f, 1.f);
+            else if (input.vOriginUV.y <= 0.03f)
+                vColor = float4(1.f, 0.f, 0.f, 1.f);
+            else if (input.vOriginUV.y >= 0.97f)
+                vColor = float4(1.f, 0.f, 0.f, 1.f);
+        }
+        else
+        {
+            vColor *= float4(1.f, 0.f, 0.f, 1.f);
+        }
+    }
+    else if (input.iTileOption == TILE_NONE)
+    {
+        if (input.iTileType == TILE_RECT)
+        {
+            if (input.vOriginUV.x <= 0.03f)
+                vColor = float4(0.f, 1.f, 0.f, 1.f);
+            else if (input.vOriginUV.x >= 0.97f)
+                vColor = float4(0.f, 1.f, 0.f, 1.f);
+            else if (input.vOriginUV.y <= 0.03f)
+                vColor = float4(0.f, 1.f, 0.f, 1.f);
+            else if (input.vOriginUV.y >= 0.97f)
+                vColor = float4(0.f, 1.f, 0.f, 1.f);
+        }
+        else
+        {
+            vColor *= float4(0.f, 1.f, 0.f, 1.f);
+        }
+    }
 
-		else if (input.vOriginUV.x >= 0.97f)
-			vColor = float4(1.f, 0.f, 0.f, 1.f);
+    output.vColor = vColor;
 
-		else if (input.vOriginUV.y <= 0.03f)
-			vColor = float4(1.f, 0.f, 0.f, 1.f);
-
-		else if (input.vOriginUV.y >= 0.97f)
-			vColor = float4(1.f, 0.f, 0.f, 1.f);
-	}
-
-	output.vColor = vColor;
-
-	return output;
+    return output;
 }

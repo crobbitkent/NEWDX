@@ -207,8 +207,11 @@
     <ClCompile Include="HK\HKTileMap.cpp">
       <Filter>HK\05. HKTileMap</Filter>
     </ClCompile>
+    <ClCompile Include="HK\SetStage1.cpp">
+      <Filter>HK\01. Mode</Filter>
+    </ClCompile>
     <ClCompile Include="HK\HKExcelManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>HK\06. HKExcelManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -357,7 +360,7 @@
       <Filter>HK\05. HKTileMap</Filter>
     </ClInclude>
     <ClInclude Include="HK\HKExcelManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>HK\06. HKExcelManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

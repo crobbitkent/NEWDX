@@ -41,12 +41,12 @@ bool TestStage::Init()
 		return false;
 	}
 
-	int scaleX = 2000.f;
-	int scaleY = 500.f;
+	int scaleX = 100.f;
+	int scaleY = 100.f;
 
 	m_pBody = CreateComponent<CColliderRect>("StageBody");
 	m_pBody->SetExtent(scaleX, scaleY);
-	m_pBody->SetPivot(0.5f, 0.5f, 0.f);
+	m_pBody->SetPivot(.5f, .5f, 0.f); // 피봇이 좌상
 	m_pBody->AddBlockCallback<TestStage>(this, &TestStage::OnBlock);
 	// m_pBody->SetCollisionProfile("Monster");
 
@@ -64,7 +64,7 @@ bool TestStage::Init()
 
 	m_pMesh->SetRelativePos(0.f, 0.f, 0.f);
 	m_pMesh->SetRelativeScale(scaleX, scaleY, 1.f);
-	m_pMesh->SetPivot(0.5f, 0.5f, 0.f);
+	m_pMesh->SetPivot(.5f, .5f, 0.f);
 
 	m_pBody->SetStage(true);
 
@@ -93,6 +93,18 @@ void TestStage::SetScale(const Vector3 & vScale)
 {
 	m_pMesh->SetRelativeScale(Vector3(vScale.x, vScale.y, 1.f));
 	m_pBody->SetExtent(vScale.x, vScale.y);
+}
+
+void TestStage::PlaceAt(int sizeX, int sizeY, int leftTopX, int leftTopY)
+{
+	// 사이즈의 절반만큼 간다. + 여태까지 위치만큼 간다.
+	float X = (sizeX * 50.f) * 0.5f + leftTopX * 50.f;
+	float Y = (sizeY * 50.f) * 0.5f + leftTopY * 50.f;
+
+	m_pMesh->SetRelativeScale(sizeX * 50.f, sizeY * 50.f, 1.f);
+	m_pBody->SetExtent(sizeX * 50.f, sizeY * 50.f);
+	m_pMesh->SetRelativePos(X, -Y, 0.f);
+
 }
 
 void TestStage::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fTime)

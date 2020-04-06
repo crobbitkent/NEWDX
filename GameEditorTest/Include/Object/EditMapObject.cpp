@@ -96,6 +96,8 @@ void CEditMapObject::Update(float fTime)
 				{
 					ImageFrame	tFrame	= {};
 
+					CMaterial* pMaterial = pTile->GetMaterial();
+
 					pMode->GetMainFrame()->GetTileMapDlg()->UpdateFrameData();
 
 					tFrame.vStart = pMode->GetMainFrame()->GetTileMapDlg()->m_vFrameStart;
@@ -103,7 +105,12 @@ void CEditMapObject::Update(float fTime)
 					//tFrame.vImageSize = pMode->GetMainFrame()->GetTileMapDlg()->m_vFrameSize;
 					tFrame.vImageSize = Vector2(900.f, 500.f);
 					tFrame.iFrame	= 0;
-					tFrame.iImageType	= IT_ATLAS;
+					tFrame.iImageType	= pMaterial->GetImageType();
+
+					if (tFrame.iImageType == IT_ATLAS)
+						tFrame.iFrame = 0;
+					else
+						tFrame.iFrame = tFrame.vStart.x;
 
 					pTile->SetFrame(tFrame);
 				}

@@ -75,6 +75,11 @@ CTile * CTile::GetParent() const
 	return m_pParent;
 }
 
+CMaterial * CTile::GetMaterial() const
+{
+	return m_pMaterial;
+}
+
 void CTile::SetTileOption(TILE_OPTION eOption)
 {
 	m_eOption = eOption;
@@ -165,6 +170,7 @@ void CTile::SetInstancingData(PTileMapInstancingData pData)
 	pData->iFrame = m_tImgFrame.iFrame;
 	pData->iImageType = m_tImgFrame.iImageType;
 	pData->iTileOption = m_eOption;
+	pData->iTileType = m_eType;
 }
 
 void CTile::PostUpdate(float fTime)

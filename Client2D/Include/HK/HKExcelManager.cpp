@@ -2,11 +2,43 @@
 
 #include "HKTileMap.h"
 
-#include "Component/ColliderRect.h"
-#include "Component/ColliderBase.h"
+#include "Scene/Scene.h"
+#include "Resource/ResourceManager.h"
+#include "Resource/Material.h"
+#include "Resource/Animation2DSequence.h"
+
+#include "CollisionManager.h"
+
+#include "HollowKnight.h"
+#include "NewHK.h"
+#include "JustBug.h"
+#include "DashingBug.h"
+#include "HornBug.h"
+#include "JumpBug.h"
+#include "ShieldBug.h"
 
 
 
+#include "TestStage.h"
+#include "HKButton.h"
+
+#include "HKAttackEffect.h"
+
+#include "HKMouse.h"
+
+#include "UIHP.h"
+
+#include "../RandomNumber.h"
+
+#include "HKExcelManager.h"
+#include "HKTileMap.h"
+
+#include "../Object/TestObject.h"
+
+
+#include "Scene/Scene.h"
+
+#include "TestStage.h"
 
 
 
@@ -80,6 +112,42 @@ bool HKExcelManager::LoadStage(const TCHAR * path, class HKTileMap* tileMap)
 					}
 					}
 				}			
+			}
+		}
+	}
+	else
+	{
+		BOOM
+	}
+
+	book->release();
+
+	return true;
+}
+
+bool HKExcelManager::LoadStage(const TCHAR * path, class CScene* pScene)
+{
+	Book* book = xlCreateBook();
+
+	if (book->load(path))
+	{
+		Sheet* sheet = book->getSheet(0);
+
+		int totalY = sheet->lastRow();
+		int totalX = sheet->lastCol();
+
+		if (nullptr != sheet)
+		{
+			for (int row = 0; row < totalY; ++row) // Y
+			{
+				int num1 = sheet->readNum(row, 0); // sizeX
+				int num2 = sheet->readNum(row, 1); // sizeY
+				int num3 = sheet->readNum(row, 2); // LTX
+				int num4 = sheet->readNum(row, 3); // LTY
+
+				TestStage* stage = pScene->SpawnObject<TestStage>();
+				stage->PlaceAt(num1, num2, num3, num4);
+				SAFE_RELEASE(stage);			
 			}
 		}
 	}

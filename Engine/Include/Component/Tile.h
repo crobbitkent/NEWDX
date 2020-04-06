@@ -42,6 +42,7 @@ public:
 	TILE_OPTION GetTileOption()	const;
 	Vector3 GetTilePos()	const;
 	CTile* GetParent()	const;
+	class CMaterial* GetMaterial() const;
 
 public:
 	void SetTileOption(TILE_OPTION eOption);

@@ -87,20 +87,7 @@ bool HKMode::Init()
 
 
 
-	TestStage* stage1 = m_pScene->SpawnObject<TestStage>(Vector3(0.f, 0.f, 0.f));
-	SAFE_RELEASE(stage1);
-	
-	TestStage* stage2 = m_pScene->SpawnObject<TestStage>(Vector3(1500.f, 101.f, 0.f));
-	stage2->SetScale(Vector3(2000.f, 200.f, 0.f));
-	SAFE_RELEASE(stage2);
-	
-	TestStage* stage3 = m_pScene->SpawnObject<TestStage>(Vector3(-2000.f, 301.f, 0.f));
-	SAFE_RELEASE(stage3);
-
-	TestStage* stage4 = m_pScene->SpawnObject<TestStage>(Vector3(2000.f, 301.f, 0.f));
-	stage4->SetScale(Vector3(300.f, 100.f, 0.f));
-	SAFE_RELEASE(stage4);
-
+	SetStage1();
 
 
 
@@ -426,32 +413,7 @@ void HKMode::SetCollision()
 /*
 할것들
 
----- 이펙트 관련 ----
-1. 카메라 쉐이크
-2. 맵 완성
-3. 몬스터 타격 이펙트 -> 피 포물선
-4. 이펙트 투명하다가 없어지도록
 
----- 배경 관련 ----
-5. 안개
-6. 플레이어 부분만 밝게
-7. 반딧불...
-
----- UI 관련 ----
-8. UI 물 흐르는 것
-
----- 보스 관련 ----
-9. 보스 AI
-
----- 몬스터 관련 ----
-1. 지형 따라 도는 몬스터
-2. 돌진하는 몬스터
-3. 
-
----- 추가 컨텐츠 ----
-1. 동전 먹기(이펙트 필요)
-2. 점프, 점프 공격
-3. 
 
 */
 

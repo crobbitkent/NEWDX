@@ -59,9 +59,8 @@ public:
 	int GetTileIndex(const Vector3& vPos);
 	int GetTileIndex(float x, float y);
 	int GetTileIndexX(const Vector3& vPos);
-	int GetTileIndexX(float x);
 	int GetTileIndexY(const Vector3& vPos);
-	int GetTileIndexY(float y);
+
 
 public:
 	virtual bool Init();

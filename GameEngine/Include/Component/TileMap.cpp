@@ -302,8 +302,8 @@ CTile * CTileMap::GetTileFromIndex(int x, int y)
 
 int CTileMap::GetTileIndex(const Vector3 & vPos)
 {
-	int	x = GetTileIndexX(vPos.x);
-	int	y = GetTileIndexY(vPos.y);
+	int	x = GetTileIndexX(vPos);
+	int	y = GetTileIndexY(vPos);
 
 	if (x == -1 || y == -1)
 		return -1;
@@ -313,8 +313,8 @@ int CTileMap::GetTileIndex(const Vector3 & vPos)
 
 int CTileMap::GetTileIndex(float x, float y)
 {
-	int	iX = GetTileIndexX(x);
-	int	iY = GetTileIndexY(y);
+	int	iX = GetTileIndexX(Vector3(x, y, 0.f));
+	int	iY = GetTileIndexY(Vector3(x, y, 0.f));
 
 	if (iX == -1 || iY == -1)
 		return -1;
@@ -324,14 +324,9 @@ int CTileMap::GetTileIndex(float x, float y)
 
 int CTileMap::GetTileIndexX(const Vector3 & vPos)
 {
-	return GetTileIndexX(vPos.x);
-}
-
-int CTileMap::GetTileIndexX(float x)
-{
 	if (m_eTileType == TT_RECT)
 	{
-		float	fConvertX = x - m_pTransform->GetRelativePos().x;
+		float	fConvertX = vPos.x - m_pTransform->GetRelativePos().x;
 
 		int	iX = (int)(fConvertX / m_vTileSize.x);
 
@@ -341,19 +336,36 @@ int CTileMap::GetTileIndexX(float x)
 		return iX;
 	}
 
+	else if (m_eTileType == TT_ISOMETRIC)
+	{
+		int	iY = GetTileIndexY(vPos);
+
+		if (iY < 0 || iY >= m_iTileCountY)
+			return -1;
+
+		int	iIndex = -1;
+
+		if (iY % 2 == 0)
+			iIndex = (int)vPos.x / (int)m_vTileSize.x;
+		else
+			iIndex = (int)(vPos.x - m_vTileSize.x / 2.f) / (int)m_vTileSize.x;
+
+		if (iIndex < 0 || iIndex >= m_iTileCountX)
+			return -1;
+
+		return iIndex;
+	}
+
 	return -1;
 }
 
-int CTileMap::GetTileIndexY(const Vector3 & vPos)
-{
-	return GetTileIndexY(vPos.y);
-}
 
-int CTileMap::GetTileIndexY(float y)
+
+int CTileMap::GetTileIndexY(const Vector3 & vPos)
 {
 	if (m_eTileType == TT_RECT)
 	{
-		float	fConvertY = y - m_pTransform->GetRelativePos().y;
+		float	fConvertY = vPos.y - m_pTransform->GetRelativePos().y;
 
 		int	iY = (int)(fConvertY / m_vTileSize.y);
 
@@ -363,8 +375,104 @@ int CTileMap::GetTileIndexY(float y)
 		return iY;
 	}
 
+	else if (m_eTileType == TT_ISOMETRIC)
+	{
+		// 타일  크기로  나누어서  1, 1 크기의  공간으로 변환한다.
+		float	fX = vPos.x / m_vTileSize.x;
+		float	fY = vPos.y / m_vTileSize.y;
+
+		// 정수부분만 남겨둔다..
+		int	idxX = (int)fX;
+		int	idxY = (int)fY;
+
+		if (idxX < 0 || idxX > m_iTileCountX)
+			return -1;
+
+		// 정수  부분을 제거한 실수부분만 남겨둔다..
+		fX -= idxX;
+		fY -= idxY;
+
+		// 사각형의  아래쪽 부분일 경우
+		if (fY < 0.5f)
+		{
+			// 우하단 사각형일 경우 fX는 0.5를 넘어가므로  fY는 0.5f - fX보다 절대  작을  수 없다. 음수가 나오기 때문이다.
+			// 이경우는  좌 하단 사각형일 경우로  그중에서도 0.5에서 fX를  뺐을 경우 대각선 방향에  의해서 x와 y가 같은  값이
+			// 나올  경우 대각선상에 존재한다는 것이다.
+			// 그렇기 때문에 이 조건을 만족한다면  좌하단  사각형에서  좌하단 삼각형쪽을 의미한다.
+			if (fY < 0.5f - fX)
+			{
+				if (idxX == 0)
+					return -1;
+				else if (idxY == 0)
+					return -1;
+				else if (idxY == 1)
+					return 1;
+
+				else
+					return idxY * 2 - 1;
+			}
+
+			// 우하단 사각형일 경우 우하단  삼각형쪽을 체크해야  한다.
+			// 이경우는  fX 에서 0.5를 뺄 경우  양수 값이  나오게  되고 대각선  특성상  이 값과 fY값이 같을 경우 대각선상에
+			// 존재한다는  것이다.
+			// 그렇기  때문에  이 조건을  만족한다면 우하단 사각형에서 우하단 삼각형을 의미한다.
+			else if (fY < fX - 0.5f)
+			{
+				if (idxY == 0)
+					return -1;
+
+				else if (idxY == 1)
+					return 1;
+
+				else
+					return idxY * 2 - 1;
+			}
+
+			else
+				return idxY * 2;
+		}
+
+		// 사각형의 위쪽 부분일 경우
+		else if (fY > 0.5f)
+		{
+			// 좌상단 사각형일 경우 좌상단 삼각형 영역일때 처리
+			if (fY - 0.5f > fX)
+			{
+				if (idxX == 0)
+					return -1;
+
+				int	iIndex = idxY * 2 + 1;
+
+				if (iIndex >= m_iTileCountY)
+					return -1;
+
+				return iIndex;
+			}
+			// 우상단 사각형일 경우 우상단  삼각형 영역일때 처리
+			else if (fY - 0.5f > 1.f - fX)
+			{
+				if (idxX == m_iTileCountX)
+					return -1;
+
+				int	iIndex = idxY * 2 + 1;
+
+				if (iIndex >= m_iTileCountY)
+					return -1;
+
+				return iIndex;
+			}
+			else
+				return idxY * 2;
+		}
+		// 정 중앙일  경우
+		else
+			return idxY * 2;
+	}
+
+
 	return -1;
 }
+
 
 bool CTileMap::Init()
 {
@@ -396,6 +504,23 @@ void CTileMap::PostUpdate(float fTime)
 
 		Vector3	vCameraPos = pCamera->GetWorldPos() - GetWorldPos();
 		Vector3	vCameraEndPos = vCameraPos + Vector3(_RESOLUTION.iWidth, _RESOLUTION.iHeight, 0.f);
+
+		switch (m_eTileType)
+		{
+		case TT_RECT:
+			m_iStartX = (int)(vCameraPos.x / m_vTileSize.x);
+			m_iStartY = (int)(vCameraPos.y / m_vTileSize.y);
+			m_iEndX = (int)(vCameraEndPos.x / m_vTileSize.x);
+			m_iEndY = (int)(vCameraEndPos.y / m_vTileSize.y);
+			break;
+		case TT_ISOMETRIC:
+			m_iStartX = GetTileIndexX(vCameraPos) - 1;
+			m_iStartY = GetTileIndexY(vCameraPos) - 1;
+			m_iEndX = GetTileIndexX(vCameraEndPos) + 1;
+			m_iEndY = GetTileIndexY(vCameraEndPos) + 1;
+			break;
+		}
+
 
 		m_iStartX = (int)(vCameraPos.x / m_vTileSize.x);
 		m_iStartY = (int)(vCameraPos.y / m_vTileSize.y);

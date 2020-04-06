@@ -86,6 +86,7 @@ public:
 	void ClearTexture(int iContainer = 0, int iSubset = 0);
 	void SetInstancingShader(const string& strName);
 	void SetInstancingLayout(const string& strName);
+	IMAGE_TYPE GetImageType(int iContainer = 0, int iSubset = 0);
 
 private:
 	void SetSubsetTexture(PMaterialSubset pSubset, int iRegister, const string& strName, bool bArrayTex);

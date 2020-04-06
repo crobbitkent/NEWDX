@@ -467,6 +467,11 @@ void CMaterial::SetInstancingLayout(const string & strName)
 	m_pInstancingLayout = GET_SINGLE(CShaderManager)->FindInputLayout(strName);
 }
 
+IMAGE_TYPE CMaterial::GetImageType(int iContainer, int iSubset)
+{
+	return m_vecContainer[iContainer]->vecSubset[iSubset]->vecTexture[0]->bArrayTex ? IT_ARRAY : IT_ATLAS;
+}
+
 void CMaterial::SetSubsetTexture(PMaterialSubset pSubset, int iRegister, const string& strName, bool bArrayTex)
 {
 	size_t iSize = pSubset->vecTexture.size();

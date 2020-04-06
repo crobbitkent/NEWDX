@@ -18,6 +18,7 @@ public:
 
 	void SetScale(const Vector3& vScale);
 
+	void PlaceAt(int sizeX, int sizeY, int leftTopX, int leftTopY);
 
 	void OnBlock(class CColliderBase* pSrc, class CColliderBase* pDest, float fTime);
 

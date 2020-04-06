@@ -250,6 +250,12 @@ void CGameObject::Update(float fTime)
 		m_fGravityTime += 0.01;
 
 		m_fForce -= GRAVITY * m_fGravityTime * m_fGravityTime * m_fGravitySpeed;
+
+		/*if (m_fForce <= -10.f)
+		{
+			m_fForce = -10.f;
+		}*/
+
 		m_pRootComponent->AddRelativePos(GetWorldAxis(AXIS_Y) * 1.f * m_fForce * 0.001 * m_fGravitySpeed);
 
 		//{
