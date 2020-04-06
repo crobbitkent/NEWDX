@@ -66,6 +66,7 @@ bool CGameObject::GetPhysics() const
 void CGameObject::ClearGravity()
 {
 	m_fGravityTime = 0.f;
+	m_fForce = 0.f;
 }
 
 void CGameObject::SlowGravity()

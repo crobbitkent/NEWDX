@@ -14,3 +14,9 @@ xcopy .\GameEngine\Bin\Resource\*.* .\Client2D\Bin\Resource\ /s /d /y
 xcopy .\GameEngine\Bin\Resource\*.* .\Engine\Bin\Resource\ /s /d /y
 
 xcopy .\GameEngine\Bin\Resource\*.* .\Editor2D\Bin\Resource\ /s /d /y
+
+
+
+xcopy .\GameEngine\Bin\*.lib .\GameEditorTest\Bin\ /s /d /y
+xcopy .\GameEngine\Bin\*.dll .\GameEditorTest\Bin\ /s /d /y
+xcopy .\GameEngine\Bin\Resource\*.* .\GameEditorTest\Bin\Resource\ /s /d /y

@@ -112,7 +112,8 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>GameEngine32_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -121,12 +122,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../libxl/include_cpp/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../libxl/include_cpp/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>GameEngine_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GameEngine_Debug.lib;libxl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -144,7 +146,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>GameEngine32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -162,7 +165,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>GameEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -186,8 +190,10 @@
     <ClCompile Include="HK\HitEffect.cpp" />
     <ClCompile Include="HK\HKAttackEffect.cpp" />
     <ClCompile Include="HK\HKButton.cpp" />
+    <ClCompile Include="HK\HKExcelManager.cpp" />
     <ClCompile Include="HK\HKMode.cpp" />
     <ClCompile Include="HK\HKMouse.cpp" />
+    <ClCompile Include="HK\HKTileMap.cpp" />
     <ClCompile Include="HK\HollowKnight.cpp" />
     <ClCompile Include="HK\HornBug.cpp" />
     <ClCompile Include="HK\HPEffect.cpp" />
@@ -237,8 +243,10 @@
     <ClInclude Include="HK\HitEffect.h" />
     <ClInclude Include="HK\HKAttackEffect.h" />
     <ClInclude Include="HK\HKButton.h" />
+    <ClInclude Include="HK\HKExcelManager.h" />
     <ClInclude Include="HK\HKMode.h" />
     <ClInclude Include="HK\HKMouse.h" />
+    <ClInclude Include="HK\HKTileMap.h" />
     <ClInclude Include="HK\HollowKnight.h" />
     <ClInclude Include="HK\HornBug.h" />
     <ClInclude Include="HK\HPEffect.h" />

@@ -44,6 +44,7 @@ public:
 	CTile* GetParent()	const;
 
 public:
+	void SetTileOption(TILE_OPTION eOption);
 	void SetCost(float fG, float fH);
 	void ClearNav();
 	void SetNavInsertType(NAV_INSERT_TYPE eType);
@@ -61,5 +62,8 @@ public:
 	void PostUpdate(float fTime);
 	void Render(float fTime);
 	void RenderInstancing(float fTime, PInstancingBuffer pBuffer);
+
+	void Save(FILE* pFile);
+	void Load(FILE* pFile);
 };
 

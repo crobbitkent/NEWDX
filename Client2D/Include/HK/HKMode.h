@@ -26,5 +26,6 @@ private:
 	void SetHK();
 	void SetBug();
 	void SetUI();
+	void SetTileMap();
 };
 

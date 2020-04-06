@@ -121,7 +121,7 @@ bool HollowKnight::Init()
 
 	///////////////////////////////////////////////////////////// COLLIDER SETTING
 	m_pBody = CreateComponent<CColliderRect>("PlayerBody");
-	m_pBody->SetExtent(150.f, 150.f);
+	m_pBody->SetExtent(100.f, 100.f);
 	m_pBody->SetPivot(0.5f, 0.5f, 0.f);
 	m_pBody->AddBlockCallback<HollowKnight>(this, &HollowKnight::OnBlock);
 	m_pBody->AddBeginOverlapCallback<HollowKnight>(this, &HollowKnight::BeginOverlap);
@@ -152,8 +152,9 @@ bool HollowKnight::Init()
 	// m_pMesh->SetMaterial(m_pMaterial);
 
 	CMaterial* pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("PlayerAnimOutlineMtrl");
+	pMaterial->SetSubsetDiffuse(Vector4(.5f, .5f, .5f, .5f));
 	m_pMesh->SetMaterial(pMaterial);
-
+	
 	SAFE_RELEASE(pMaterial);
 
 	SetRoot(m_pMesh);
@@ -170,7 +171,7 @@ bool HollowKnight::Init()
 	// m_pMesh->SetRelativeScale(400.f * 0.8f, 400.f * 0.8f, 1.f);
 	m_pMesh->SetRelativeScale(400.f, 400.f, 1.f);
 	// m_pMesh->SetPivot(0.5f, 0.565f, 0.f);
-	m_pMesh->SetPivot(0.5f, 0.525f, 0.f);
+	m_pMesh->SetPivot(0.5f, 0.46f, 0.f);
 
 	SetAnimation();
 	SetKey();
@@ -249,9 +250,22 @@ void HollowKnight::Update(float fTime)
 		m_bNoLeft = false;
 	}
 
+	// ¶¥ ¹ÚÈù°Å º¹±¸
+	if (true == m_bLandUp)
+	{
+		// m_pMovement->AddMovement(Vector3(0.f, m_fUp * 4.f, 0.f));
+		// m_pMovement->AddMovement(GetWorldAxis(AXIS_Y) * 10000.f);
+		m_pMovement->TeleportMovement(Vector3(0.f, m_fUp * 2.f, 0.f));
+		m_bLandUp = false;
+		m_fUp = 0.f;
+		return;
+	}
+
+
+
 	/*if (false == m_pBody->IsColliding() && false == m_bJumping)
 	{
-		SetCurrentState(PS_FALL);
+		SetCurrentStzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzate(PS_FALL);
 		m_bFalling = true;
 		m_fForce = 0.f;
 	}*/
@@ -260,10 +274,7 @@ void HollowKnight::Update(float fTime)
 	if (PS_FALL == m_eState && true == m_pAnimation->IsSequenceEnd())
 	{
 		SetCurrentState(PS_FALLING);
-
-
 	}
-
 	if (false == m_pBody->IsColliding())
 	{
 		m_bNoRight = false;
@@ -653,7 +664,7 @@ void HollowKnight::Jump(float fTime)
 	// Ã¹ Á¡ÇÁ
 	if (false == m_bJumping)
 	{
-		m_fForce = m_fOriginForce * 800;
+		m_fForce = m_fOriginForce * 700;
 		SetCurrentState(PS_JUMP);
 
 		m_pMovement->SetMoveSpeed(1000.f);
@@ -1048,6 +1059,8 @@ void HollowKnight::OnBlock(CColliderBase * pSrc, CColliderBase * pDest, float fT
 			break;
 		case 2: // TOP
 			m_pMovement->AddMovement(Vector3(0.f, /*pSrc->GetColliderSectionMin().y - pDest->GetColliderSectionMax().y*/1000.f, 0.f));
+			m_bLandUp = true;
+			m_fUp = pSrc->GetIntersect().y - pSrc->GetColliderSectionMin().y;
 			ClearGravity();
 			JumpEnd(fTime);
 			m_bOnLand = true;

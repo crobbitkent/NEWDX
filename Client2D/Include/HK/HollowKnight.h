@@ -126,5 +126,9 @@ private:
 	bool m_bAttacking = false;
 	float m_fAttackTime = 0.f;
 	float m_fAttackTotalTime = 0.3f;
+
+	// 중력
+	bool m_bLandUp = false; // true면 땅에서 꺼진 만큼 위로 올라가야한다.
+	float m_fUp = 0.f;
 };
 

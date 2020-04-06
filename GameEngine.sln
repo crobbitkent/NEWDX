@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor2D", "Editor2D\Includ
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calculator", "Calculator\Calculator.vcxproj", "{B9C8B599-008E-4C43-A7A4-66B2A027A2C0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameEditorTest", "GameEditorTest\Include\GameEditorTest.vcxproj", "{DBEEA2B5-7510-45E5-8F7E-3FA79B519BF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -63,6 +65,14 @@ Global
 		{B9C8B599-008E-4C43-A7A4-66B2A027A2C0}.Release|x64.Build.0 = Release|x64
 		{B9C8B599-008E-4C43-A7A4-66B2A027A2C0}.Release|x86.ActiveCfg = Release|Win32
 		{B9C8B599-008E-4C43-A7A4-66B2A027A2C0}.Release|x86.Build.0 = Release|Win32
+		{DBEEA2B5-7510-45E5-8F7E-3FA79B519BF9}.Debug|x64.ActiveCfg = Debug|x64
+		{DBEEA2B5-7510-45E5-8F7E-3FA79B519BF9}.Debug|x64.Build.0 = Debug|x64
+		{DBEEA2B5-7510-45E5-8F7E-3FA79B519BF9}.Debug|x86.ActiveCfg = Debug|Win32
+		{DBEEA2B5-7510-45E5-8F7E-3FA79B519BF9}.Debug|x86.Build.0 = Debug|Win32
+		{DBEEA2B5-7510-45E5-8F7E-3FA79B519BF9}.Release|x64.ActiveCfg = Release|x64
+		{DBEEA2B5-7510-45E5-8F7E-3FA79B519BF9}.Release|x64.Build.0 = Release|x64
+		{DBEEA2B5-7510-45E5-8F7E-3FA79B519BF9}.Release|x86.ActiveCfg = Release|Win32
+		{DBEEA2B5-7510-45E5-8F7E-3FA79B519BF9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

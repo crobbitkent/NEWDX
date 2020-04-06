@@ -52,6 +52,12 @@
     <Filter Include="HK\04. Object\01. Bug\Parent">
       <UniqueIdentifier>{e3dcb819-16a8-48a1-9f8f-969400834217}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HK\05. HKTileMap">
+      <UniqueIdentifier>{871b4f71-dc95-4911-96df-3d4748e39c9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HK\06. HKExcelManager">
+      <UniqueIdentifier>{a786fc6c-2146-477a-8439-9840a37cbfaa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -198,6 +204,12 @@
     <ClCompile Include="HK\BlockHitB.cpp">
       <Filter>HK\03. Effect</Filter>
     </ClCompile>
+    <ClCompile Include="HK\HKTileMap.cpp">
+      <Filter>HK\05. HKTileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="HK\HKExcelManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -340,6 +352,12 @@
     </ClInclude>
     <ClInclude Include="HK\BlockHitB.h">
       <Filter>HK\03. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HKTileMap.h">
+      <Filter>HK\05. HKTileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="HK\HKExcelManager.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

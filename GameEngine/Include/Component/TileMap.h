@@ -69,5 +69,15 @@ public:
 	virtual void Update(float fTime);
 	virtual void PostUpdate(float fTime);
 	virtual void Render(float fTime);
+
+
+	void Save(const char* pFullPath);
+	void Load(const char* pFullPath);
+	void LoadPath(const char* pFileName, const string& strPathName = RESOURCE_PATH);
+
+private:
+	void CreateTileRect(const Vector3& vPos = Vector3::Zero);
+	void CreateTileIsometric(const Vector3& vPos = Vector3::Zero);
+
 };
 

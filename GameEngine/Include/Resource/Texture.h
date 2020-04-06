@@ -35,5 +35,6 @@ public:
 
 private:
 	bool CreateResource();
+	bool CreateResourceArray();
 };
 

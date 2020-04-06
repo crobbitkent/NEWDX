@@ -14,6 +14,7 @@
 #include "CameraComponent.h"
 #include "../Device.h"
 #include "Transform.h"
+#include "../PathManager.h"
 
 CTileMap::CTileMap()
 {
@@ -213,36 +214,21 @@ void CTileMap::CreateTile(TILE_TYPE eType, unsigned int iCountX, unsigned int iC
 
 	m_eTileType = eType;
 	m_vTileSize = vTileSize;
-	m_vSize = m_vTileSize * Vector3((float)m_iTileCountX, (float)m_iTileCountY, 0.f);
 
-	SetWorldScale(m_vSize.x, m_vSize.y, 1.f);
 
-	SetRelativePos(vPos);
-
-	m_pTileArray = new CTile*[m_iTileCount];
-
-	for (unsigned int i = 0; i < m_iTileCountY; ++i)
+	switch (eType)
 	{
-		for (unsigned int j = 0; j < m_iTileCountX; ++j)
-		{
-			int	iIndex = i * m_iTileCountX + j;
-
-			m_pTileArray[iIndex] = new CTile;
-
-			m_pTileArray[iIndex]->m_eType = eType;
-			m_pTileArray[iIndex]->m_eOption = TO_NONE;
-			m_pTileArray[iIndex]->m_vPos = vPos + Vector3(j * m_vTileSize.x, i * m_vTileSize.y, 0.f);
-			m_pTileArray[iIndex]->m_vSize = m_vTileSize;
-			m_pTileArray[iIndex]->m_iIndexX = j;
-			m_pTileArray[iIndex]->m_iIndexY = i;
-			m_pTileArray[iIndex]->m_iIndex = iIndex;
-
-			if (!m_vecFrame.empty())
-			{
-				m_pTileArray[i]->SetFrame(m_vecFrame[0]);
-			}
-		}
+	case TT_RECT:
+		CreateTileRect(vPos);
+		break;
+	case TT_ISOMETRIC:
+		CreateTileIsometric(vPos);
+		break;
+	default:
+		BOOM;
+		break;
 	}
+
 
 	// 전체 타일 수만큼 인스턴싱 버퍼를 할당해준다.
 	m_pInstancingBuffer = new InstancingBuffer;
@@ -391,11 +377,6 @@ bool CTileMap::Init()
 void CTileMap::Begin()
 {
 	CSceneComponent::Begin();
-
-	for (unsigned int i = 0; i < m_iTileCount; ++i)
-	{
-		m_pTileArray[i]->SetFrame(m_vecFrame[3]);
-	}
 }
 
 void CTileMap::Update(float fTime)
@@ -488,3 +469,190 @@ void CTileMap::Render(float fTime)
 		}*/
 	}
 }
+
+
+void CTileMap::Save(const char * pFullPath)
+{
+	FILE*	pFile = nullptr;
+
+	fopen_s(&pFile, pFullPath, "wb");
+
+	if (pFile)
+	{
+		fwrite(&m_iTileCountX, sizeof(unsigned int), 1, pFile);
+		fwrite(&m_iTileCountY, sizeof(unsigned int), 1, pFile);
+		fwrite(&m_iTileCount, sizeof(unsigned int), 1, pFile);
+		fwrite(&m_vSize, sizeof(Vector3), 1, pFile);
+		fwrite(&m_vTileSize, sizeof(Vector3), 1, pFile);
+		fwrite(&m_eTileType, sizeof(TILE_TYPE), 1, pFile);
+		fwrite(&m_bTileRender, sizeof(bool), 1, pFile);
+
+		int	iCount = (int)m_vecFrame.size();
+		fwrite(&iCount, sizeof(int), 1, pFile);
+		fwrite(&m_vecFrame[0], sizeof(ImageFrame), iCount, pFile);
+
+		fwrite(&m_iRenderCount, sizeof(int), 1, pFile);
+
+		for (unsigned int i = 0; i < m_iTileCount; ++i)
+		{
+			m_pTileArray[i]->Save(pFile);
+		}
+
+		fclose(pFile);
+	}
+}
+
+void CTileMap::Load(const char * pFullPath)
+{
+	FILE*	pFile = nullptr;
+
+	fopen_s(&pFile, pFullPath, "rb");
+
+	if (pFile)
+	{
+		m_vecFrame.clear();
+
+		for (unsigned int i = 0; i < m_iTileCount; ++i)
+		{
+			SAFE_DELETE(m_pTileArray[i]);
+		}
+		SAFE_DELETE_ARRAY(m_pTileArray);
+
+		fread(&m_iTileCountX, sizeof(unsigned int), 1, pFile);
+		fread(&m_iTileCountY, sizeof(unsigned int), 1, pFile);
+		fread(&m_iTileCount, sizeof(unsigned int), 1, pFile);
+		fread(&m_vSize, sizeof(Vector3), 1, pFile);
+		fread(&m_vTileSize, sizeof(Vector3), 1, pFile);
+		fread(&m_eTileType, sizeof(TILE_TYPE), 1, pFile);
+		fread(&m_bTileRender, sizeof(bool), 1, pFile);
+
+		int	iCount = 0;
+		fread(&iCount, sizeof(int), 1, pFile);
+
+		m_vecFrame.resize(iCount);
+		fread(&m_vecFrame[0], sizeof(ImageFrame), iCount, pFile);
+
+		fread(&m_iRenderCount, sizeof(int), 1, pFile);
+
+		m_pTileArray = new CTile*[m_iTileCount];
+
+		for (unsigned int i = 0; i < m_iTileCount; ++i)
+		{
+			m_pTileArray[i] = new CTile;
+			m_pTileArray[i]->Load(pFile);
+		}
+
+		// 전체 타일 수만큼 인스턴싱 버퍼를 할당해준다.
+		m_pInstancingBuffer = new InstancingBuffer;
+
+		m_pInstancingBuffer->iSize = sizeof(TileMapInstancingData);
+		m_pInstancingBuffer->iCount = m_iTileCount;
+		m_pInstancingBuffer->eUsage = D3D11_USAGE_DYNAMIC;
+		D3D11_BUFFER_DESC	tDesc = {};
+
+		tDesc.Usage = D3D11_USAGE_DYNAMIC;
+		tDesc.ByteWidth = m_pInstancingBuffer->iSize * m_pInstancingBuffer->iCount;
+		tDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+		tDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+
+		DEVICE->CreateBuffer(&tDesc, nullptr, &m_pInstancingBuffer->pBuffer);
+
+		m_pInstancingData = new TileMapInstancingData[m_iTileCount];
+
+		((CNavigation2D*)m_pScene->GetNavigation(RM_2D))->SetTileMap(this);
+
+		SetWorldScale(m_vSize.x, m_vSize.y, 1.f);
+
+		fclose(pFile);
+	}
+}
+
+void CTileMap::LoadPath(const char * pFileName, const string & strPathName)
+{
+	const char* pPath = GET_SINGLE(CPathManager)->FindPathMultibyte(strPathName);
+
+	char	strFullPath[MAX_PATH] = {};
+
+	if (pPath)
+		strcpy_s(strFullPath, pPath);
+
+	strcat_s(strFullPath, pFileName);
+
+	Load(strFullPath);
+}
+
+
+
+
+void CTileMap::CreateTileRect(const Vector3 & vPos)
+{
+	m_vSize = m_vTileSize * Vector3((float)m_iTileCountX, (float)m_iTileCountY, 0.f);
+
+	SetWorldScale(m_vSize.x, m_vSize.y, 1.f);
+
+	SetRelativePos(vPos);
+
+	m_pTileArray = new CTile*[m_iTileCount];
+
+	for (unsigned int i = 0; i < m_iTileCountY; ++i)
+	{
+		for (unsigned int j = 0; j < m_iTileCountX; ++j)
+		{
+			int	iIndex = i * m_iTileCountX + j;
+
+			m_pTileArray[iIndex] = new CTile;
+
+			m_pTileArray[iIndex]->m_eType = m_eTileType;
+			m_pTileArray[iIndex]->m_eOption = TO_NONE;
+			m_pTileArray[iIndex]->m_vPos = vPos + Vector3(j * m_vTileSize.x, i * m_vTileSize.y, 0.f);
+			m_pTileArray[iIndex]->m_vSize = m_vTileSize;
+			m_pTileArray[iIndex]->m_iIndexX = j;
+			m_pTileArray[iIndex]->m_iIndexY = i;
+			m_pTileArray[iIndex]->m_iIndex = iIndex;
+
+			if (!m_vecFrame.empty())
+			{
+				m_pTileArray[iIndex]->SetFrame(m_vecFrame[0]);
+			}
+		}
+	}
+}
+
+void CTileMap::CreateTileIsometric(const Vector3 & vPos)
+{
+	m_vSize = m_vTileSize * Vector3((float)m_iTileCountX, (m_iTileCountY + 1) / 2.f, 0.f);
+
+	SetWorldScale(m_vSize.x, m_vSize.y, 1.f);
+
+	SetRelativePos(vPos);
+
+	m_pTileArray = new CTile*[m_iTileCount];
+
+	for (unsigned int i = 0; i < m_iTileCountY; ++i)
+	{
+		for (unsigned int j = 0; j < m_iTileCountX; ++j)
+		{
+			int	iIndex = i * m_iTileCountX + j;
+
+			m_pTileArray[iIndex] = new CTile;
+
+			m_pTileArray[iIndex]->m_eType = m_eTileType;
+			m_pTileArray[iIndex]->m_eOption = TO_NONE;
+			m_pTileArray[iIndex]->m_vPos = vPos + Vector3(j * m_vTileSize.x, i * m_vTileSize.y / 2.f, 0.f);
+
+			if (i % 2 == 1)
+				m_pTileArray[iIndex]->m_vPos.x += m_vTileSize.x / 2.f;
+
+			m_pTileArray[iIndex]->m_vSize = m_vTileSize;
+			m_pTileArray[iIndex]->m_iIndexX = j;
+			m_pTileArray[iIndex]->m_iIndexY = i;
+			m_pTileArray[iIndex]->m_iIndex = iIndex;
+
+			if (!m_vecFrame.empty())
+			{
+				m_pTileArray[iIndex]->SetFrame(m_vecFrame[3]);
+			}
+		}
+	}
+}
+

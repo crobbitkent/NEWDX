@@ -209,6 +209,7 @@ typedef struct _tagTileMapInstancingData
 	Vector2	vImageSize;
 	int		iFrame;
 	int		iImageType;
+	int		iTileOption;
 }TileMapInstancingData, *PTileMapInstancingData;
 
 typedef struct _tagStaticInstancingData

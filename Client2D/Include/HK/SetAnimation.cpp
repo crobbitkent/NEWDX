@@ -733,3 +733,4 @@ void HKMode::SetUI()
 	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("DUST_EFFECT_STATIC", Vector2(0.f, 0.f),
 		Vector2(100.f, 100.f));
 }
+

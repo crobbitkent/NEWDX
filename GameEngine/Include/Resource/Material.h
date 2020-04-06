@@ -6,6 +6,7 @@ typedef struct _tagTextureInfo
 {
 	class CTexture*		pTexture;
 	int			iRegister;
+	bool				bArrayTex;
 
 	_tagTextureInfo();
 	~_tagTextureInfo();
@@ -48,6 +49,7 @@ private:
 	size_t				m_iSerialNumber;
 	bool				m_bEnableInstancing;
 
+
 public:
 	MATERIAL_SHADER_STYLE GetMaterialShaderStyle()	const;
 	void SetSerialNumber(const string& strName);
@@ -86,7 +88,7 @@ public:
 	void SetInstancingLayout(const string& strName);
 
 private:
-	void SetSubsetTexture(PMaterialSubset pSubset, int iRegister, const string& strName);
+	void SetSubsetTexture(PMaterialSubset pSubset, int iRegister, const string& strName, bool bArrayTex);
 	PCBufferNode FindCBufferNode(const string& strName);
 
 public:

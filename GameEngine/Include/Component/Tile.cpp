@@ -75,6 +75,11 @@ CTile * CTile::GetParent() const
 	return m_pParent;
 }
 
+void CTile::SetTileOption(TILE_OPTION eOption)
+{
+	m_eOption = eOption;
+}
+
 void CTile::SetCost(float fG, float fH)
 {
 	m_fG = fG;
@@ -159,6 +164,7 @@ void CTile::SetInstancingData(PTileMapInstancingData pData)
 	pData->vImageSize = m_tImgFrame.vImageSize;
 	pData->iFrame = m_tImgFrame.iFrame;
 	pData->iImageType = m_tImgFrame.iImageType;
+	pData->iTileOption = m_eOption;
 }
 
 void CTile::PostUpdate(float fTime)
@@ -281,4 +287,32 @@ void CTile::RenderInstancing(float fTime, PInstancingBuffer pBuffer)
 		if (m_pAlphaBlend)
 			m_pAlphaBlend->ResetState();
 	}
+}
+
+void CTile::Save(FILE * pFile)
+{
+	fwrite(&m_eType, sizeof(TILE_TYPE), 1, pFile);
+	fwrite(&m_eOption, sizeof(TILE_OPTION), 1, pFile);
+	fwrite(&m_vPos, sizeof(Vector3), 1, pFile);
+	fwrite(&m_vSize, sizeof(Vector3), 1, pFile);
+	fwrite(&m_vImgStart, sizeof(Vector2), 1, pFile);
+	fwrite(&m_vImgEnd, sizeof(Vector2), 1, pFile);
+	fwrite(&m_tImgFrame, sizeof(ImageFrame), 1, pFile);
+	fwrite(&m_iIndexX, sizeof(int), 1, pFile);
+	fwrite(&m_iIndexY, sizeof(int), 1, pFile);
+	fwrite(&m_iIndex, sizeof(int), 1, pFile);
+}
+
+void CTile::Load(FILE * pFile)
+{
+	fread(&m_eType, sizeof(TILE_TYPE), 1, pFile);
+	fread(&m_eOption, sizeof(TILE_OPTION), 1, pFile);
+	fread(&m_vPos, sizeof(Vector3), 1, pFile);
+	fread(&m_vSize, sizeof(Vector3), 1, pFile);
+	fread(&m_vImgStart, sizeof(Vector2), 1, pFile);
+	fread(&m_vImgEnd, sizeof(Vector2), 1, pFile);
+	fread(&m_tImgFrame, sizeof(ImageFrame), 1, pFile);
+	fread(&m_iIndexX, sizeof(int), 1, pFile);
+	fread(&m_iIndexY, sizeof(int), 1, pFile);
+	fread(&m_iIndex, sizeof(int), 1, pFile);
 }

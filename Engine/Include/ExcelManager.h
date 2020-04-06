@@ -19,7 +19,6 @@ public:
 
 
 
-
 	DECLARE_SINGLE(CExcelManager);
 };
 

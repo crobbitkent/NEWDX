@@ -79,3 +79,13 @@ enum BUG_STATE
 
 	BS_OVER
 };
+
+
+
+enum TILE_MOVE
+{
+	TM_NORMAL,
+	TM_COLLIDER,
+
+	TM_END
+};

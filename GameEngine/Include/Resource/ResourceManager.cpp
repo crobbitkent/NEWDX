@@ -185,12 +185,10 @@ bool CResourceManager::Init()
 	pMaterial->SetInstancingLayout(COLLIDER_LAYOUT);
 
 	CMesh* pMesh = FindMesh("ColliderRect");
-
 	pMesh->SetMaterial(pMaterial);
-
 	SAFE_RELEASE(pMesh);
-
 	SAFE_RELEASE(pMaterial);
+
 
 	CreateMaterial("ColliderSphere2DMtrl");
 

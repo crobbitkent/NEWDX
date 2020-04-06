@@ -10,6 +10,7 @@ _tagTextureInfo::_tagTextureInfo()
 {
 	pTexture = nullptr;
 	iRegister = 0;
+	bArrayTex = false;
 }
 
 _tagTextureInfo::~_tagTextureInfo()
@@ -296,6 +297,8 @@ void CMaterial::CopyMaterial(CMaterial * pMaterial)
 
 	if(m_pInstancingShader)
 		m_pInstancingShader->AddRef();
+
+	m_strName = pMaterial->GetName();
 }
 
 bool CMaterial::SetTexture(int iRegister, const string & strName, int iContainer, int iSubset)
@@ -308,7 +311,7 @@ bool CMaterial::SetTexture(int iRegister, const string & strName, int iContainer
 
 	PMaterialSubset	pSubset = m_vecContainer[iContainer]->vecSubset[iSubset];
 
-	SetSubsetTexture(pSubset, iRegister, strName);
+	SetSubsetTexture(pSubset, iRegister, strName, true);
 	
 	return true;
 }
@@ -327,7 +330,7 @@ bool CMaterial::SetTexture(int iRegister, const string & strName, const TCHAR * 
 	if (!GET_SINGLE(CResourceManager)->LoadTexture(strName, pFileName, strPathName))
 		return false;
 
-	SetSubsetTexture(pSubset, iRegister, strName);
+	SetSubsetTexture(pSubset, iRegister, strName, true);
 
 	return true;
 }
@@ -346,7 +349,7 @@ bool CMaterial::SetTextureFromFullPath(int iRegister, const string & strName,
 	if (!GET_SINGLE(CResourceManager)->LoadTextureFullPath(strName, pFullPath))
 		return false;
 
-	SetSubsetTexture(pSubset, iRegister, strName);
+	SetSubsetTexture(pSubset, iRegister, strName, true);
 
 	return true;
 }
@@ -366,7 +369,7 @@ bool CMaterial::SetTexture(int iRegister, const string & strName,
 	if (!GET_SINGLE(CResourceManager)->LoadTexture(strName, vecFileName, strPathName))
 		return false;
 
-	SetSubsetTexture(pSubset, iRegister, strName);
+	SetSubsetTexture(pSubset, iRegister, strName, true);
 
 	return true;
 }
@@ -385,7 +388,7 @@ bool CMaterial::SetTextureFromFullPath(int iRegister, const string & strName,
 	if (!GET_SINGLE(CResourceManager)->LoadTextureFullPath(strName, vecFullPath))
 		return false;
 
-	SetSubsetTexture(pSubset, iRegister, strName);
+	SetSubsetTexture(pSubset, iRegister, strName, true);
 
 	return true;
 }
@@ -464,7 +467,7 @@ void CMaterial::SetInstancingLayout(const string & strName)
 	m_pInstancingLayout = GET_SINGLE(CShaderManager)->FindInputLayout(strName);
 }
 
-void CMaterial::SetSubsetTexture(PMaterialSubset pSubset, int iRegister, const string& strName)
+void CMaterial::SetSubsetTexture(PMaterialSubset pSubset, int iRegister, const string& strName, bool bArrayTex)
 {
 	size_t iSize = pSubset->vecTexture.size();
 	for (size_t i = 0; i < iSize; ++i)
@@ -473,6 +476,7 @@ void CMaterial::SetSubsetTexture(PMaterialSubset pSubset, int iRegister, const s
 		{
 			SAFE_RELEASE(pSubset->vecTexture[i]->pTexture);
 			pSubset->vecTexture[i]->pTexture = GET_SINGLE(CResourceManager)->FindTexture(strName);
+			pSubset->vecTexture[i]->bArrayTex = bArrayTex;
 			return;
 		}
 	}
@@ -480,6 +484,7 @@ void CMaterial::SetSubsetTexture(PMaterialSubset pSubset, int iRegister, const s
 	PTextureInfo	pTexInfo = new TextureInfo;
 	pTexInfo->iRegister = iRegister;
 	pTexInfo->pTexture = GET_SINGLE(CResourceManager)->FindTexture(strName);
+	pTexInfo->bArrayTex = bArrayTex;
 
 	pSubset->vecTexture.push_back(pTexInfo);
 }

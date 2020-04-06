@@ -28,7 +28,12 @@
 
 #include "../RandomNumber.h"
 
-#include "ExcelManager.h"
+#include "HKExcelManager.h"
+#include "HKTileMap.h"
+
+#include "../Object/TestObject.h"
+
+#include <sstream>
 
 HKMode::HKMode()
 {
@@ -52,6 +57,7 @@ bool HKMode::Init()
 	SetBug();
 	SetUI();
 
+	// SetTileMap();
 
 	////////////////////////////////////////// ¿¢¼¿ ·Îµù
 
@@ -60,8 +66,10 @@ bool HKMode::Init()
 
 
 
+	/*CTestObject*	pObj = m_pScene->SpawnObject<CTestObject>();
 
-
+	SetPlayer(pObj);
+	SAFE_RELEASE(pObj);*/
 
 	HollowKnight* hk = m_pScene->SpawnObject<HollowKnight>();
 	SetPlayer(hk);
@@ -72,8 +80,8 @@ bool HKMode::Init()
 	 SAFE_RELEASE(hk);*/
 
 
-	ShieldBug* bug = m_pScene->SpawnObject<ShieldBug>(Vector3(500.f, 500.f, 0.f));
-	SAFE_RELEASE(bug);
+	// ShieldBug* bug = m_pScene->SpawnObject<ShieldBug>(Vector3(500.f, 500.f, 0.f));
+	// SAFE_RELEASE(bug);
 
 	
 
@@ -291,6 +299,122 @@ void HKMode::SetCollision()
 	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("MonsterProjectile", "PlayerProjectile", CT_IGNORE);
 	GET_SINGLE(CCollisionManager)->UpdateProfileChannel("MonsterProjectile", "MonsterProjectile", CT_IGNORE);
 
+
+
+	//{
+	//	GET_SINGLE(CResourceManager)->CreateMaterial("PlayerMtrl");
+
+	//	CMaterial*	pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("PlayerMtrl");
+
+	//	pMaterial->SetSubsetShader(STANDARD_TEX_SHADER);
+	//	pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
+	//	pMaterial->SetRenderState("AlphaBlend");
+	//	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
+
+	//	SAFE_RELEASE(pMaterial);
+
+	//	GET_SINGLE(CResourceManager)->CreateMaterial("PlayerAnimMtrl");
+
+	//	pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("PlayerAnimMtrl");
+
+	//	pMaterial->SetSubsetShader(STANDARD_ANIM2D_SHADER);
+	//	//pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
+	//	pMaterial->SetRenderState("AlphaBlend");
+	//	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
+
+	//	SAFE_RELEASE(pMaterial);
+
+	//	GET_SINGLE(CResourceManager)->CreateMaterial("PlayerAnimOutLineMtrl");
+
+	//	pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("PlayerAnimOutLineMtrl");
+
+	//	pMaterial->SetSubsetShader(STANDARD_ANIM2D_OUTLINE_SHADER);
+	//	//pMaterial->SetTexture(0, "Player", TEXT("teemo.png"));
+	//	pMaterial->SetRenderState("AlphaBlend");
+	//	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
+	//	pMaterial->CreateCBufferNode(OUTLINE_CBUFFER, 11, sizeof(OutLineCBuffer));
+
+	//	SAFE_RELEASE(pMaterial);
+
+	//	GET_SINGLE(CResourceManager)->CreateMaterial("TestPixelMtrl");
+
+	//	pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("TestPixelMtrl");
+
+	//	pMaterial->SetSubsetShader(STANDARD_TEX_SHADER);
+	//	pMaterial->SetTexture(0, "TestPixel", TEXT("PixelCollision.png"));
+
+	//	SAFE_RELEASE(pMaterial);
+
+	//	GET_SINGLE(CResourceManager)->CreateMaterial("MainMapTileMaterial");
+
+	//	pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("MainMapTileMaterial");
+
+	//	pMaterial->SetSubsetShader(TILEMAP_SHADER);
+	//	pMaterial->SetTexture(0, "MainMapTile", TEXT("Tile.bmp"));
+
+	//	SAFE_RELEASE(pMaterial);
+
+	//	GET_SINGLE(CResourceManager)->CreateMaterial("BulletMaterial");
+
+	//	pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("BulletMaterial");
+
+	//	pMaterial->SetSubsetShader(TILEMAP_SHADER);
+	//	pMaterial->SetTexture(0, "Bullet", TEXT("teemo.png"));
+	//	pMaterial->SetRenderState("AlphaBlend");
+	//	pMaterial->SetMaterialShaderStyle(MSS_ALPHA);
+	//	pMaterial->EnableInstancing();
+	//	pMaterial->AddRef();
+
+	//	SAFE_RELEASE(pMaterial);
+	//}
+
+
+	//{
+	//	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("MinionIdle", true, 1.f, 7);
+	//	GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("MinionIdle", "MinionAtlas",
+	//		TEXT("Monster/MinionAtlas.png"));
+
+	//	for (int i = 0; i < 7; ++i)
+	//	{
+	//		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceFrameInfo("MinionIdle", Vector2(50.f * i, 0.f),
+	//			Vector2(50.f * (i + 1), 37.f));
+	//	}
+
+	//	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("MinionWalk", true, 1.f, 6);
+
+	//	for (int i = 0; i <= 5; ++i)
+	//	{
+	//		TCHAR	strFileName[MAX_PATH] = {};
+
+	//		wsprintf(strFileName, TEXT("Monster/MinionFrame/adventurer-run2-0%d.png"), i);
+
+	//		char	strKey[256] = {};
+	//		sprintf_s(strKey, "MinionWalk%d", i);
+
+	//		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("MinionWalk", strKey, strFileName);
+	//	}
+
+	//	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("MinionWalk", Vector2(0.f, 0.f),
+	//		Vector2(50.f, 37.f));
+
+	//	GET_SINGLE(CResourceManager)->CreateAnimation2DSequence("MinionKick", false, 1.f, 8);
+
+	//	for (int i = 0; i <= 7; ++i)
+	//	{
+	//		TCHAR	strFileName[MAX_PATH] = {};
+
+	//		wsprintf(strFileName, TEXT("Monster/MinionFrame/adventurer-kick-0%d.png"), i);
+
+	//		char	strKey[256] = {};
+	//		sprintf_s(strKey, "MinionKick%d", i);
+
+	//		GET_SINGLE(CResourceManager)->AddAnimation2DSequenceTexture("MinionKick", strKey, strFileName);
+	//	}
+
+	//	GET_SINGLE(CResourceManager)->SetAnimation2DSequenceFrameInfoAll("MinionKick", Vector2(0.f, 0.f),
+	//		Vector2(50.f, 37.f));
+	//}
+
 }
 
 
@@ -330,3 +454,20 @@ void HKMode::SetCollision()
 3. 
 
 */
+
+
+
+void HKMode::SetTileMap()
+{
+	HKTileMap* map = m_pScene->SpawnObject<HKTileMap>();
+
+	HKExcelManager* excel = new HKExcelManager;
+	
+	excel->LoadStage(TEXT("Stage01.xls"), map);
+
+	// HKExcelManager::LoadStage(TEXT("Stage01.xls"), map);
+	
+	SAFE_RELEASE(map);
+
+	delete excel;
+}
